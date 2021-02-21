@@ -49,8 +49,8 @@ sudo apt install -y build-essential
 sudo apt-get install manpages-dev 
 
 # Install Go - https://golang.org/doc/install
-sudo wget https://golang.org/dl/go1.16.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.16.linux-amd64.tar.gz
+sudo wget -P /opt/ https://golang.org/dl/go1.16.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf /opt/go1.16.linux-amd64.tar.gz
 sudo export PATH=$PATH:/usr/local/go/bin
 
 # Install Atom
@@ -106,7 +106,7 @@ sudo git clone https://github.com/21y4d/nmapAutomator.git /opt/
 sudo ln -s /opt/nmapAutomator/nmapAutomator.sh /usr/local/bin/
 
 # Install Chrome
-sudo wget /opt/ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb 
+sudo wget -P /opt/ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb 
 sudo apt install -y /opt/google-chrome-stable_current_amd64.deb 
 
 # Install Chromium - Doesnt seem to work...
@@ -115,7 +115,7 @@ sudo apt install -y /opt/google-chrome-stable_current_amd64.deb
 
 # Install Terminal Tools + Customization
 # ---------------------------------------
-sudo wget https://github.com/cameronww7/Terminal-Customization /opt/
+sudo wget -P /opt/ https://github.com/cameronww7/Terminal-Customization
 sudo chmod +x /opt/Terminal-Customization/terminal_setup.sh
 cd /opt/Terminal-Customization/
 sudo ./opt/Terminal-Customization/terminal_setup.sh
