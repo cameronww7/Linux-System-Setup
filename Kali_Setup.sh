@@ -112,7 +112,7 @@ sudo wget /opt/ https://dl.google.com/linux/direct/google-chrome-stable_current_
 sudo apt install -y /opt/google-chrome-stable_current_amd64.deb 
 
 # Install Chromium - Doesnt seem to work...
-sudo apt install -y chromium-browser 
+#sudo apt install -y chromium-browser 
 
 
 # Install Terminal Tools + Customization
