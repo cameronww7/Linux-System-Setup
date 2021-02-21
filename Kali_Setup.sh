@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 # Note
 # ---------------------------------------
 # Make sure file has needed perms
