@@ -10,16 +10,12 @@ echo "\n Update + Install Basics"
 sudo apt-get update
 sudo apt-get install -y --reinstall virtualbox-guest-x11
 
-
 # Update the System
 # ---------------------------------------
 sudo apt-get clean -y
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
 sudo apt-get autoremove -y
-
-# Install Video Drivers
-sudo apt-get install -y ocl-icd-libopencl1 nvidia-driver nvidia-cuda-toolkit
 
 # Add search cache
 sudo apt-get-cache search kali-
@@ -30,7 +26,7 @@ echo "\n Installing - PimyMyKali"
 sudo git clone https://github.com/Dewalt-arch/pimpmykali /opt/pimpmykali/
 sudo chmod +x /opt/pimpmykali/pimpmykali.sh
 cd /opt/pimpmykali/
-sudo ./pimpmykali/pimpmykali.sh
+sudo ./pimpmykali.sh
 
 # Install Dev Tools
 # ---------------------------------------
@@ -51,10 +47,12 @@ echo "\n Installing - python3-pip& python-pip"
 sudo apt-get install -y python3-pip 
 sudo apt-get install -y python-pip 
 
+sudo python -m pip install --upgrade pip 
+
 # Install Basic Tools
 echo "\n Installing - build-essential "
 sudo apt-get install -y build-essential 
-sudo apt-get-get install manpages-dev 
+sudo apt-get install manpages-dev 
 
 # Install Go - https://golang.org/doc/install
 echo "\n Installing - Go"
@@ -135,7 +133,6 @@ echo "\n Installing - Terminal Tools + Customization"
 sudo git clone https://github.com/cameronww7/Terminal-Customization /opt/Terminal-Customization/
 
 
-# Reboot
+# Reboot Prompt
 # ---------------------------------------
-echo "\n Installing - reboot"
-reboot
+echo "\n Finished - REBOOT"
