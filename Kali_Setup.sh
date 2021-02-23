@@ -13,7 +13,7 @@ sudo apt-get install -y --reinstall virtualbox-guest-x11
 # Update the System
 # ---------------------------------------
 sudo apt-get clean -y
-sudo apt-get upgrade -y
+sudo apt-get full-upgrade -y
 sudo apt-get autoremove -y
 
 # Add search cache
