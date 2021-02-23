@@ -16,4 +16,3 @@
    1. or <https://github.com/cameronww7/Terminal-Customization>
 
 6. Install Terminal Customization
-
