@@ -19,13 +19,21 @@ sudo apt-get autoremove -y
 # Add search cache
 sudo apt-get-cache search kali-
 
-# Install PipMyKali - https://github.com/Dewalt-arch/pimpmykali
+# Cloning PipMyKali - https://github.com/Dewalt-arch/pimpmykali
 # ---------------------------------------
-echo "\n\n\n Installing - PimyMyKali \n"
+echo "\n\n\n Cloning - PimyMyKali \n"
 sudo git clone https://github.com/Dewalt-arch/pimpmykali /opt/pimpmykali/
 sudo chmod +x /opt/pimpmykali/pimpmykali.sh
 cd /opt/pimpmykali/
-sudo ./pimpmykali.sh
+#sudo ./pimpmykali.sh
+
+# Cloning HotWax - https://github.com/BrashEndeavours/hotwax.git
+# ---------------------------------------
+echo "\n\n\n Cloning - HotWax \n"
+sudo git clone https://github.com/BrashEndeavours/hotwax.git /opt/hotwax/
+#cd /opt/hotwax/
+#sudo apt install -y git ansible
+#sudo ansible-playbook playbook.yml -K
 
 # Install Dev Tools
 # ---------------------------------------
