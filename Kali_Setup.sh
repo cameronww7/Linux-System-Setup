@@ -96,7 +96,6 @@ sudo apt-get install -y dnsrecon
 sudo apt-get install -y odat
 sudo apt-get install -y seclists
 sudo apt-get install -y ffuf
-sudo apt-get install -y seclists
 sudo apt-get install -y curl 
 sudo apt-get install -y nbtscan 
 sudo apt-get install -y nmap 
@@ -104,7 +103,6 @@ sudo apt-get install -y onesixtyone
 sudo apt-get install -y oscanner 
 sudo apt-get install -y smbclient 
 sudo apt-get install -y snmp 
-sudo apt-get install -y sslscan 
 sudo apt-get install -y sipvicious 
 sudo apt-get install -y tnscmd10g 
 sudo apt-get install -y whatweb 
