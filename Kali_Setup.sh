@@ -112,6 +112,11 @@ sudo apt-get install -y smtp-user-enum
 # Install droopescan - https://github.com/droope/droopescan
 sudo pip install droopescan 
 
+# Install Impacket - https://github.com/SecureAuthCorp/impacket
+sudo git clone https://github.com/SecureAuthCorp/impacket.git /opt/impacket/
+cd /opt/impacket/
+pip install /opt/impacket/.
+
 # Insatll AutoRecon - https://github.com/Tib3rius/AutoRecon#installation
 echo "\n\n\n Installing - AutoRecon \n"
 sudo python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git 
@@ -137,6 +142,11 @@ sudo apt-get install -y /opt/google-chrome-stable_current_amd64.deb
 echo "\n\n\n Installing - Terminal Tools + Customization \n"
 sudo git clone https://github.com/cameronww7/Terminal-Customization /opt/Terminal-Customization/
 
+# Setup my File Strucutres 
+sudo mkdir ~/Hacking
+sudo chmod -R 777 ~/Hacking  
+
+sudo chmod -R 777 /opt 
 
 # Reboot Prompt
 # ---------------------------------------
