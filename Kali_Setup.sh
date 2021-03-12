@@ -108,6 +108,7 @@ sudo apt-get install -y tnscmd10g
 sudo apt-get install -y whatweb 
 sudo apt-get install -y khtmltopdf 
 sudo apt-get install -y smtp-user-enum 
+sudo apt-get install -y nishang
 
 # Install droopescan - https://github.com/droope/droopescan
 sudo pip install droopescan 
