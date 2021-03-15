@@ -116,11 +116,23 @@ sudo apt-get install -y whatweb
 sudo apt-get install -y khtmltopdf 
 sudo apt-get install -y smtp-user-enum 
 sudo apt-get install -y nishang
+sudo apt-get install -y finalrecon
 
 # Install droopescan - https://github.com/droope/droopescan
+echo "\n\n\n Installing - droopescan \n"
 sudo pip install droopescan 
 
+echo "\n\n\n Installing - termcolor \n"
+sudo pip3 install termcolor
+
+# Install Reconbot - https://github.com/0bs3ssi0n/Reconbot
+echo "\n\n\n Installing - Reconbot \n"
+cd /opt/
+sudo git clone https://github.com/0bs3ssi0n/Reconbot /opt/Reconbot/
+sudo ln -s /opt/Reconbot/reconbot.sh /usr/local/bin/
+
 # Install Impacket - https://github.com/SecureAuthCorp/impacket
+echo "\n\n\n Installing - AutoRecon \n"
 sudo git clone https://github.com/SecureAuthCorp/impacket.git /opt/impacket/
 cd /opt/impacket/
 pip install /opt/impacket/.
