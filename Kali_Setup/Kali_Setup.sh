@@ -80,11 +80,18 @@ sudo wget -q https://packages.microsoft.com/keys/microsoft.asc -O-
 sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
 sudo apt-get install -y code 
 
-
-# Tool Install
+# System Tool Install
 # ---------------------------------------
-echo "\n\n\n Installing - Tools \n"
+echo "\n\n\n Installing - System Tools \n"
 sudo apt-get install -y gedit
+sudo apt-get install -y tree
+sudo apt-get install -y htop
+sudo apt-get install -y gedit
+sudo apt-get install -y glances
+
+# Hacking Tool Install
+# ---------------------------------------
+echo "\n\n\n Installing - Hacking Tools \n"
 sudo apt-get install -y gobuster
 sudo apt-get install -y sslscan
 sudo apt-get install -y nikto
