@@ -118,12 +118,30 @@ sudo apt-get install -y smtp-user-enum
 sudo apt-get install -y nishang
 sudo apt-get install -y finalrecon
 
+
+# pip Tool Install
+# ---------------------------------------
 # Install droopescan - https://github.com/droope/droopescan
 echo "\n\n\n Installing - droopescan \n"
 sudo pip install droopescan 
 
 echo "\n\n\n Installing - termcolor \n"
-sudo pip3 install termcolor
+sudo pip install termcolor
+
+# Install droopescan - https://github.com/sc0tfree/updog
+echo "\n\n\n Installing - updog \n"
+sudo pip install updog
+
+# Install droopescan - https://github.com/giampaolo/psutil/blob/master/INSTALL.rst
+echo "\n\n\n Installing - psutil \n"
+sudo apt-get install gcc python3-dev
+sudo pip3 install -U psutil
+
+# Install SysMonTask - https://github.com/KrispyCamel4u/SysMonTask
+echo "\n\n\n Installing - SysMonTask \n"
+sudo add-apt-repository ppa:camel-neeraj/sysmontask
+sudo apt install sysmontask
+
 
 # Install Reconbot - https://github.com/0bs3ssi0n/Reconbot
 echo "\n\n\n Installing - Reconbot \n"
