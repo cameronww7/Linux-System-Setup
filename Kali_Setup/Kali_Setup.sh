@@ -150,7 +150,7 @@ sudo git clone https://github.com/0bs3ssi0n/Reconbot /opt/Reconbot/
 sudo ln -s /opt/Reconbot/reconbot.sh /usr/local/bin/
 
 # Install Impacket - https://github.com/SecureAuthCorp/impacket
-echo "\n\n\n Installing - AutoRecon \n"
+echo "\n\n\n Installing - impacket \n"
 sudo git clone https://github.com/SecureAuthCorp/impacket.git /opt/impacket/
 cd /opt/impacket/
 pip install /opt/impacket/.

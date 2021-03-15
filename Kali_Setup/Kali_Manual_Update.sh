@@ -55,7 +55,7 @@ sudo git fetch -A
 sudo git pull
 
 # Install Impacket - https://github.com/SecureAuthCorp/impacket
-echo "\n\n\n Updating - AutoRecon \n"
+echo "\n\n\n Updating - impacket \n"
 cd /opt/impacket/
 sudo git fetch -A
 sudo git pull
