@@ -47,7 +47,6 @@ sudo pip install updog -U
 echo "\n\n\n Updating - psutil \n"
 sudo pip3 install psutil -U
 
-
 # Install Reconbot - https://github.com/0bs3ssi0n/Reconbot
 echo "\n\n\n Updating - Reconbot \n"
 cd /opt/Reconbot/
@@ -77,6 +76,8 @@ echo "\n\n\n Updating - Terminal Tools + Customization \n"
 cd /opt/Terminal-Customization/
 sudo git fetch -A
 sudo git pull
+
+sudo ./manual_update.sh
 
 # Setup my File Strucutres 
 sudo mkdir ~/Hacking
