@@ -77,7 +77,7 @@ cd /opt/Terminal-Customization/
 sudo git fetch -A
 sudo git pull
 
-sudo ./manual_update.sh
+sudo ./opt/Terminal-Customization/Kali/manual_update.sh
 
 # Setup my File Strucutres 
 sudo mkdir ~/Hacking
