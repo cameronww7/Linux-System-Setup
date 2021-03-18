@@ -180,6 +180,12 @@ sudo apt-get install -y /opt/google-chrome-stable_current_amd64.deb
 echo "\n\n\n Installing - Terminal Tools + Customization \n"
 sudo git clone https://github.com/cameronww7/Terminal-Customization /opt/Terminal-Customization/
 
+# Clone Useful Tools to Opt
+# ---------------------------------------
+echo "\n\n\n Installing - privilege-escalation-awesome-scripts-suite \n"
+sudo git clone  https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git /opt/privilege-escalation-awesome-scripts-suite/
+
+
 # Setup my File Strucutres 
 sudo mkdir ~/Hacking
 sudo chmod -R 777 ~/Hacking  
