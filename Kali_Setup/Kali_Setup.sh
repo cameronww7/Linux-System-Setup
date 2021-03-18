@@ -186,10 +186,10 @@ sudo chmod -R 777 ~/Hacking
 
 sudo chmod -R 777 /opt 
 
-sudo cp sudo_lecture.txt /etc/sudo_lecture.txt
 
 # Add Sudo Lecture Message
 # ---------------------------------------
+sudo cp sudo_lecture.txt /etc/sudo_lecture.txt
 echo "\n\n\n Adding Sudo Lecture Message \n"
 echo "" | sudo EDITOR='tee -a' visudo
 echo "# Adding Lecture Message" | sudo EDITOR='tee -a' visudo
