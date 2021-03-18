@@ -189,7 +189,11 @@ sudo chmod -R 777 /opt
 
 # Add Sudo Lecture Message
 # ---------------------------------------
+# https://www.cyberciti.biz/open-source/command-line-hacks/adding-spice-to-your-sudo-session-with-a-lecture-file-on-linux-or-unix/
+# https://stackoverflow.com/questions/323957/how-do-i-edit-etc-sudoers-from-a-script
+
 sudo cp sudo_lecture.txt /etc/sudo_lecture.txt
+
 echo "\n\n\n Adding Sudo Lecture Message \n"
 echo "" | sudo EDITOR='tee -a' visudo
 echo "# Adding Lecture Message" | sudo EDITOR='tee -a' visudo
