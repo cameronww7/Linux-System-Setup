@@ -182,8 +182,60 @@ sudo git clone https://github.com/cameronww7/Terminal-Customization /opt/Termina
 
 # Clone Useful Tools to Opt
 # ---------------------------------------
+sudo mkdir /opt/PrivEsc
+sudo mkdir /opt/windows
+sudo mkdir /opt/linux
+
 echo "\n\n\n Installing - privilege-escalation-awesome-scripts-suite \n"
-sudo git clone  https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git /opt/privilege-escalation-awesome-scripts-suite/
+sudo git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git /opt/PrivEsc/privilege-escalation-awesome-scripts-suite/
+
+echo "\n\n\n Installing - LinEnum \n"
+sudo git clone https://github.com/rebootuser/LinEnum.git /opt/PrivEsc/linux/LinEnum
+
+echo "\n\n\n Installing - Citadel \n"
+sudo git clone https://github.com/redcode-labs/Citadel.git /opt/PrivEsc/linux/Citadel
+
+echo "\n\n\n Installing - Bashark \n"
+sudo git clone https://github.com/redcode-labs/Bashark /opt/PrivEsc/linux/Bashark
+
+echo "\n\n\n Installing - linux-exploit-suggester \n"
+sudo git clone https://github.com/mzet-/linux-exploit-suggester.git /opt/PrivEsc/linux/linux-exploit-suggester
+
+echo "\n\n\n Installing - linuxprivchecker \n"
+sudo git clone https://github.com/sleventyeleven/linuxprivchecker.git /opt/PrivEsc/linux/linuxprivchecker
+
+echo "\n\n\n Installing - linux-smart-enumeration \n"
+sudo git clone https://github.com/diego-treitos/linux-smart-enumeration.git /opt/PrivEsc/linux/linux-smart-enumeration
+
+echo "\n\n\n Installing - AlessandroZ/BeRoot \n"
+sudo git clone https://github.com/AlessandroZ/BeRoot.git /opt/BeRoot
+
+
+echo "\n\n\n Installing - Windows Priv Esc Scripts \n"
+
+echo "\n\n\n Installing - AonCyberLabs/Windows-Exploit-Suggeste \n"
+sudo git clone https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git /opt/PrivEsc/windows/Windows-Exploit-Suggester
+
+echo "\n\n\n Installing - pentestmonkey/windows-privesc-check \n"
+sudo git clone https://github.com/pentestmonkey/windows-privesc-check.git /opt/PrivEsc/windows/windows-privesc-check
+
+echo "\n\n\n Installing - absolomb/WindowsEnu \n"
+sudo git clone https://github.com/absolomb/WindowsEnum.git /opt/PrivEsc/windows/WindowsEnum
+
+echo "\n\n\n Installing - M4ximuss/Powerless \n"
+sudo git clone https://github.com/M4ximuss/Powerless.git /opt/PrivEsc/windows/Powerless
+
+echo "\n\n\n Installing - bitsadmin/wesngn \n"
+sudo git clone https://github.com/bitsadmin/wesng.git /opt/PrivEsc/windows/wesng
+
+echo "\n\n\n Installing - rasta-mouse/Sherlock \n"
+sudo git clone https://github.com/rasta-mouse/Sherlock.git /opt/PrivEsc/windows/Sherlock
+
+echo "\n\n\n Installing - rasta-mouse/Watson \n"
+sudo git clone https://github.com/rasta-mouse/Watson.git /opt/PrivEsc/windows/Watson
+
+echo "\n\n\n Installing - WindowsExploits \n"
+sudo git clone https://github.com/abatchy17/WindowsExploits.git /opt/PrivEsc/windows/WindowsExploits
 
 
 # Setup my File Strucutres 
