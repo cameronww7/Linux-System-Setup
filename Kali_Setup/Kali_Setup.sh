@@ -56,7 +56,7 @@ echo "\n\n\n Installing - python3-pip& python-pip \n"
 sudo apt-get install -y python3-pip 
 sudo apt-get install -y python-pip 
 
-sudo python -m pip install --upgrade pip 
+sudo python -m pip3install --upgrade pip3
 
 # Install Basic Tools
 echo "\n\n\n Installing - build-essential \n"
@@ -125,18 +125,14 @@ sudo apt-get install -y nishang
 sudo apt-get install -y finalrecon
 
 
-# pip Tool Install
+# pip3Tool Install
 # ---------------------------------------
 # Install droopescan - https://github.com/droope/droopescan
 echo "\n\n\n Installing - droopescan \n"
-sudo pip install droopescan 
+sudo pip3 install droopescan 
 
 echo "\n\n\n Installing - termcolor \n"
-sudo pip install termcolor
-
-# Install droopescan - https://github.com/sc0tfree/updog
-echo "\n\n\n Installing - updog \n"
-sudo pip install updog
+sudo pip3 install termcolor
 
 # Install droopescan - https://github.com/giampaolo/psutil/blob/master/INSTALL.rst
 echo "\n\n\n Installing - psutil \n"
@@ -162,7 +158,7 @@ pip install /opt/impacket/.
 
 # Insatll AutoRecon - https://github.com/Tib3rius/AutoRecon#installation
 echo "\n\n\n Installing - AutoRecon \n"
-sudo python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git 
+sudo python3 -m pip3install git+https://github.com/Tib3rius/AutoRecon.git 
 
 # install nmapAutomator - https://github.com/21y4d/nmapAutomator
 echo "\n\n\n Installing - nmapAutomator \n"
