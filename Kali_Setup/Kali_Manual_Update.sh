@@ -39,10 +39,6 @@ sudo pip install droopescan -U
 echo "\n\n\n Updating - termcolor \n"
 sudo pip install termcolor -U
 
-# Install droopescan - https://github.com/sc0tfree/updog
-echo "\n\n\n Updating - updog \n"
-sudo pip install updog -U
-
 # Install droopescan - https://github.com/giampaolo/psutil/blob/master/INSTALL.rst
 echo "\n\n\n Updating - psutil \n"
 sudo pip3 install psutil -U

@@ -139,11 +139,6 @@ echo "\n\n\n Installing - psutil \n"
 sudo apt-get install gcc python3-dev
 sudo pip3 install -U psutil
 
-# Install SysMonTask - https://github.com/KrispyCamel4u/SysMonTask
-echo "\n\n\n Installing - SysMonTask \n"
-sudo add-apt-repository ppa:camel-neeraj/sysmontask
-sudo apt install sysmontask
-
 # Install Reconbot - https://github.com/0bs3ssi0n/Reconbot
 echo "\n\n\n Installing - Reconbot \n"
 cd /opt/
