@@ -32,11 +32,11 @@ echo "\n\n\n Installing - python3 & python \n"
 sudo apt-get install -y python3 
 sudo apt-get install -y python
 
-echo "\n\n\n Installing - python3-pip& python-pip \n"
+echo "\n\n\n Installing - python3-pip & python-pip \n"
 sudo apt-get install -y python3-pip 
 sudo apt-get install -y python-pip 
 
-sudo python -m pip install --upgrade pip 
+sudo python -m pip3 install --upgrade pip3
 
 # Install Basic Tools
 echo "\n\n\n Installing - build-essential \n"
