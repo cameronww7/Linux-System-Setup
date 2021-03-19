@@ -176,9 +176,13 @@ sudo git clone https://github.com/cameronww7/Terminal-Customization /opt/Termina
 # ---------------------------------------
 # Windows - https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md
 # Linux - https://www.hackingarticles.in/linux-privilege-escalation-automated-script/
+
+echo "\n\n\n Installing - Priv Esc File Structure \n"
 sudo mkdir /opt/_privEsc
 sudo mkdir /opt/_privEsc/_windows
 sudo mkdir /opt/_privEsc/_linux
+
+echo "\n\n\n Installing - Linux Priv Esc Scripts \n"
 
 echo "\n\n\n Installing - privilege-escalation-awesome-scripts-suite \n"
 sudo git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git /opt/_privEsc/_privilege-escalation-awesome-scripts-suite-carlospolop
@@ -207,34 +211,34 @@ sudo git clone https://github.com/AlessandroZ/BeRoot.git /opt/BeRoot-AlessandroZ
 
 echo "\n\n\n Installing - Windows Priv Esc Scripts \n"
 
-echo "\n\n\n Installing - AonCyberLabs/Windows-Exploit-Suggeste \n"
+echo "\n\n\n Installing - AonCyberLabs/Windows-Exploit-Suggester-AonCyberLabs \n"
 sudo git clone https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git /opt/_privEsc/_windows/Windows-Exploit-Suggester-AonCyberLabs
 
-echo "\n\n\n Installing - pentestmonkey/windows-privesc-check \n"
+echo "\n\n\n Installing - pentestmonkey/windows-privesc-check-pentestmonkey \n"
 sudo git clone https://github.com/pentestmonkey/windows-privesc-check.git /opt/_privEsc/_windows/windows-privesc-check-pentestmonkey
 
-echo "\n\n\n Installing - absolomb/WindowsEnu \n"
+echo "\n\n\n Installing - absolomb/WindowsEnu-absolomb \n"
 sudo git clone https://github.com/absolomb/WindowsEnum.git /opt/_privEsc/_windows/WindowsEnum-absolomb
 
-echo "\n\n\n Installing - M4ximuss/Powerless \n"
+echo "\n\n\n Installing - M4ximuss/Powerless-M4ximuss \n"
 sudo git clone https://github.com/M4ximuss/Powerless.git /opt/_privEsc/_windows/Powerless-M4ximuss
 
-echo "\n\n\n Installing - bitsadmin/wesngn \n"
+echo "\n\n\n Installing - bitsadmin/wesngn-bitsadmin \n"
 sudo git clone https://github.com/bitsadmin/wesng.git /opt/_privEsc/_windows/wesng-bitsadmin
 
-echo "\n\n\n Installing - rasta-mouse/Sherlock \n"
+echo "\n\n\n Installing - rasta-mouse/Sherlock-rasta-mouse \n"
 sudo git clone https://github.com/rasta-mouse/Sherlock.git /opt/_privEsc/_windows/Sherlock-rasta-mouse
 
-echo "\n\n\n Installing - rasta-mouse/Watson \n"
+echo "\n\n\n Installing - rasta-mouse/Watson-rasta-mouse \n"
 sudo git clone https://github.com/rasta-mouse/Watson.git /opt/_privEsc/_windows/Watson-rasta-mouse
 
-echo "\n\n\n Installing - WindowsExploits \n"
+echo "\n\n\n Installing - WindowsExploits-abatchy17 \n"
 sudo git clone https://github.com/abatchy17/WindowsExploits.git /opt/_privEsc/_windows/WindowsExploits-abatchy17
 
-echo "\n\n\n Installing - Windows-Exploit-Suggester-2 \n"
+echo "\n\n\n Installing - Windows-Exploit-Suggester-2-7Ragnarok7 \n"
 sudo git clone https://github.com/7Ragnarok7/Windows-Exploit-Suggester-2.git /opt/_privEsc/_windows/Windows-Exploit-Suggester-2-7Ragnarok7
 
-echo "\n\n\n Installing - PowerSploit \n"
+echo "\n\n\n Installing - PowerSploi-PowerShellMafia \n"
 sudo git clone https://github.com/PowerShellMafia/PowerSploit /opt/_privEsc/_windows/PowerSploit-PowerShellMafia
 
 echo "\n\n\n Installing - Windows-Privilege-Escalation-frizb \n"
@@ -267,4 +271,6 @@ echo "" | sudo EDITOR='tee -a' visudo
 
 # Reboot Prompt
 # ---------------------------------------
-echo "\n\n\n Finished - REBOOT \n"
+echo "\n\n\n Finished - REBOOT Time !\n"
+echo "\n\n\n Finished - REBOOT Time !\n"
+echo "\n\n\n Finished - REBOOT Time !\n"
