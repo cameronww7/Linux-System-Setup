@@ -39,7 +39,7 @@ sudo apt-get install -y /opt/google-chrome-stable_current_amd64.deb
 
 # Install Dev Tools
 # ---------------------------------------
-# Install Git
+# Install Git - Should already be installed
 echo "\n\n\n Installing - Git \n"
 sudo apt-get install -y git 
 
@@ -176,30 +176,30 @@ sudo git clone https://github.com/cameronww7/Terminal-Customization /opt/Termina
 # ---------------------------------------
 # Windows - https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md
 # Linux - https://www.hackingarticles.in/linux-privilege-escalation-automated-script/
-sudo mkdir /opt/privEsc
-sudo mkdir /opt/windows
-sudo mkdir /opt/linux
+sudo mkdir /opt/_privEsc
+sudo mkdir /opt/_privEsc/_windows
+sudo mkdir /opt/_privEsc/_linux
 
 echo "\n\n\n Installing - privilege-escalation-awesome-scripts-suite \n"
-sudo git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git /opt/privEsc/privilege-escalation-awesome-scripts-suite-carlospolop
+sudo git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git /opt/_privEsc/_privilege-escalation-awesome-scripts-suite-carlospolop
 
 echo "\n\n\n Installing - LinEnum \n"
-sudo git clone https://github.com/rebootuser/LinEnum.git /opt/privEsc/linux/LinEnum-rebootuser
+sudo git clone https://github.com/rebootuser/LinEnum.git /opt/_privEsc/_linux/LinEnum-rebootuser
 
 echo "\n\n\n Installing - Citadel \n"
-sudo git clone https://github.com/redcode-labs/Citadel.git /opt/privEsc/linux/Citadel-redcode-labs
+sudo git clone https://github.com/redcode-labs/Citadel.git /opt/_privEsc/_linux/Citadel-redcode-labs
 
 echo "\n\n\n Installing - Bashark \n"
-sudo git clone https://github.com/redcode-labs/Bashark /opt/privEsc/linux/Bashark-redcode-labs
+sudo git clone https://github.com/redcode-labs/Bashark /opt/_privEsc/_linux/Bashark-redcode-labs
 
 echo "\n\n\n Installing - linux-exploit-suggester \n"
-sudo git clone https://github.com/mzet-/linux-exploit-suggester.git /opt/privEsc/linux/linux-exploit-suggester-mzet-
+sudo git clone https://github.com/mzet-/linux-exploit-suggester.git /opt/_privEsc/_linux/linux-exploit-suggester-mzet-
 
 echo "\n\n\n Installing - linuxprivchecker \n"
-sudo git clone https://github.com/sleventyeleven/linuxprivchecker.git /opt/privEsc/linux/linuxprivchecker-sleventyeleven
+sudo git clone https://github.com/sleventyeleven/linuxprivchecker.git /opt/_privEsc/_linux/linuxprivchecker-sleventyeleven
 
 echo "\n\n\n Installing - linux-smart-enumeration \n"
-sudo git clone https://github.com/diego-treitos/linux-smart-enumeration.git /opt/privEsc/linux/linux-smart-enumeration-diego-treitos
+sudo git clone https://github.com/diego-treitos/linux-smart-enumeration.git /opt/_privEsc/_linux/linux-smart-enumeration-diego-treitos
 
 echo "\n\n\n Installing - AlessandroZ/BeRoot \n"
 sudo git clone https://github.com/AlessandroZ/BeRoot.git /opt/BeRoot-AlessandroZ
@@ -208,40 +208,40 @@ sudo git clone https://github.com/AlessandroZ/BeRoot.git /opt/BeRoot-AlessandroZ
 echo "\n\n\n Installing - Windows Priv Esc Scripts \n"
 
 echo "\n\n\n Installing - AonCyberLabs/Windows-Exploit-Suggeste \n"
-sudo git clone https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git /opt/privEsc/windows/Windows-Exploit-Suggester-AonCyberLabs
+sudo git clone https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git /opt/_privEsc/_windows/Windows-Exploit-Suggester-AonCyberLabs
 
 echo "\n\n\n Installing - pentestmonkey/windows-privesc-check \n"
-sudo git clone https://github.com/pentestmonkey/windows-privesc-check.git /opt/privEsc/windows/windows-privesc-check-pentestmonkey
+sudo git clone https://github.com/pentestmonkey/windows-privesc-check.git /opt/_privEsc/_windows/windows-privesc-check-pentestmonkey
 
 echo "\n\n\n Installing - absolomb/WindowsEnu \n"
-sudo git clone https://github.com/absolomb/WindowsEnum.git /opt/privEsc/windows/WindowsEnum-absolomb
+sudo git clone https://github.com/absolomb/WindowsEnum.git /opt/_privEsc/_windows/WindowsEnum-absolomb
 
 echo "\n\n\n Installing - M4ximuss/Powerless \n"
-sudo git clone https://github.com/M4ximuss/Powerless.git /opt/privEsc/windows/Powerless-M4ximuss
+sudo git clone https://github.com/M4ximuss/Powerless.git /opt/_privEsc/_windows/Powerless-M4ximuss
 
 echo "\n\n\n Installing - bitsadmin/wesngn \n"
-sudo git clone https://github.com/bitsadmin/wesng.git /opt/privEsc/windows/wesng-bitsadmin
+sudo git clone https://github.com/bitsadmin/wesng.git /opt/_privEsc/_windows/wesng-bitsadmin
 
 echo "\n\n\n Installing - rasta-mouse/Sherlock \n"
-sudo git clone https://github.com/rasta-mouse/Sherlock.git /opt/privEsc/windows/Sherlock-rasta-mouse
+sudo git clone https://github.com/rasta-mouse/Sherlock.git /opt/_privEsc/_windows/Sherlock-rasta-mouse
 
 echo "\n\n\n Installing - rasta-mouse/Watson \n"
-sudo git clone https://github.com/rasta-mouse/Watson.git /opt/privEsc/windows/Watson-rasta-mouse
+sudo git clone https://github.com/rasta-mouse/Watson.git /opt/_privEsc/_windows/Watson-rasta-mouse
 
 echo "\n\n\n Installing - WindowsExploits \n"
-sudo git clone https://github.com/abatchy17/WindowsExploits.git /opt/privEsc/windows/WindowsExploits-abatchy17
+sudo git clone https://github.com/abatchy17/WindowsExploits.git /opt/_privEsc/_windows/WindowsExploits-abatchy17
 
 echo "\n\n\n Installing - Windows-Exploit-Suggester-2 \n"
-sudo git clone https://github.com/7Ragnarok7/Windows-Exploit-Suggester-2.git /opt/privEsc/windows/Windows-Exploit-Suggester-2-7Ragnarok7
+sudo git clone https://github.com/7Ragnarok7/Windows-Exploit-Suggester-2.git /opt/_privEsc/_windows/Windows-Exploit-Suggester-2-7Ragnarok7
 
 echo "\n\n\n Installing - PowerSploit \n"
-sudo git clone https://github.com/PowerShellMafia/PowerSploit /opt/privEsc/windows/PowerSploit-PowerShellMafia
+sudo git clone https://github.com/PowerShellMafia/PowerSploit /opt/_privEsc/_windows/PowerSploit-PowerShellMafia
 
 echo "\n\n\n Installing - Windows-Privilege-Escalation-frizb \n"
-sudo git clone https://github.com/frizb/Windows-Privilege-Escalation /opt/privEsc/windows/Windows-Privilege-Escalation-frizb
+sudo git clone https://github.com/frizb/Windows-Privilege-Escalation /opt/_privEsc/_windows/Windows-Privilege-Escalation-frizb
 
 echo "\n\n\n Installing - windows-kernel-exploits-SecWiki \n"
-sudo git clone https://github.com/SecWiki/windows-kernel-exploits /opt/privEsc/windows/windows-kernel-exploits-SecWiki
+sudo git clone https://github.com/SecWiki/windows-kernel-exploits /opt/_privEsc/_windows/windows-kernel-exploits-SecWiki
 
 # Setup my File Strucutres 
 sudo mkdir ~/Hacking
