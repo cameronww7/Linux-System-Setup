@@ -82,6 +82,10 @@ sudo wget -q https://packages.microsoft.com/keys/microsoft.asc -O-
 sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
 sudo apt-get install -y code 
 
+# Install ansible
+echo "\n\n\n Installing - ansible \n"
+sudo apt-get install -y ansible
+
 # System Tool Install
 # ---------------------------------------
 echo "\n\n\n Installing - System Tools \n"
