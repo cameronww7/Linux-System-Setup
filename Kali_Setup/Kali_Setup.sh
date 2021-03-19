@@ -27,13 +27,15 @@ sudo chmod +x /opt/pimpmykali/pimpmykali.sh
 cd /opt/pimpmykali/
 #sudo ./pimpmykali.sh
 
-# Cloning HotWax - https://github.com/BrashEndeavours/hotwax.git
-# ---------------------------------------
-echo "\n\n\n Cloning - HotWax \n"
-sudo git clone https://github.com/BrashEndeavours/hotwax.git /opt/hotwax/
-#cd /opt/hotwax/
-#sudo apt install -y git ansible
-#sudo ansible-playbook playbook.yml -K
+# Install Chrome
+echo "\n\n\n Installing - Chrome \n"
+sudo wget -P /opt/ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb 
+sudo apt-get install -y /opt/google-chrome-stable_current_amd64.deb 
+
+# Install Chromium - Doesnt seem to work...
+#echo "\n\n\n Installing - chromium-browser \n"
+#sudo apt-get install -y chromium-browser 
+
 
 # Install Dev Tools
 # ---------------------------------------
@@ -142,7 +144,6 @@ echo "\n\n\n Installing - SysMonTask \n"
 sudo add-apt-repository ppa:camel-neeraj/sysmontask
 sudo apt install sysmontask
 
-
 # Install Reconbot - https://github.com/0bs3ssi0n/Reconbot
 echo "\n\n\n Installing - Reconbot \n"
 cd /opt/
@@ -165,78 +166,82 @@ cd /opt/
 sudo git clone https://github.com/21y4d/nmapAutomator.git /opt/nmapAutomator/
 sudo ln -s /opt/nmapAutomator/nmapAutomator.sh /usr/local/bin/
 
-# Install Chrome
-echo "\n\n\n Installing - Chrome \n"
-sudo wget -P /opt/ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb 
-sudo apt-get install -y /opt/google-chrome-stable_current_amd64.deb 
-
-# Install Chromium - Doesnt seem to work...
-#echo "\n\n\n Installing - chromium-browser \n"
-#sudo apt-get install -y chromium-browser 
-
 
 # Install Terminal Tools + Customization
 # ---------------------------------------
 echo "\n\n\n Installing - Terminal Tools + Customization \n"
 sudo git clone https://github.com/cameronww7/Terminal-Customization /opt/Terminal-Customization/
 
-# Clone Useful Tools to Opt
+# Clone Useful Priv Esc Tools to Opt
 # ---------------------------------------
-sudo mkdir /opt/PrivEsc
+# Windows - https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md
+# Linux - https://www.hackingarticles.in/linux-privilege-escalation-automated-script/
+sudo mkdir /opt/privEsc
 sudo mkdir /opt/windows
 sudo mkdir /opt/linux
 
 echo "\n\n\n Installing - privilege-escalation-awesome-scripts-suite \n"
-sudo git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git /opt/PrivEsc/privilege-escalation-awesome-scripts-suite/
+sudo git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git /opt/privEsc/privilege-escalation-awesome-scripts-suite-carlospolop
 
 echo "\n\n\n Installing - LinEnum \n"
-sudo git clone https://github.com/rebootuser/LinEnum.git /opt/PrivEsc/linux/LinEnum
+sudo git clone https://github.com/rebootuser/LinEnum.git /opt/privEsc/linux/LinEnum-rebootuser
 
 echo "\n\n\n Installing - Citadel \n"
-sudo git clone https://github.com/redcode-labs/Citadel.git /opt/PrivEsc/linux/Citadel
+sudo git clone https://github.com/redcode-labs/Citadel.git /opt/privEsc/linux/Citadel-redcode-labs
 
 echo "\n\n\n Installing - Bashark \n"
-sudo git clone https://github.com/redcode-labs/Bashark /opt/PrivEsc/linux/Bashark
+sudo git clone https://github.com/redcode-labs/Bashark /opt/privEsc/linux/Bashark-redcode-labs
 
 echo "\n\n\n Installing - linux-exploit-suggester \n"
-sudo git clone https://github.com/mzet-/linux-exploit-suggester.git /opt/PrivEsc/linux/linux-exploit-suggester
+sudo git clone https://github.com/mzet-/linux-exploit-suggester.git /opt/privEsc/linux/linux-exploit-suggester-mzet-
 
 echo "\n\n\n Installing - linuxprivchecker \n"
-sudo git clone https://github.com/sleventyeleven/linuxprivchecker.git /opt/PrivEsc/linux/linuxprivchecker
+sudo git clone https://github.com/sleventyeleven/linuxprivchecker.git /opt/privEsc/linux/linuxprivchecker-sleventyeleven
 
 echo "\n\n\n Installing - linux-smart-enumeration \n"
-sudo git clone https://github.com/diego-treitos/linux-smart-enumeration.git /opt/PrivEsc/linux/linux-smart-enumeration
+sudo git clone https://github.com/diego-treitos/linux-smart-enumeration.git /opt/privEsc/linux/linux-smart-enumeration-diego-treitos
 
 echo "\n\n\n Installing - AlessandroZ/BeRoot \n"
-sudo git clone https://github.com/AlessandroZ/BeRoot.git /opt/BeRoot
+sudo git clone https://github.com/AlessandroZ/BeRoot.git /opt/BeRoot-AlessandroZ
 
 
 echo "\n\n\n Installing - Windows Priv Esc Scripts \n"
 
 echo "\n\n\n Installing - AonCyberLabs/Windows-Exploit-Suggeste \n"
-sudo git clone https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git /opt/PrivEsc/windows/Windows-Exploit-Suggester
+sudo git clone https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git /opt/privEsc/windows/Windows-Exploit-Suggester-AonCyberLabs
 
 echo "\n\n\n Installing - pentestmonkey/windows-privesc-check \n"
-sudo git clone https://github.com/pentestmonkey/windows-privesc-check.git /opt/PrivEsc/windows/windows-privesc-check
+sudo git clone https://github.com/pentestmonkey/windows-privesc-check.git /opt/privEsc/windows/windows-privesc-check-pentestmonkey
 
 echo "\n\n\n Installing - absolomb/WindowsEnu \n"
-sudo git clone https://github.com/absolomb/WindowsEnum.git /opt/PrivEsc/windows/WindowsEnum
+sudo git clone https://github.com/absolomb/WindowsEnum.git /opt/privEsc/windows/WindowsEnum-absolomb
 
 echo "\n\n\n Installing - M4ximuss/Powerless \n"
-sudo git clone https://github.com/M4ximuss/Powerless.git /opt/PrivEsc/windows/Powerless
+sudo git clone https://github.com/M4ximuss/Powerless.git /opt/privEsc/windows/Powerless-M4ximuss
 
 echo "\n\n\n Installing - bitsadmin/wesngn \n"
-sudo git clone https://github.com/bitsadmin/wesng.git /opt/PrivEsc/windows/wesng
+sudo git clone https://github.com/bitsadmin/wesng.git /opt/privEsc/windows/wesng-bitsadmin
 
 echo "\n\n\n Installing - rasta-mouse/Sherlock \n"
-sudo git clone https://github.com/rasta-mouse/Sherlock.git /opt/PrivEsc/windows/Sherlock
+sudo git clone https://github.com/rasta-mouse/Sherlock.git /opt/privEsc/windows/Sherlock-rasta-mouse
 
 echo "\n\n\n Installing - rasta-mouse/Watson \n"
-sudo git clone https://github.com/rasta-mouse/Watson.git /opt/PrivEsc/windows/Watson
+sudo git clone https://github.com/rasta-mouse/Watson.git /opt/privEsc/windows/Watson-rasta-mouse
 
 echo "\n\n\n Installing - WindowsExploits \n"
-sudo git clone https://github.com/abatchy17/WindowsExploits.git /opt/PrivEsc/windows/WindowsExploits
+sudo git clone https://github.com/abatchy17/WindowsExploits.git /opt/privEsc/windows/WindowsExploits-abatchy17
 
+echo "\n\n\n Installing - Windows-Exploit-Suggester-2 \n"
+sudo git clone https://github.com/7Ragnarok7/Windows-Exploit-Suggester-2.git /opt/privEsc/windows/Windows-Exploit-Suggester-2-7Ragnarok7
+
+echo "\n\n\n Installing - PowerSploit \n"
+sudo git clone https://github.com/PowerShellMafia/PowerSploit /opt/privEsc/windows/PowerSploit-PowerShellMafia
+
+echo "\n\n\n Installing - Windows-Privilege-Escalation-frizb \n"
+sudo git clone https://github.com/frizb/Windows-Privilege-Escalation /opt/privEsc/windows/Windows-Privilege-Escalation-frizb
+
+echo "\n\n\n Installing - windows-kernel-exploits-SecWiki \n"
+sudo git clone https://github.com/SecWiki/windows-kernel-exploits /opt/privEsc/windows/windows-kernel-exploits-SecWiki
 
 # Setup my File Strucutres 
 sudo mkdir ~/Hacking
