@@ -244,9 +244,9 @@ sudo git clone https://github.com/SecWiki/windows-kernel-exploits /opt/_privEsc/
 
 # Setup my File Strucutres 
 sudo mkdir ~/Hacking
-sudo chmod -R 777 ~/Hacking  
+sudo chmod -R 755 ~/Hacking  
 
-sudo chmod -R 777 /opt 
+sudo chmod -R 755 /opt 
 
 
 # Add Sudo Lecture Message

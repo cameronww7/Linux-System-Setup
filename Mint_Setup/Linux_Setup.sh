@@ -89,10 +89,7 @@ echo "\n\n\n Installing - Terminal Tools + Customization \n"
 sudo git clone https://github.com/cameronww7/Terminal-Customization /opt/Terminal-Customization/
 
 # Setup my File Strucutres 
-sudo mkdir ~/Hacking
-sudo chmod -R 777 ~/Hacking  
-
-sudo chmod -R 777 /opt 
+sudo chmod -R 755 /opt 
 
 # Add Sudo Lecture Message
 # ---------------------------------------
