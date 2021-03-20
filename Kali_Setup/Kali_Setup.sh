@@ -177,10 +177,17 @@ sudo mkdir /opt/_privEsc
 sudo mkdir /opt/_privEsc/_windows
 sudo mkdir /opt/_privEsc/_linux
 
-echo "\n\n\n Installing - Linux Priv Esc Scripts \n"
+
+echo "\n\n\n Installing - Win/Lin Priv Esc Scripts \n"
 
 echo "\n\n\n Installing - privilege-escalation-awesome-scripts-suite \n"
 sudo git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git /opt/_privEsc/_privilege-escalation-awesome-scripts-suite-carlospolop
+
+echo "\n\n\n Installing - AlessandroZ/BeRoot \n"
+sudo git clone https://github.com/AlessandroZ/BeRoot.git /opt/_privEsc/BeRoot-AlessandroZ
+
+
+echo "\n\n\n Installing - Linux Priv Esc Scripts \n"
 
 echo "\n\n\n Installing - LinEnum \n"
 sudo git clone https://github.com/rebootuser/LinEnum.git /opt/_privEsc/_linux/LinEnum-rebootuser
@@ -200,8 +207,9 @@ sudo git clone https://github.com/sleventyeleven/linuxprivchecker.git /opt/_priv
 echo "\n\n\n Installing - linux-smart-enumeration \n"
 sudo git clone https://github.com/diego-treitos/linux-smart-enumeration.git /opt/_privEsc/_linux/linux-smart-enumeration-diego-treitos
 
-echo "\n\n\n Installing - AlessandroZ/BeRoot \n"
-sudo git clone https://github.com/AlessandroZ/BeRoot.git /opt/BeRoot-AlessandroZ
+
+echo "\n\n\n Installing - ohpe/juicy-potato \n"
+sudo git clone https://github.com/ohpe/juicy-potato.git /opt/_privEsc/_linux/juicy-potato-ohpe
 
 
 echo "\n\n\n Installing - Windows Priv Esc Scripts \n"
@@ -241,6 +249,18 @@ sudo git clone https://github.com/frizb/Windows-Privilege-Escalation /opt/_privE
 
 echo "\n\n\n Installing - windows-kernel-exploits-SecWiki \n"
 sudo git clone https://github.com/SecWiki/windows-kernel-exploits /opt/_privEsc/_windows/windows-kernel-exploits-SecWiki
+
+
+echo "\n\n\n Installing - Other Useful Scripts \n"
+sudo mkdir /opt/_Payload_Scripts
+
+echo "\n\n\n Installing - swisskyrepo/PayloadsAllTheThings \n"
+sudo git clone https://github.com/swisskyrepo/PayloadsAllTheThings.git /opt/_Payload_Script/PayloadsAllTheThings-swisskyrepo
+
+
+echo "\n\n\n Installing - ShutdownRepo/shellerator \n"
+sudo git clone https://github.com/ShutdownRepo/shellerator.git /opt/shellerator-ShutdownRepo
+
 
 # Setup my File Strucutres 
 sudo mkdir ~/Hacking
