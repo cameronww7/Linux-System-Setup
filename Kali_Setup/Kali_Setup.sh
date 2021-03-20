@@ -257,6 +257,8 @@ sudo mkdir /opt/_Payload_Scripts
 echo "\n\n\n Installing - swisskyrepo/PayloadsAllTheThings \n"
 sudo git clone https://github.com/swisskyrepo/PayloadsAllTheThings.git /opt/_Payload_Script/PayloadsAllTheThings-swisskyrepo
 
+echo "\n\n\n Installing - g0tmi1k/msfpc \n"
+sudo git clonehttps://github.com/g0tmi1k/msfpc /opt/_Payload_Script/MSFvenom-Payload-Creator-g0tmi1k
 
 echo "\n\n\n Installing - ShutdownRepo/shellerator \n"
 sudo git clone https://github.com/ShutdownRepo/shellerator.git /opt/shellerator-ShutdownRepo
