@@ -8,16 +8,13 @@ echo "\n\n\n Update + Install Basics"
 # Install VB Guest additions
 # ---------------------------------------
 sudo apt-get update
-sudo apt-get install -y --reinstall virtualbox-guest-x11
 
 # Update the System
 # ---------------------------------------
 sudo apt-get clean -y
-sudo apt-get full-upgrade -y
+sudo apt-get upgrade -y
 sudo apt-get autoremove -y
 
-# Add search cache
-sudo apt-get-cache search kali-
 
 # Cloning PipMyKali - https://github.com/Dewalt-arch/pimpmykali
 # ---------------------------------------
@@ -94,6 +91,7 @@ sudo apt-get install -y tree
 sudo apt-get install -y htop
 sudo apt-get install -y gedit
 sudo apt-get install -y glances
+sudo apt-get install -y most
 
 # Hacking Tool Install
 # ---------------------------------------
