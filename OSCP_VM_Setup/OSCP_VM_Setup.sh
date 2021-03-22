@@ -271,6 +271,7 @@ sudo chmod -R 755 /opt
 
 # Adding password feedback
 # ---------------------------------------
+echo "\n\n\n Installing - password feedback \n"
 echo "" | sudo EDITOR='tee -a' visudo
 echo "Default pwfeedback" | sudo EDITOR='tee -a' visudo
 echo "" | sudo EDITOR='tee -a' visudo
@@ -279,6 +280,7 @@ echo "" | sudo EDITOR='tee -a' visudo
 # ---------------------------------------
 # https://www.cyberciti.biz/open-source/command-line-hacks/adding-spice-to-your-sudo-session-with-a-lecture-file-on-linux-or-unix/
 # https://stackoverflow.com/questions/323957/how-do-i-edit-etc-sudoers-from-a-script
+echo "\n\n\n Installing - Sudo Lecture Message \n"
 
 sudo cp sudo_lecture.txt /etc/sudo_lecture.txt
 
