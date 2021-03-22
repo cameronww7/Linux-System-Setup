@@ -272,6 +272,13 @@ sudo chmod -R 755 ~/Hacking
 sudo chmod -R 755 /opt 
 
 
+# Adding password feedback
+# ---------------------------------------
+echo "" | sudo EDITOR='tee -a' visudo
+echo "Default pwfeedback" | sudo EDITOR='tee -a' visudo
+echo "" | sudo EDITOR='tee -a' visudo
+
+
 # Add Sudo Lecture Message
 # ---------------------------------------
 # https://www.cyberciti.biz/open-source/command-line-hacks/adding-spice-to-your-sudo-session-with-a-lecture-file-on-linux-or-unix/
