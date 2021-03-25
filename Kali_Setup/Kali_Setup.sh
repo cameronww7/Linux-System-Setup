@@ -5,19 +5,20 @@
 
 echo "\n\n\n Update + Install Basics"
 
-# Install VB Guest additions
-# ---------------------------------------
-sudo apt-get update
-sudo apt-get install -y --reinstall virtualbox-guest-x11
-
 # Update the System
 # ---------------------------------------
 sudo apt-get clean -y
-sudo apt-get full-upgrade -y
+sudo apt-get update
+sudo apt-get upgrade -y
 sudo apt-get autoremove -y
 
 # Add search cache
 sudo apt-get-cache search kali-
+
+
+# Install VB Guest additions
+# ---------------------------------------
+sudo apt-get install -y --reinstall virtualbox-guest-x11
 
 # Cloning PipMyKali - https://github.com/Dewalt-arch/pimpmykali
 # ---------------------------------------
@@ -72,13 +73,14 @@ sudo export PATH=$PATH:/usr/local/go/bin
 # Install Atom
 echo "\n\n\n Installing - Atom \n"
 sudo apt-get install -y  software-properties-common apt-transport-https wget
-sudo apt-get  install wget gpg
+sudo apt-get install wget gpg
 sudo wget -P /opt/ https://atom.io/download/deb
 sudo apt-get install -y /opt/atom-amd64.deb
 
 # Install VSCode
 echo "\n\n\n Installing - VSCode \n"
-sudo wget -q https://packages.microsoft.com/keys/microsoft.asc -O-
+sudo apt-get install -y software-properties-common apt-transport-https wget
+sudo wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
 sudo apt-get install -y code 
 
@@ -295,6 +297,13 @@ echo "#---------------------------------------" | sudo EDITOR='tee -a' visudo
 echo "Defaults	lecture=always" | sudo EDITOR='tee -a' visudo
 echo "Defaults	lecture_file=/etc/sudo_lecture.txt" | sudo EDITOR='tee -a' visudo
 echo "" | sudo EDITOR='tee -a' visudo
+
+
+
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get autoremove -y
+
 
 # Reboot Prompt
 # ---------------------------------------

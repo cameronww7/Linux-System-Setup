@@ -5,13 +5,11 @@
 
 echo "\n\n\n Update + Install Basics"
 
-# Install VB Guest additions
-# ---------------------------------------
-sudo apt-get update
 
 # Update the System
 # ---------------------------------------
 sudo apt-get clean -y
+sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get autoremove -y
 
@@ -75,7 +73,8 @@ sudo apt-get install -y /opt/atom-amd64.deb
 
 # Install VSCode
 echo "\n\n\n Installing - VSCode \n"
-sudo wget -q https://packages.microsoft.com/keys/microsoft.asc -O-
+sudo apt-get install -y software-properties-common apt-transport-https wget
+sudo wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
 sudo apt-get install -y code 
 
@@ -292,6 +291,12 @@ echo "#---------------------------------------" | sudo EDITOR='tee -a' visudo
 echo "Defaults	lecture=always" | sudo EDITOR='tee -a' visudo
 echo "Defaults	lecture_file=/etc/sudo_lecture.txt" | sudo EDITOR='tee -a' visudo
 echo "" | sudo EDITOR='tee -a' visudo
+
+
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get autoremove -y
+
 
 # Reboot Prompt
 # ---------------------------------------
