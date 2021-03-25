@@ -1,11 +1,11 @@
 # Kali-Setup
 
-1. Clone Terminal-Customization Repo
+1. Clone Linux-System-Setup Repo
    1. `sudo git clone https://github.com/cameronww7/Linux-System-Setup.git /opt/Linux-System-Setup/`
 
-2. CD to `cd /opt/Kali-Setup/`
+2. CD to `cd /opt/Linux-System-Setup/Kali-Setup/`
 
-3. chmod install Kali_terminal_setup.sh
+3. chmod Kali_Setup.sh
    1. `sudo chmod +x Kali_Setup.sh`
 
 4. Run Install Script Part 1

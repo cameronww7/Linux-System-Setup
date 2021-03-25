@@ -1,11 +1,11 @@
 # Linux-Setup
 
-1. Clone Terminal-Customization Repo
+1. Clone Linux-System-Setup Repo
    1. `sudo git clone https://github.com/cameronww7/Linux-System-Setup.git /opt/Linux-System-Setup/`
 
 2. CD to `cd /opt/Linux-System-Setup/Linux_Setup`
 
-3. chmod install Linux_terminal_setup.sh
+3. chmod Linux_Setup.sh
    1. `sudo chmod +x Linux_Setup.sh`
 
 4. Run Install Script Part 1

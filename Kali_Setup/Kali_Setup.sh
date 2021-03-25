@@ -289,7 +289,7 @@ echo "" | sudo EDITOR='tee -a' visudo
 # https://stackoverflow.com/questions/323957/how-do-i-edit-etc-sudoers-from-a-script
 echo "\n\n\n Installing - Sudo Lecture Message \n"
 
-sudo cp sudo_lecture.txt /etc/sudo_lecture.txt
+sudo cp /opt/Linux-System-Setup/Kali-Setup/sudo_lecture.txt /etc/sudo_lecture.txt
 
 echo "\n\n\n Adding Sudo Lecture Message \n"
 echo "" | sudo EDITOR='tee -a' visudo
