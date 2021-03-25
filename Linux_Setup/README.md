@@ -1,7 +1,7 @@
 # Linux-Setup
 
 1. Clone Terminal-Customization Repo
-   1. `sudo git clone https://github.com/cameronww7/Linux-System-Setup.git /opt/Linux-System-Setup-Setup/`
+   1. `sudo git clone https://github.com/cameronww7/Linux-System-Setup.git /opt/Linux-System-Setup/`
 
 2. CD to `cd /opt/Linux-System-Setup/Linux_Setup`
 
