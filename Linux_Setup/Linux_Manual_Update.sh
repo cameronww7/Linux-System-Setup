@@ -25,8 +25,7 @@ sudo pip3 install psutil -U
 # ---------------------------------------
 echo "\n\n\n Updating - Terminal Tools + Customization \n"
 cd /opt/Terminal-Customization/
-sudo git fetch -A
-sudo git pull
+sudo git RESET --hard HEAD
 
 sudo ./opt/Terminal-Customization/Linux/manual_update.sh
 
