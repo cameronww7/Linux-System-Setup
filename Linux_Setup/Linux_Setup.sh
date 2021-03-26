@@ -38,6 +38,7 @@ sudo apt-get install -y python3-pip
 sudo apt-get install -y python-pip 
 
 sudo python -m pip3 install --upgrade pip3
+sudo /usr/bin/python -m pip install --upgrade pip
 
 # Install Basic Tools
 echo "\n\n\n Installing - build-essential \n"

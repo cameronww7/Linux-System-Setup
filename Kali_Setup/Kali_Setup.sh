@@ -58,6 +58,7 @@ sudo apt-get install -y python3-pip
 sudo apt-get install -y python-pip 
 
 sudo python -m pip3 install --upgrade pip3
+sudo /usr/bin/python -m pip install --upgrade pip
 
 # Install Basic Tools
 echo "\n\n\n Installing - build-essential \n"
@@ -133,7 +134,7 @@ sudo apt-get install -y finalrecon
 # ---------------------------------------
 # Install droopescan - https://github.com/droope/droopescan
 echo "\n\n\n Installing - droopescan \n"
-sudo pip3 install droopescan 
+sudo pip install droopescan 
 
 echo "\n\n\n Installing - termcolor \n"
 sudo pip3 install termcolor
@@ -153,11 +154,11 @@ sudo ln -s /opt/Reconbot/reconbot.sh /usr/local/bin/
 echo "\n\n\n Installing - impacket \n"
 sudo git clone https://github.com/SecureAuthCorp/impacket.git /opt/impacket/
 cd /opt/impacket/
-pip3 install /opt/impacket/.
+sudo pip install /opt/impacket/.
 
 # Insatll AutoRecon - https://github.com/Tib3rius/AutoRecon#installation
 echo "\n\n\n Installing - AutoRecon \n"
-sudo python3 -m pip3 install git+https://github.com/Tib3rius/AutoRecon.git 
+sudo python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git 
 
 # install nmapAutomator - https://github.com/21y4d/nmapAutomator
 echo "\n\n\n Installing - nmapAutomator \n"
