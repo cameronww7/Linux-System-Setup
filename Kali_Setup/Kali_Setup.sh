@@ -139,6 +139,9 @@ sudo pip install droopescan
 echo "\n\n\n Installing - termcolor \n"
 sudo pip3 install termcolor
 
+echo "\n\n\n Installing - badchars \n"
+sudo pip install badchars
+
 # Install droopescan - https://github.com/giampaolo/psutil/blob/master/INSTALL.rst
 echo "\n\n\n Installing - psutil \n"
 sudo apt-get install gcc python3-dev
