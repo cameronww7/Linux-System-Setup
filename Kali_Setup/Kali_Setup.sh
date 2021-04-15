@@ -63,7 +63,12 @@ sudo /usr/bin/python -m pip install --upgrade pip
 # Install Basic Tools
 echo "\n\n\n Installing - build-essential \n"
 sudo apt-get install -y build-essential 
-sudo apt-get install manpages-dev 
+
+echo "\n\n\n Installing - manpages-dev \n"
+sudo apt-get install -y manpages-dev
+
+echo "\n\n\n Installing - libpcap-dev \n"
+sudo apt-get install -y libpcap-dev
 
 # Install Go - https://golang.org/doc/install
 echo "\n\n\n Installing - Go \n"
@@ -169,6 +174,9 @@ cd /opt/
 sudo git clone https://github.com/21y4d/nmapAutomator.git /opt/nmapAutomator/
 sudo ln -s /opt/nmapAutomator/nmapAutomator.sh /usr/local/bin/
 
+# install naabu - https://github.com/projectdiscovery/naabu.git
+echo "\n\n\n Installing - naabu \n"
+git clone https://github.com/projectdiscovery/naabu.git /opt/naabu; cd /opt/naabu/v2/cmd/naabu; go build; cp naabu /usr/local/bin/; naabu -version
 
 # Install Terminal Tools + Customization
 # ---------------------------------------
@@ -271,6 +279,8 @@ sudo git clonehttps://github.com/g0tmi1k/msfpc /opt/_Payload_Script/MSFvenom-Pay
 echo "\n\n\n Installing - ShutdownRepo/shellerator \n"
 sudo git clone https://github.com/ShutdownRepo/shellerator.git /opt/shellerator-ShutdownRepo
 
+echo "\n\n\n Installing - Gr1mmie/sumrecon \n"
+sudo git clone https://github.com/Gr1mmie/sumrecon.git /opt/sumrecon
 
 # Setup my File Strucutres 
 sudo mkdir ~/Hacking

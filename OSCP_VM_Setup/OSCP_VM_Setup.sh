@@ -57,7 +57,12 @@ sudo /usr/bin/python -m pip install --upgrade pip
 # Install Basic Tools
 echo "\n\n\n Installing - build-essential \n"
 sudo apt-get install -y build-essential 
-sudo apt-get install manpages-dev 
+
+echo "\n\n\n Installing - manpages-dev \n"
+sudo apt-get install -y manpages-dev
+
+echo "\n\n\n Installing - libpcap-dev \n"
+sudo apt-get install -y libpcap-dev
 
 # Install Go - https://golang.org/doc/install
 echo "\n\n\n Installing - Go \n"
@@ -163,6 +168,9 @@ cd /opt/
 sudo git clone https://github.com/21y4d/nmapAutomator.git /opt/nmapAutomator/
 sudo ln -s /opt/nmapAutomator/nmapAutomator.sh /usr/local/bin/
 
+# install naabu - https://github.com/projectdiscovery/naabu.git
+echo "\n\n\n Installing - naabu \n"
+git clone https://github.com/projectdiscovery/naabu.git /opt/naabu; cd /opt/naabu/v2/cmd/naabu; go build; cp naabu /usr/local/bin/; naabu -version
 
 # Install Terminal Tools + Customization
 # ---------------------------------------
