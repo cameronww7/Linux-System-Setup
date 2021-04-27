@@ -282,20 +282,23 @@ sudo git clone https://github.com/ShutdownRepo/shellerator.git /opt/shellerator-
 echo "\n\n\n Installing - Gr1mmie/sumrecon \n"
 sudo git clone https://github.com/Gr1mmie/sumrecon.git /opt/sumrecon
 
+
 # Setup my File Strucutres 
 sudo mkdir ~/Hacking
 sudo chmod -R 755 ~/Hacking  
-
 sudo chmod -R 755 /opt 
+
+
+echo "\n\n\n Installing - tomnomnom/assetfinder \n"
+go get -u github.com/tomnomnom/assetfinder
 
 
 # Adding password feedback
 # ---------------------------------------
 echo "\n\n\n Installing - password feedback \n"
-echo "" | sudo EDITOR='tee -a' visudo
-echo "Default pwfeedback" | sudo EDITOR='tee -a' visudo
-echo "" | sudo EDITOR='tee -a' visudo
-
+echo "" | sudo EDITOR='tee -a' visudo # Adds a Newline to the File
+echo "Defaults	pwfeedback" | sudo EDITOR='tee -a' visudo
+echo "" | sudo EDITOR='tee -a' visudo # Adds a Newline to the File
 
 # Add Sudo Lecture Message
 # ---------------------------------------
@@ -303,18 +306,18 @@ echo "" | sudo EDITOR='tee -a' visudo
 # https://stackoverflow.com/questions/323957/how-do-i-edit-etc-sudoers-from-a-script
 echo "\n\n\n Installing - Sudo Lecture Message \n"
 
-sudo cp /opt/Linux-System-Setup/Kali-Setup/sudo_lecture.txt /etc/sudo_lecture.txt
+sudo cp /opt/Linux-System-Setup/OSCP_VM_Setup/sudo_lecture.txt /etc/sudo_lecture.txt
 
 echo "\n\n\n Adding Sudo Lecture Message \n"
-echo "" | sudo EDITOR='tee -a' visudo
+echo "" | sudo EDITOR='tee -a' visudo # Adds a Newline to the File
 echo "# Adding Lecture Message" | sudo EDITOR='tee -a' visudo
 echo "#---------------------------------------" | sudo EDITOR='tee -a' visudo
 echo "Defaults	lecture=always" | sudo EDITOR='tee -a' visudo
 echo "Defaults	lecture_file=/etc/sudo_lecture.txt" | sudo EDITOR='tee -a' visudo
-echo "" | sudo EDITOR='tee -a' visudo
+echo "" | sudo EDITOR='tee -a' visudo # Adds a Newline to the File
 
 
-
+echo "\n\n\n Updating - RUnning FInal UPDATE CHECK! \n"
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get autoremove -y

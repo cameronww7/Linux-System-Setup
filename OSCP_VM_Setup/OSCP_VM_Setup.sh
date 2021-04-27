@@ -277,16 +277,15 @@ sudo git clone https://github.com/ShutdownRepo/shellerator.git /opt/shellerator-
 # Setup my File Strucutres 
 sudo mkdir ~/Hacking
 sudo chmod -R 755 ~/Hacking  
-
 sudo chmod -R 755 /opt 
 
 
 # Adding password feedback
 # ---------------------------------------
 echo "\n\n\n Installing - password feedback \n"
-echo "" | sudo EDITOR='tee -a' visudo
-echo "Default pwfeedback" | sudo EDITOR='tee -a' visudo
-echo "" | sudo EDITOR='tee -a' visudo
+echo "" | sudo EDITOR='tee -a' visudo # Adds a Newline to the File
+echo "Defaults	pwfeedback" | sudo EDITOR='tee -a' visudo
+echo "" | sudo EDITOR='tee -a' visudo # Adds a Newline to the File
 
 # Add Sudo Lecture Message
 # ---------------------------------------
@@ -297,14 +296,15 @@ echo "\n\n\n Installing - Sudo Lecture Message \n"
 sudo cp /opt/Linux-System-Setup/OSCP_VM_Setup/sudo_lecture.txt /etc/sudo_lecture.txt
 
 echo "\n\n\n Adding Sudo Lecture Message \n"
-echo "" | sudo EDITOR='tee -a' visudo
+echo "" | sudo EDITOR='tee -a' visudo # Adds a Newline to the File
 echo "# Adding Lecture Message" | sudo EDITOR='tee -a' visudo
 echo "#---------------------------------------" | sudo EDITOR='tee -a' visudo
 echo "Defaults	lecture=always" | sudo EDITOR='tee -a' visudo
 echo "Defaults	lecture_file=/etc/sudo_lecture.txt" | sudo EDITOR='tee -a' visudo
-echo "" | sudo EDITOR='tee -a' visudo
+echo "" | sudo EDITOR='tee -a' visudo # Adds a Newline to the File
 
 
+echo "\n\n\n Updating - RUnning FInal UPDATE CHECK! \n"
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get autoremove -y

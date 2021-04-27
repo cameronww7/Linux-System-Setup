@@ -105,9 +105,9 @@ sudo chmod -R 755 /opt
 # Adding password feedback
 # ---------------------------------------
 echo "\n\n\n Installing - password feedback \n"
-echo "" | sudo EDITOR='tee -a' visudo
-echo "Default pwfeedback" | sudo EDITOR='tee -a' visudo
-echo "" | sudo EDITOR='tee -a' visudo
+echo "" | sudo EDITOR='tee -a' visudo # Adds a Newline to the File
+echo "Defaults	pwfeedback" | sudo EDITOR='tee -a' visudo
+echo "" | sudo EDITOR='tee -a' visudo # Adds a Newline to the File
 
 # Add Sudo Lecture Message
 # ---------------------------------------
@@ -126,6 +126,7 @@ echo "Defaults	lecture_file=/etc/sudo_lecture.txt" | sudo EDITOR='tee -a' visudo
 echo "" | sudo EDITOR='tee -a' visudo
 
 
+echo "\n\n\n Updating - RUnning FInal UPDATE CHECK! \n"
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get autoremove -y
@@ -133,4 +134,6 @@ sudo apt-get autoremove -y
 
 # Reboot Prompt
 # ---------------------------------------
-echo "\n\n\n Finished - REBOOT \n"
+echo "\n\n\n Finished - REBOOT Time !\n"
+echo "\n\n\n Finished - REBOOT Time !\n"
+echo "\n\n\n Finished - REBOOT Time !\n"
