@@ -54,6 +54,7 @@ sudo apt-get install -y libpcap-dev
 echo "\n\n\n Installing - Go \n"
 sudo wget -P /opt/ https://golang.org/dl/go1.16.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf /opt/go1.16.linux-amd64.tar.gz
+sudo export GOPATH=$HOME/go
 sudo export PATH=$PATH:/usr/local/go/bin
 
 # Install Atom

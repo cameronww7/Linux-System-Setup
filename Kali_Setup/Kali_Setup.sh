@@ -74,6 +74,7 @@ sudo apt-get install -y libpcap-dev
 echo "\n\n\n Installing - Go \n"
 sudo wget -P /opt/ https://golang.org/dl/go1.16.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf /opt/go1.16.linux-amd64.tar.gz
+sudo export GOPATH=$HOME/go
 sudo export PATH=$PATH:/usr/local/go/bin
 
 # Install Atom
@@ -223,7 +224,6 @@ sudo git clone https://github.com/sleventyeleven/linuxprivchecker.git /opt/_priv
 echo "\n\n\n Installing - linux-smart-enumeration \n"
 sudo git clone https://github.com/diego-treitos/linux-smart-enumeration.git /opt/_privEsc/_linux/linux-smart-enumeration-diego-treitos
 
-
 echo "\n\n\n Installing - ohpe/juicy-potato \n"
 sudo git clone https://github.com/ohpe/juicy-potato.git /opt/_privEsc/_linux/juicy-potato-ohpe
 
@@ -274,7 +274,7 @@ echo "\n\n\n Installing - swisskyrepo/PayloadsAllTheThings \n"
 sudo git clone https://github.com/swisskyrepo/PayloadsAllTheThings.git /opt/_Payload_Script/PayloadsAllTheThings-swisskyrepo
 
 echo "\n\n\n Installing - g0tmi1k/msfpc \n"
-sudo git clonehttps://github.com/g0tmi1k/msfpc /opt/_Payload_Script/MSFvenom-Payload-Creator-g0tmi1k
+sudo git clone https://github.com/g0tmi1k/msfpc /opt/_Payload_Script/MSFvenom-Payload-Creator-g0tmi1k
 
 echo "\n\n\n Installing - ShutdownRepo/shellerator \n"
 sudo git clone https://github.com/ShutdownRepo/shellerator.git /opt/shellerator-ShutdownRepo
