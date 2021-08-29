@@ -168,6 +168,13 @@ sudo pip install argparse
 echo "\n\n\n Installing - pwncat \n"
 sudo pip install git+https://github.com/calebstewart/pwncat.git
 
+
+# Install gimmeSH - https://github.com/A3h1nt/gimmeSH
+echo "\n\n\n Installing - gimmeSH \n"
+cd /opt/
+sudo git clone https://github.com/A3h1nt/gimmeSH /opt/gimmeSH/
+sudo ln -s /opt/gimmeSH/gimmeSH.sh /usr/local/bin/
+
 # Install droopescan - https://github.com/giampaolo/psutil/blob/master/INSTALL.rst
 echo "\n\n\n Installing - psutil \n"
 sudo apt-get install gcc python3-dev
