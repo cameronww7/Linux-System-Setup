@@ -165,6 +165,9 @@ sudo pip install dnspython
 echo "\n\n\n Installing - argparse \n"
 sudo pip install argparse
 
+echo "\n\n\n Installing - pwncat \n"
+sudo pip install git+https://github.com/calebstewart/pwncat.git
+
 # Install droopescan - https://github.com/giampaolo/psutil/blob/master/INSTALL.rst
 echo "\n\n\n Installing - psutil \n"
 sudo apt-get install gcc python3-dev
