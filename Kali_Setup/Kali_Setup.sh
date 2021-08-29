@@ -53,6 +53,7 @@ echo "\n\n\n Installing - python3 & python \n"
 sudo apt-get install -y python3 
 sudo apt-get install -y python
 
+# Install Pip
 echo "\n\n\n Installing - python3-pip & python-pip \n"
 sudo apt-get install -y python3-pip 
 sudo apt-get install -y python-pip 
@@ -92,7 +93,7 @@ sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/v
 sudo apt-get update
 sudo apt-get install -y code 
 
-# Install ansible
+# Install Ansible
 echo "\n\n\n Installing - ansible \n"
 sudo apt-get install -y ansible
 
@@ -173,6 +174,7 @@ sudo pip install git+https://github.com/calebstewart/pwncat.git
 echo "\n\n\n Installing - gimmeSH \n"
 cd /opt/
 sudo git clone https://github.com/A3h1nt/gimmeSH /opt/gimmeSH/
+# Creates a Symbolic Link to the file so you can call it from anywhere
 sudo ln -s /opt/gimmeSH/gimmeSH.sh /usr/local/bin/
 
 # Install droopescan - https://github.com/giampaolo/psutil/blob/master/INSTALL.rst
@@ -184,6 +186,7 @@ sudo pip3 install -U psutil
 echo "\n\n\n Installing - Reconbot \n"
 cd /opt/
 sudo git clone https://github.com/0bs3ssi0n/Reconbot /opt/Reconbot/
+# Creates a Symbolic Link to the file so you can call it from anywhere
 sudo ln -s /opt/Reconbot/reconbot.sh /usr/local/bin/
 
 # Install Impacket - https://github.com/SecureAuthCorp/impacket
@@ -199,11 +202,14 @@ cd /opt/Autorecon
 sudo git pull
 sudo checkout beta
 sudo python3 -m pip install -r requirements.txt
+# Creates a Symbolic Link to the file so you can call it from anywhere
+sudo ln -s /opt/Autorecon/autorecon.py /usr/local/bin/
 
 # install nmapAutomator - https://github.com/21y4d/nmapAutomator
 echo "\n\n\n Installing - nmapAutomator \n"
 cd /opt/
 sudo git clone https://github.com/21y4d/nmapAutomator.git /opt/nmapAutomator/
+# Creates a Symbolic Link to the file so you can call it from anywhere
 sudo ln -s /opt/nmapAutomator/nmapAutomator.sh /usr/local/bin/
 
 # install naabu - https://github.com/projectdiscovery/naabu.git
