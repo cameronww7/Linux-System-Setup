@@ -134,6 +134,14 @@ sudo apt-get install -y khtmltopdf
 sudo apt-get install -y smtp-user-enum 
 sudo apt-get install -y nishang
 sudo apt-get install -y finalrecon
+sudo apt-get install -y feroxbuster
+sudo apt-get install -y impacket-scripts
+sudo apt-get install -y redis-tools
+sudo apt-get install -y snmpwalk
+sudo apt-get install -y svwar
+
+
+
 
 
 # pip3 Tool Install
@@ -175,8 +183,12 @@ cd /opt/impacket/
 sudo pip install /opt/impacket/.
 
 # Insatll AutoRecon - https://github.com/Tib3rius/AutoRecon#installation
-echo "\n\n\n Installing - AutoRecon \n"
-sudo python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git 
+echo "\n\n\n Installing - Beta AutoRecon \n"
+git clone --branch beta https://github.com/Tib3rius/AutoRecon /opt/Autorecon
+cd /opt/Autorecon
+sudo git pull
+sudo checkout beta
+sudo python3 -m pip install -r requirements.txt
 
 # install nmapAutomator - https://github.com/21y4d/nmapAutomator
 echo "\n\n\n Installing - nmapAutomator \n"
