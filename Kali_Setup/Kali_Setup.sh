@@ -203,7 +203,10 @@ sudo git pull
 sudo checkout beta
 sudo python3 -m pip install -r requirements.txt
 # Creates a Symbolic Link to the file so you can call it from anywhere
-sudo ln -s /opt/Autorecon/autorecon.py /usr/local/bin/
+#sudo ln -s /opt/Autorecon/autorecon.py /usr/local/bin/ #didnt work
+sudo cp Autorecon.py ~/Hacking/Autorecon.py
+
+
 
 # install nmapAutomator - https://github.com/21y4d/nmapAutomator
 echo "\n\n\n Installing - nmapAutomator \n"
