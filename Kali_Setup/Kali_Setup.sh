@@ -140,6 +140,7 @@ sudo apt-get install -y impacket-scripts
 sudo apt-get install -y redis-tools
 sudo apt-get install -y snmpwalk
 sudo apt-get install -y svwar
+sudo apt-get install -y wkhtmltopdf
 
 
 
