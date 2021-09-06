@@ -272,8 +272,11 @@ sudo git clone https://github.com/ohpe/juicy-potato.git /opt/_privEsc/_linux/jui
 
 echo "\n\n\n Installing - Windows Priv Esc Scripts \n"
 
+echo "\n\n\n Installing - carlospolop/winPEAS \n"
+sudo git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS
+
 echo "\n\n\n Installing - AonCyberLabs/Windows-Exploit-Suggester-AonCyberLabs \n"
-sudo git clone https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git /opt/_privEsc/_windows/Windows-Exploit-Suggester-AonCyberLabs
+sudo git clone https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git /opt/_privEsc/_windows/winPEAS
 
 echo "\n\n\n Installing - pentestmonkey/windows-privesc-check-pentestmonkey \n"
 sudo git clone https://github.com/pentestmonkey/windows-privesc-check.git /opt/_privEsc/_windows/windows-privesc-check-pentestmonkey
@@ -300,7 +303,7 @@ echo "\n\n\n Installing - Windows-Exploit-Suggester-2-7Ragnarok7 \n"
 sudo git clone https://github.com/7Ragnarok7/Windows-Exploit-Suggester-2.git /opt/_privEsc/_windows/Windows-Exploit-Suggester-2-7Ragnarok7
 
 echo "\n\n\n Installing - PowerSploi-PowerShellMafia \n"
-sudo git clone https://github.com/PowerShellMafia/PowerSploit /opt/_privEsc/_windows/PowerSploit-PowerShellMafia
+sudo git clone https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc /opt/_privEsc/_windows/PowerSploit-PowerShellMafia
 
 echo "\n\n\n Installing - Windows-Privilege-Escalation-frizb \n"
 sudo git clone https://github.com/frizb/Windows-Privilege-Escalation /opt/_privEsc/_windows/Windows-Privilege-Escalation-frizb
@@ -308,6 +311,14 @@ sudo git clone https://github.com/frizb/Windows-Privilege-Escalation /opt/_privE
 echo "\n\n\n Installing - windows-kernel-exploits-SecWiki \n"
 sudo git clone https://github.com/SecWiki/windows-kernel-exploits /opt/_privEsc/_windows/windows-kernel-exploits-SecWiki
 
+echo "\n\n\n Installing - windows-GhostPack/SharpUp \n"
+sudo git clone https://github.com/GhostPack/SharpUp /opt/_privEsc/_windows/windows-SharpUp-GhostPack
+
+echo "\n\n\n Installing - windows-GhostPack/Seatbelti \n"
+sudo git clone https://github.com/GhostPack/Seatbelt /opt/_privEsc/_windows/Seatbelti-GhostPack
+
+echo "\n\n\n Installing - windows-411Hall/JAWS \n"
+sudo git clone https://github.com/411Hall/JAWS /opt/_privEsc/_windows/JAWS-411Hall
 
 
 echo "\n\n\n Installing - Other Useful Scripts \n"
