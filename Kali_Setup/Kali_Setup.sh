@@ -232,98 +232,98 @@ sudo git clone https://github.com/cameronww7/Terminal-Customization /opt/Termina
 # Linux - https://www.hackingarticles.in/linux-privilege-escalation-automated-script/
 
 echo "\n\n\n Installing - Priv Esc File Structure \n"
-sudo mkdir /opt/_privEsc
+sudo mkdir /opt/__PRIV_ESC
 
-sudo mkdir /opt/_privEsc/_windows
-sudo mkdir /opt/_privEsc/_windows/_executable
-sudo mkdir /opt/_privEsc/_windows/_powershell
-sudo mkdir /opt/_privEsc/_windows/_other
+sudo mkdir /opt/__PRIV_ESC/_WINDOWS
+sudo mkdir /opt/___PRIV_ESC/_WINDOWS/_EXECUTABLE
+sudo mkdir /opt/___PRIV_ESC/_WINDOWS/_POWERSHELL
+sudo mkdir /opt/___PRIV_ESC/_WINDOWS/_OTHER
 
-sudo mkdir /opt/_privEsc/_linux
+sudo mkdir /opt/__PRIV_ESC/_LINUX
 
 
 echo "\n\n\n Installing - Win/Lin Priv Esc Scripts \n"
 
 echo "\n\n\n Installing - privilege-escalation-awesome-scripts-suite \n"
-sudo git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git /opt/_privEsc/_privilege-escalation-awesome-scripts-suite-carlospolop
+sudo git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git /opt/__PRIV_ESC/_privilege-escalation-awesome-scripts-suite-carlospolop
 
 echo "\n\n\n Installing - AlessandroZ/BeRoot \n"
-sudo git clone https://github.com/AlessandroZ/BeRoot.git /opt/_privEsc/BeRoot-AlessandroZ
+sudo git clone https://github.com/AlessandroZ/BeRoot.git /opt/__PRIV_ESC/BeRoot-AlessandroZ
 
 
 echo "\n\n\n Installing - Linux Priv Esc Scripts \n"
 
 echo "\n\n\n Installing - LinEnum \n"
-sudo git clone https://github.com/rebootuser/LinEnum.git /opt/_privEsc/_linux/LinEnum-rebootuser
+sudo git clone https://github.com/rebootuser/LinEnum.git /opt/__PRIV_ESC/_LINUX/LinEnum-rebootuser
 
 echo "\n\n\n Installing - Citadel \n"
-sudo git clone https://github.com/redcode-labs/Citadel.git /opt/_privEsc/_linux/Citadel-redcode-labs
+sudo git clone https://github.com/redcode-labs/Citadel.git /opt/__PRIV_ESC/_LINUX/Citadel-redcode-labs
 
 echo "\n\n\n Installing - Bashark \n"
-sudo git clone https://github.com/redcode-labs/Bashark /opt/_privEsc/_linux/Bashark-redcode-labs
+sudo git clone https://github.com/redcode-labs/Bashark /opt/__PRIV_ESC/_LINUX/Bashark-redcode-labs
 
 echo "\n\n\n Installing - linux-exploit-suggester \n"
-sudo git clone https://github.com/mzet-/linux-exploit-suggester.git /opt/_privEsc/_linux/linux-exploit-suggester-mzet-
+sudo git clone https://github.com/mzet-/linux-exploit-suggester.git /opt/__PRIV_ESC/_LINUX/linux-exploit-suggester-mzet-
 
 echo "\n\n\n Installing - linuxprivchecker \n"
-sudo git clone https://github.com/sleventyeleven/linuxprivchecker.git /opt/_privEsc/_linux/linuxprivchecker-sleventyeleven
+sudo git clone https://github.com/sleventyeleven/linuxprivchecker.git /opt/__PRIV_ESC/_LINUX/linuxprivchecker-sleventyeleven
 
 echo "\n\n\n Installing - linux-smart-enumeration \n"
-sudo git clone https://github.com/diego-treitos/linux-smart-enumeration.git /opt/_privEsc/_linux/linux-smart-enumeration-diego-treitos
+sudo git clone https://github.com/diego-treitos/linux-smart-enumeration.git /opt/__PRIV_ESC/_LINUX/linux-smart-enumeration-diego-treitos
 
 echo "\n\n\n Installing - ohpe/juicy-potato \n"
-sudo git clone https://github.com/ohpe/juicy-potato.git /opt/_privEsc/_linux/juicy-potato-ohpe
+sudo git clone https://github.com/ohpe/juicy-potato.git /opt/__PRIV_ESC/_LINUX/juicy-potato-ohpe
 
 
 echo "\n\n\n Installing - Windows Priv Esc Scripts \n"
 
 echo "\n\n\n Installing - carlospolop/winPEAS \n"
-sudo git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS  /opt/_privEsc/_windows/_other/_executable/Windows-Exploit-Suggester-AonCyberLabs
+sudo git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS  /opt/__PRIV_ESC/_WINDOWS/_OTHER/_EXECUTABLE/Windows-Exploit-Suggester-AonCyberLabs
 
 echo "\n\n\n Installing - AonCyberLabs/Windows-Exploit-Suggester-AonCyberLabs \n"
-sudo git clone https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git /opt/_privEsc/_windows/_other/Windows-Exploit-Suggester-AonCyberLabs
+sudo git clone https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git /opt/__PRIV_ESC/_WINDOWS/_OTHER/Windows-Exploit-Suggester-AonCyberLabs
 
 echo "\n\n\n Installing - pentestmonkey/windows-privesc-check-pentestmonkey \n"
-sudo git clone https://github.com/pentestmonkey/windows-privesc-check.git /opt/_privEsc/_windows/_other/windows-privesc-check-pentestmonkey
+sudo git clone https://github.com/pentestmonkey/windows-privesc-check.git /opt/__PRIV_ESC/_WINDOWS/_OTHER/windows-privesc-check-pentestmonkey
 
 echo "\n\n\n Installing - absolomb/WindowsEnu-absolomb \n"
-sudo git clone https://github.com/absolomb/WindowsEnum.git /opt/_privEsc/_windows/_other/WindowsEnum-absolomb
+sudo git clone https://github.com/absolomb/WindowsEnum.git /opt/__PRIV_ESC/_WINDOWS/_OTHER/WindowsEnum-absolomb
 
 echo "\n\n\n Installing - M4ximuss/Powerless-M4ximuss \n"
-sudo git clone https://github.com/M4ximuss/Powerless.git /opt/_privEsc/_windows/_other/Powerless-M4ximuss
+sudo git clone https://github.com/M4ximuss/Powerless.git /opt/__PRIV_ESC/_WINDOWS/_OTHER/Powerless-M4ximuss
 
 echo "\n\n\n Installing - bitsadmin/wesngn-bitsadmin \n"
-sudo git clone https://github.com/bitsadmin/wesng.git /opt/_privEsc/_windows/_other/wesng-bitsadmin
+sudo git clone https://github.com/bitsadmin/wesng.git /opt/__PRIV_ESC/_WINDOWS/_OTHER/wesng-bitsadmin
 
 echo "\n\n\n Installing - rasta-mouse/Sherlock-rasta-mouse \n"
-sudo git clone https://github.com/rasta-mouse/Sherlock.git /opt/_privEsc/_windows/_powershell/Sherlock-rasta-mouse
+sudo git clone https://github.com/rasta-mouse/Sherlock.git /opt/__PRIV_ESC/_WINDOWS/_POWERSHELL/Sherlock-rasta-mouse
 
 echo "\n\n\n Installing - rasta-mouse/Watson-rasta-mouse \n"
-sudo git clone https://github.com/rasta-mouse/Watson.git /opt/_privEsc/_windows/_executable/Watson-rasta-mouse
+sudo git clone https://github.com/rasta-mouse/Watson.git /opt/__PRIV_ESC/_WINDOWS/_EXECUTABLE/Watson-rasta-mouse
 
 echo "\n\n\n Installing - WindowsExploits-abatchy17 \n"
-sudo git clone https://github.com/abatchy17/WindowsExploits.git /opt/_privEsc/_windows/_other/WindowsExploits-abatchy17
+sudo git clone https://github.com/abatchy17/WindowsExploits.git /opt/__PRIV_ESC/_WINDOWS/_OTHER/WindowsExploits-abatchy17
 
 echo "\n\n\n Installing - Windows-Exploit-Suggester-2-7Ragnarok7 \n"
-sudo git clone https://github.com/7Ragnarok7/Windows-Exploit-Suggester-2.git /opt/_privEsc/_windows/_other/Windows-Exploit-Suggester-2-7Ragnarok7
+sudo git clone https://github.com/7Ragnarok7/Windows-Exploit-Suggester-2.git /opt/__PRIV_ESC/_WINDOWS/_OTHER/Windows-Exploit-Suggester-2-7Ragnarok7
 
 echo "\n\n\n Installing - PowerSploi-PowerShellMafia \n"
-sudo git clone https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc /opt/_privEsc/_windows/_powershell/PowerSploit-PowerShellMafia
+sudo git clone https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc /opt/__PRIV_ESC/_WINDOWS/_POWERSHELL/PowerSploit-PowerShellMafia
 
 echo "\n\n\n Installing - Windows-Privilege-Escalation-frizb \n"
-sudo git clone https://github.com/frizb/Windows-Privilege-Escalation /opt/_privEsc/_windows/_other/Windows-Privilege-Escalation-frizb
+sudo git clone https://github.com/frizb/Windows-Privilege-Escalation /opt/__PRIV_ESC/_WINDOWS/_OTHER/Windows-Privilege-Escalation-frizb
 
 echo "\n\n\n Installing - windows-kernel-exploits-SecWiki \n"
-sudo git clone https://github.com/SecWiki/windows-kernel-exploits /opt/_privEsc/_windows/_other/windows-kernel-exploits-SecWiki
+sudo git clone https://github.com/SecWiki/windows-kernel-exploits /opt/__PRIV_ESC/_WINDOWS/_OTHER/windows-kernel-exploits-SecWiki
 
 echo "\n\n\n Installing - windows-GhostPack/SharpUp \n"
-sudo git clone https://github.com/GhostPack/SharpUp /opt/_privEsc/_windows/_executable/windows-SharpUp-GhostPack
+sudo git clone https://github.com/GhostPack/SharpUp /opt/__PRIV_ESC/_WINDOWS/_EXECUTABLE/windows-SharpUp-GhostPack
 
 echo "\n\n\n Installing - windows-GhostPack/Seatbelti \n"
-sudo git clone https://github.com/GhostPack/Seatbelt /opt/_privEsc/_windows/_executable/Seatbelti-GhostPack
+sudo git clone https://github.com/GhostPack/Seatbelt /opt/__PRIV_ESC/_WINDOWS/_EXECUTABLE/Seatbelti-GhostPack
 
 echo "\n\n\n Installing - windows-411Hall/JAWS \n"
-sudo git clone https://github.com/411Hall/JAWS /opt/_privEsc/_windows/_powershell/JAWS-411Hall
+sudo git clone https://github.com/411Hall/JAWS /opt/__PRIV_ESC/_WINDOWS/_POWERSHELL/JAWS-411Hall
 
 
 echo "\n\n\n Installing - Other Useful Scripts \n"
