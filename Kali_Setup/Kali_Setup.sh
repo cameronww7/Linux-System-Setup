@@ -71,6 +71,9 @@ sudo apt-get install -y manpages-dev
 echo "\n\n\n Installing - libpcap-dev \n"
 sudo apt-get install -y libpcap-dev
 
+echo "\n\n\n Installing - gcc-mingw-w64 \n"
+sudo apt-get install -y gcc-mingw-w64
+
 # Install Go - https://golang.org/doc/install
 echo "\n\n\n Installing - Go \n"
 sudo wget -P /opt/ https://golang.org/dl/go1.16.linux-amd64.tar.gz
@@ -141,8 +144,6 @@ sudo apt-get install -y redis-tools
 sudo apt-get install -y snmpwalk
 sudo apt-get install -y svwar
 sudo apt-get install -y wkhtmltopdf
-
-
 
 
 
@@ -308,20 +309,24 @@ echo "\n\n\n Installing - windows-kernel-exploits-SecWiki \n"
 sudo git clone https://github.com/SecWiki/windows-kernel-exploits /opt/_privEsc/_windows/windows-kernel-exploits-SecWiki
 
 
+
 echo "\n\n\n Installing - Other Useful Scripts \n"
 sudo mkdir /opt/_Payload_Scripts
 
 echo "\n\n\n Installing - swisskyrepo/PayloadsAllTheThings \n"
-sudo git clone https://github.com/swisskyrepo/PayloadsAllTheThings.git /opt/_Payload_Script/PayloadsAllTheThings-swisskyrepo
+sudo git clone https://github.com/swisskyrepo/PayloadsAllTheThings.git /opt/_Payload_Scripts/PayloadsAllTheThings-swisskyrepo
 
 echo "\n\n\n Installing - g0tmi1k/msfpc \n"
-sudo git clone https://github.com/g0tmi1k/msfpc /opt/_Payload_Script/MSFvenom-Payload-Creator-g0tmi1k
+sudo git clone https://github.com/g0tmi1k/msfpc /opt/_Payload_Scripts/MSFvenom-Payload-Creator-g0tmi1k
 
 echo "\n\n\n Installing - ShutdownRepo/shellerator \n"
-sudo git clone https://github.com/ShutdownRepo/shellerator.git /opt/shellerator-ShutdownRepo
+sudo git clone https://github.com/ShutdownRepo/shellerator.git /opt/_Payload_Scripts/shellerator-ShutdownRepo
 
 echo "\n\n\n Installing - Gr1mmie/sumrecon \n"
-sudo git clone https://github.com/Gr1mmie/sumrecon.git /opt/sumrecon
+sudo git clone https://github.com/Gr1mmie/sumrecon.git /opt/_Payload_Scripts/sumrecon-Gr1mmie
+
+echo "\n\n\n Installing - danielmiessler/SecLists \n"
+sudo git clone https://github.com/danielmiessler/SecLists /opt/_Payload_Scripts/SecLists-danielmiessler
 
 
 # Setup my File Strucutres 
