@@ -23,15 +23,15 @@ sudo apt-get install -y --reinstall virtualbox-guest-x11
 # Cloning PipMyKali - https://github.com/Dewalt-arch/pimpmykali
 # ---------------------------------------
 echo "\n\n\n Cloning - PimyMyKali \n"
-sudo git clone https://github.com/Dewalt-arch/pimpmykali /opt/pimpmykali/
-sudo chmod +x /opt/pimpmykali/pimpmykali.sh
+sudo git clone https://github.com/Dewalt-arch/pimpmykali /opt/sys_tool_install/pimpmykali/
+sudo chmod +x /opt/sys_tool_install/pimpmykali/pimpmykali.sh
 cd /opt/pimpmykali/
 #sudo ./pimpmykali.sh
 
 # Install Chrome
 echo "\n\n\n Installing - Chrome \n"
-sudo wget -P /opt/ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb 
-sudo apt-get install -y /opt/google-chrome-stable_current_amd64.deb 
+sudo wget -P /opt/sys_tool_install/ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb 
+sudo apt-get install -y /opt/sys_tool_install/google-chrome-stable_current_amd64.deb 
 
 # Install Chromium - Doesnt seem to work...
 #echo "\n\n\n Installing - chromium-browser \n"
@@ -76,8 +76,8 @@ sudo apt-get install -y gcc-mingw-w64
 
 # Install Go - https://golang.org/doc/install
 echo "\n\n\n Installing - Go \n"
-sudo wget -P /opt/ https://golang.org/dl/go1.16.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf /opt/go1.16.linux-amd64.tar.gz
+sudo wget -P /opt/sys_tool_install/ https://golang.org/dl/go1.16.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf /opt/sys_tool_install/go1.16.linux-amd64.tar.gz
 sudo export GOPATH=$HOME/go
 sudo export PATH=$PATH:/usr/local/go/bin
 
@@ -85,8 +85,8 @@ sudo export PATH=$PATH:/usr/local/go/bin
 echo "\n\n\n Installing - Atom \n"
 sudo apt-get install -y  software-properties-common apt-transport-https wget
 sudo apt-get install wget gpg
-sudo wget -P /opt/ https://atom.io/download/deb
-sudo apt-get install -y /opt/atom-amd64.deb
+sudo wget -P /opt/sys_tool_install/ https://atom.io/download/deb
+sudo apt-get install -y /opt/sys_tool_install/atom-amd64.deb
 
 # Install VSCode
 echo "\n\n\n Installing - VSCode \n"
@@ -175,9 +175,9 @@ sudo pip install git+https://github.com/calebstewart/pwncat.git
 # Install gimmeSH - https://github.com/A3h1nt/gimmeSH
 echo "\n\n\n Installing - gimmeSH \n"
 cd /opt/
-sudo git clone https://github.com/A3h1nt/gimmeSH /opt/gimmeSH/
+sudo git clone https://github.com/A3h1nt/gimmeSH /opt/_Tools/gimmeSH/
 # Creates a Symbolic Link to the file so you can call it from anywhere
-sudo ln -s /opt/gimmeSH/gimmeSH.sh /usr/local/bin/
+sudo ln -s /opt/gimmeSH/gimmeSH.sh /usr/_Tools/local/bin/
 
 # Install droopescan - https://github.com/giampaolo/psutil/blob/master/INSTALL.rst
 echo "\n\n\n Installing - psutil \n"
@@ -187,9 +187,9 @@ sudo pip3 install -U psutil
 # Install Reconbot - https://github.com/0bs3ssi0n/Reconbot
 echo "\n\n\n Installing - Reconbot \n"
 cd /opt/
-sudo git clone https://github.com/0bs3ssi0n/Reconbot /opt/Reconbot/
+sudo git clone https://github.com/0bs3ssi0n/Reconbot /opt/_Tools/Reconbot/
 # Creates a Symbolic Link to the file so you can call it from anywhere
-sudo ln -s /opt/Reconbot/reconbot.sh /usr/local/bin/
+sudo ln -s /opt/_Tools/Reconbot/reconbot.sh /usr/local/bin/
 
 # Install Impacket - https://github.com/SecureAuthCorp/impacket
 echo "\n\n\n Installing - impacket \n"
@@ -199,27 +199,25 @@ sudo pip install /opt/impacket/.
 
 # Insatll AutoRecon - https://github.com/Tib3rius/AutoRecon#installation
 echo "\n\n\n Installing - Beta AutoRecon \n"
-git clone --branch beta https://github.com/Tib3rius/AutoRecon /opt/Autorecon
-cd /opt/Autorecon
+git clone --branch beta https://github.com/Tib3rius/AutoRecon /opt/_Tools/Autorecon
+cd /opt/_Tools/Autorecon
 sudo git pull
 sudo checkout beta
 sudo python3 -m pip install -r requirements.txt
 # Creates a Symbolic Link to the file so you can call it from anywhere
 #sudo ln -s /opt/Autorecon/autorecon.py /usr/local/bin/ #didnt work
-sudo cp Autorecon.py ~/Hacking/Autorecon.py
-
-
+sudo cp -r /opt/_Tools/Autorecon ~/Hacking/Autorecon
 
 # install nmapAutomator - https://github.com/21y4d/nmapAutomator
 echo "\n\n\n Installing - nmapAutomator \n"
 cd /opt/
-sudo git clone https://github.com/21y4d/nmapAutomator.git /opt/nmapAutomator/
+sudo git clone https://github.com/21y4d/nmapAutomator.git /opt/_Tools/nmapAutomator/
 # Creates a Symbolic Link to the file so you can call it from anywhere
-sudo ln -s /opt/nmapAutomator/nmapAutomator.sh /usr/local/bin/
+sudo ln -s /opt/_Tools/nmapAutomator/nmapAutomator.sh /usr/local/bin/
 
 # install naabu - https://github.com/projectdiscovery/naabu.git
 echo "\n\n\n Installing - naabu \n"
-git clone https://github.com/projectdiscovery/naabu.git /opt/naabu; cd /opt/naabu/v2/cmd/naabu; go build; cp naabu /usr/local/bin/; naabu -version
+git clone https://github.com/projectdiscovery/naabu.git /opt/_Tools/naabu; cd /_Tools/opt/naabu/v2/cmd/naabu; go build; cp naabu /usr/local/bin/; naabu -version
 
 # Install Terminal Tools + Customization
 # ---------------------------------------
