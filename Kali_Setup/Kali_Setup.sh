@@ -171,6 +171,10 @@ sudo pip install argparse
 echo "\n\n\n Installing - pwncat \n"
 sudo pip install git+https://github.com/calebstewart/pwncat.git
 
+# Install python-xlrd
+# Windows-Exploit-Suggester dependencies
+echo "\n\n\n Installing - python-xlrd \n"
+install python-xlrd, $ pip install xlrd --upgrade
 
 # Install gimmeSH - https://github.com/A3h1nt/gimmeSH
 echo "\n\n\n Installing - gimmeSH \n"
@@ -280,6 +284,11 @@ sudo git clone https://github.com/carlospolop/privilege-escalation-awesome-scrip
 
 echo "\n\n\n Installing - AonCyberLabs/Windows-Exploit-Suggester-AonCyberLabs \n"
 sudo git clone https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git /opt/__PRIV_ESC/_WINDOWS/_OTHER/Windows-Exploit-Suggester-AonCyberLabs
+
+cd /opt/__PRIV_ESC/_WINDOWS/_OTHER/
+touch howToUpdateWindowsExploiter.txt
+echo "./windows-exploit-suggester.py --update" >> howToUpdateWindowsExploiter.txt
+echo "./windows-exploit-suggester.py --database 2014-06-06-mssb.xlsx --systeminfo win7sp1-systeminfo.txt" >> howToUpdateWindowsExploiter.txt
 
 echo "\n\n\n Installing - pentestmonkey/windows-privesc-check-pentestmonkey \n"
 sudo git clone https://github.com/pentestmonkey/windows-privesc-check.git /opt/__PRIV_ESC/_WINDOWS/_OTHER/windows-privesc-check-pentestmonkey
