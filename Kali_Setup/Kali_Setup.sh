@@ -233,9 +233,9 @@ echo "\n\n\n Installing - Priv Esc File Structure \n"
 sudo mkdir /opt/__PRIV_ESC
 
 sudo mkdir /opt/__PRIV_ESC/_WINDOWS
-sudo mkdir /opt/___PRIV_ESC/_WINDOWS/_EXECUTABLE
-sudo mkdir /opt/___PRIV_ESC/_WINDOWS/_POWERSHELL
-sudo mkdir /opt/___PRIV_ESC/_WINDOWS/_OTHER
+sudo mkdir /opt/__PRIV_ESC/_WINDOWS/_EXECUTABLE
+sudo mkdir /opt/__PRIV_ESC/_WINDOWS/_POWERSHELL
+sudo mkdir /opt/__PRIV_ESC/_WINDOWS/_OTHER
 
 sudo mkdir /opt/__PRIV_ESC/_LINUX
 
