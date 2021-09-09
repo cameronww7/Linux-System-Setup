@@ -54,12 +54,9 @@ sudo apt-get install -y python3
 sudo apt-get install -y python
 
 # Install Pip
-echo "\n\n\n Installing - python3-pip & python-pip \n"
+echo "\n\n\n Installing - python3-pip \n"
+sudo apt-get -y --purge autoremove python3-pip
 sudo apt-get install -y python3-pip 
-sudo apt-get install -y python-pip 
-
-sudo python -m pip3 install --upgrade pip3
-sudo /usr/bin/python -m pip install --upgrade pip
 
 # Install Basic Tools
 echo "\n\n\n Installing - build-essential \n"
