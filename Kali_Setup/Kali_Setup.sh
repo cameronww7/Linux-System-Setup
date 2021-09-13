@@ -9,12 +9,11 @@ echo "\n\n\n Update + Install Basics"
 # ---------------------------------------
 sudo apt-get clean -y
 sudo apt-get update
-sudo apt-get upgrade -y
+sudo apt-get full-upgrade -y
 sudo apt-get autoremove -y
 
 # Add search cache
 sudo apt-get-cache search kali-
-
 
 # Install VB Guest additions
 # ---------------------------------------
@@ -143,6 +142,14 @@ sudo apt-get install -y svwar
 sudo apt-get install -y wkhtmltopdf
 
 
+# searchsploit Tool Install
+# ---------------------------------------
+# Install searchsploit
+echo "\n\n\n Installing - searchsploit \n"
+sudo apt update && sudo apt -y install exploitdb
+
+echo "\n\n\n Installing - upgrading \n"
+searchsploit -u
 
 # pip3 Tool Install
 # ---------------------------------------
