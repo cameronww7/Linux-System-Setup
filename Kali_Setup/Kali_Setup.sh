@@ -105,6 +105,7 @@ sudo apt-get install -y htop
 sudo apt-get install -y gedit
 sudo apt-get install -y glances
 sudo apt-get install -y most
+sudo apt-get install -y ssh
 
 # Hacking Tool Install
 # ---------------------------------------
