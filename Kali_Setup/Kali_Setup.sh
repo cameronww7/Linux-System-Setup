@@ -36,6 +36,9 @@ sudo apt-get install -y /opt/sys_tool_install/google-chrome-stable_current_amd64
 #echo "\n\n\n Installing - chromium-browser \n"
 #sudo apt-get install -y chromium-browser 
 
+# Install Libre Office
+echo "\n\n\n Installing - Libre Office \n"
+sudo apt-get -y install libreoffice
 
 # Install Dev Tools
 # ---------------------------------------

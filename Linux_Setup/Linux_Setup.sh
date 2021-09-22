@@ -70,6 +70,9 @@ sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/v
 sudo apt-get update
 sudo apt-get install -y code 
 
+# Install Libre Office
+echo "\n\n\n Installing - Libre Office \n"
+sudo apt-get -y install libreoffice
 
 # System Tool Install
 # ---------------------------------------
