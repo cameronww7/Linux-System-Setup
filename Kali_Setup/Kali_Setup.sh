@@ -9,14 +9,13 @@
 #                                                                                   o888o      
 
 # Note
-# ---------------------------------------
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 # Make sure file has needed perms
 # chmod +x Kali_Setup.sh
 
-echo "\n\n\n Update + Install Basics"
-
 # Update the System
-# ---------------------------------------
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
+echo "\n\n\n System Update"
 sudo apt-get clean -y
 sudo apt-get update
 sudo apt-get full-upgrade -y
@@ -24,19 +23,28 @@ sudo apt-get autoremove -y
 
 # Add search cache
 sudo apt-get-cache search kali-
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
+
 
 # Install VB Guest additions
-# ---------------------------------------
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
+echo "\n\n\n Installing VirtualBox-Guest Additions"
 sudo apt-get install -y --reinstall virtualbox-guest-x11
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
-# Cloning PipMyKali - https://github.com/Dewalt-arch/pimpmykali
-# ---------------------------------------
-echo "\n\n\n Cloning - PimyMyKali \n"
+
+# Installing PipMyKali - https://github.com/Dewalt-arch/pimpmykali
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
+echo "\n\n\n Installing - PimyMyKali \n"
 sudo git clone https://github.com/Dewalt-arch/pimpmykali /opt/sys_tool_install/pimpmykali/
 sudo chmod +x /opt/sys_tool_install/pimpmykali/pimpmykali.sh
 cd /opt/sys_tool_install/pimpmykali/
 sudo ./pimpmykali.sh --all
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
+
+# Install Internet Browsers
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 # Install Chrome
 echo "\n\n\n Installing - Chrome \n"
 sudo wget -P /opt/sys_tool_install/ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb 
@@ -45,13 +53,19 @@ sudo apt-get install -y /opt/sys_tool_install/google-chrome-stable_current_amd64
 # Install Chromium - Doesnt seem to work...
 #echo "\n\n\n Installing - chromium-browser \n"
 #sudo apt-get install -y chromium-browser 
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
+
+# Install Office Tools 
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 # Install Libre Office
 echo "\n\n\n Installing - Libre Office \n"
 sudo apt-get -y install libreoffice
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
+
 
 # Install Dev Tools
-# ---------------------------------------
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 # Install Git - Should already be installed
 echo "\n\n\n Installing - Git \n"
 sudo apt-get install -y git 
@@ -69,8 +83,11 @@ sudo apt-get install -y python
 echo "\n\n\n Installing - python3-pip \n"
 sudo apt-get -y --purge autoremove python3-pip
 sudo apt-get install -y python3-pip 
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
+
 
 # Install Building Tools
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 echo "\n\n\n Installing - build-essential \n"
 sudo apt-get install -y build-essential 
 
@@ -82,7 +99,11 @@ sudo apt-get install -y libpcap-dev
 
 echo "\n\n\n Installing - gcc-mingw-w64 \n"
 sudo apt-get install -y gcc-mingw-w64
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
+
+# Installing - Developer/Code Editors
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 # Install Go - https://golang.org/doc/install
 echo "\n\n\n Installing - Go \n"
 sudo wget -P /opt/sys_tool_install/ https://golang.org/dl/go1.16.linux-amd64.tar.gz
@@ -104,13 +125,11 @@ sudo wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-ke
 sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
 sudo apt-get update
 sudo apt-get install -y code 
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
-# Install Ansible
-echo "\n\n\n Installing - ansible \n"
-sudo apt-get install -y ansible
 
 # Basic/Other Tools Install
-# ---------------------------------------
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 echo "\n\n\n Installing - Basic/Other Tools \n"
 sudo apt-get install -y gedit
 sudo apt-get install -y tree
@@ -121,9 +140,12 @@ sudo apt-get install -y most
 sudo apt-get install -y ssh
 sudo apt-get install -y rdesktop
 sudo apt-get install -y freerdp-x11
+sudo apt-get install -y ansible
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
+
 
 # Hacking Tools & Dependencies Install
-# ---------------------------------------
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 echo "\n\n\n Installing - Hacking Tools & Dependencies \n"
 sudo apt-get install -y gobuster
 sudo apt-get install -y sslscan
@@ -157,22 +179,26 @@ sudo apt-get install -y snmpwalk
 sudo apt-get install -y svwar
 sudo apt-get install -y wkhtmltopdf
 
+# Install python-xlrd
+# Windows-Exploit-Suggester dependencies
+echo "\n\n\n Installing - python-xlrd \n"
+install python-xlrd, $ pip install xlrd --upgrade
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
+
 
 # searchsploit Tool Install
-# ---------------------------------------
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 # Install searchsploit
 echo "\n\n\n Installing - searchsploit \n"
 sudo apt update && sudo apt -y install exploitdb
 
 echo "\n\n\n Installing - upgrading \n"
 searchsploit -u
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
-# pip3 Tool Install
-# ---------------------------------------
-# Install droopescan - https://github.com/droope/droopescan
-echo "\n\n\n Installing - droopescan \n"
-sudo pip install droopescan 
 
+# Installing - pip Tools
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 echo "\n\n\n Installing - termcolor \n"
 sudo pip3 install termcolor
 
@@ -188,39 +214,15 @@ sudo pip install dnspython
 echo "\n\n\n Installing - argparse \n"
 sudo pip install argparse
 
-echo "\n\n\n Installing - pwncat \n"
-sudo pip install git+https://github.com/calebstewart/pwncat.git
-
-# Install python-xlrd
-# Windows-Exploit-Suggester dependencies
-echo "\n\n\n Installing - python-xlrd \n"
-install python-xlrd, $ pip install xlrd --upgrade
-
-# Install gimmeSH - https://github.com/A3h1nt/gimmeSH
-echo "\n\n\n Installing - gimmeSH \n"
-cd /opt/
-sudo git clone https://github.com/A3h1nt/gimmeSH /opt/_Tools/gimmeSH/
-# Creates a Symbolic Link to the file so you can call it from anywhere
-sudo ln -s /opt/gimmeSH/gimmeSH.sh /usr/_Tools/local/bin/
-
-# Install droopescan - https://github.com/giampaolo/psutil/blob/master/INSTALL.rst
+# Install psutil - https://github.com/giampaolo/psutil/blob/master/INSTALL.rst
 echo "\n\n\n Installing - psutil \n"
 sudo apt-get install gcc python3-dev
 sudo pip3 install -U psutil
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
-# Install Reconbot - https://github.com/0bs3ssi0n/Reconbot
-echo "\n\n\n Installing - Reconbot \n"
-cd /opt/
-sudo git clone https://github.com/0bs3ssi0n/Reconbot /opt/_Tools/Reconbot/
-# Creates a Symbolic Link to the file so you can call it from anywhere
-sudo ln -s /opt/_Tools/Reconbot/reconbot.sh /usr/local/bin/
 
-# Install Impacket - https://github.com/SecureAuthCorp/impacket
-echo "\n\n\n Installing - impacket \n"
-sudo git clone https://github.com/SecureAuthCorp/impacket.git /opt/impacket/
-cd /opt/impacket/
-sudo pip install /opt/impacket/.
-
+# Installing - Enumeration Tools
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 # Insatll AutoRecon - https://github.com/Tib3rius/AutoRecon#installation
 echo "\n\n\n Installing - Beta AutoRecon \n"
 git clone --branch beta https://github.com/Tib3rius/AutoRecon /opt/_Tools/Autorecon
@@ -239,21 +241,32 @@ sudo git clone https://github.com/21y4d/nmapAutomator.git /opt/_Tools/nmapAutoma
 # Creates a Symbolic Link to the file so you can call it from anywhere
 sudo ln -s /opt/_Tools/nmapAutomator/nmapAutomator.sh /usr/local/bin/
 
+# Install Reconbot - https://github.com/0bs3ssi0n/Reconbot
+echo "\n\n\n Installing - Reconbot \n"
+cd /opt/
+sudo git clone https://github.com/0bs3ssi0n/Reconbot /opt/_Tools/Reconbot/
+# Creates a Symbolic Link to the file so you can call it from anywhere
+sudo ln -s /opt/_Tools/Reconbot/reconbot.sh /usr/local/bin/
+
 # install naabu - https://github.com/projectdiscovery/naabu.git
 echo "\n\n\n Installing - naabu \n"
 git clone https://github.com/projectdiscovery/naabu.git /opt/_Tools/naabu; cd /_Tools/opt/naabu/v2/cmd/naabu; go build; cp naabu /usr/local/bin/; naabu -version
 
+# Install droopescan - https://github.com/droope/droopescan
+echo "\n\n\n Installing - droopescan \n"
+sudo pip install droopescan 
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
+
+
 # Install Terminal Tools + Customization
-# ---------------------------------------
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 echo "\n\n\n Installing - Terminal Tools + Customization \n"
 sudo git clone https://github.com/cameronww7/Terminal-Customization /opt/Terminal-Customization/
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
+
 
 # Clone Useful Priv Esc Tools to Opt
-# ---------------------------------------
-# Windows - https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md
-# Linux - https://www.hackingarticles.in/linux-privilege-escalation-automated-script/
-
-
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 # ooooooooo.             o8o                   oooooooooooo                    
 # `888   `Y88.           `"'                   `888'     `8                    
 #  888   .d88' oooo d8b oooo  oooo    ooo       888          .oooo.o  .ooooo.  
@@ -376,6 +389,7 @@ sudo git clone https://github.com/GhostPack/Seatbelt /opt/__PRIV_ESC/_WINDOWS/_E
 
 echo "\n\n\n Installing - windows-411Hall/JAWS \n"
 sudo git clone https://github.com/411Hall/JAWS /opt/__PRIV_ESC/_WINDOWS/_POWERSHELL/JAWS-411Hall
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
 
 #   .oooooo.       .   oooo                           
@@ -385,7 +399,7 @@ sudo git clone https://github.com/411Hall/JAWS /opt/__PRIV_ESC/_WINDOWS/_POWERSH
 # 888      888   888    888   888  888ooo888  888     
 # `88b    d88'   888 .  888   888  888    .o  888     
 #  `Y8bood8P'    "888" o888o o888o `Y8bod8P' d888b    
-
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 echo "\n\n\n Installing - Other Useful Scripts \n"
 sudo mkdir /opt/_Payload_Scripts
 
@@ -404,26 +418,44 @@ sudo git clone https://github.com/Gr1mmie/sumrecon.git /opt/_Payload_Scripts/sum
 echo "\n\n\n Installing - danielmiessler/SecLists \n"
 sudo git clone https://github.com/danielmiessler/SecLists /opt/_Payload_Scripts/SecLists-danielmiessler
 
+echo "\n\n\n Installing - pwncat \n"
+sudo pip install git+https://github.com/calebstewart/pwncat.git
 
-# Setup my File Strucutres 
-sudo mkdir ~/Hacking
-sudo chmod -R 755 ~/Hacking  
-sudo chmod -R 755 /opt 
+echo "\n\n\n Installing - gimmeSH \n"
+cd /opt/
+sudo git clone https://github.com/A3h1nt/gimmeSH /opt/_Tools/gimmeSH/
+# Creates a Symbolic Link to the file so you can call it from anywhere
+sudo ln -s /opt/gimmeSH/gimmeSH.sh /usr/_Tools/local/bin/
 
+# Install Impacket - https://github.com/SecureAuthCorp/impacket
+echo "\n\n\n Installing - impacket \n"
+sudo git clone https://github.com/SecureAuthCorp/impacket.git /opt/impacket/
+cd /opt/impacket/
+sudo pip install /opt/impacket/.
 
 echo "\n\n\n Installing - tomnomnom/assetfinder \n"
 go get -u github.com/tomnomnom/assetfinder
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
+
+
+# Setup my File Strucutres 
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
+sudo mkdir ~/Hacking
+sudo chmod -R 755 ~/Hacking  
+sudo chmod -R 755 /opt 
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
 
 # Adding password feedback
-# ---------------------------------------
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 echo "\n\n\n Installing - password feedback \n"
 echo "" | sudo EDITOR='tee -a' visudo # Adds a Newline to the File
 echo "Defaults	pwfeedback" | sudo EDITOR='tee -a' visudo
 echo "" | sudo EDITOR='tee -a' visudo # Adds a Newline to the File
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
 # Add Sudo Lecture Message
-# ---------------------------------------
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 # https://www.cyberciti.biz/open-source/command-line-hacks/adding-spice-to-your-sudo-session-with-a-lecture-file-on-linux-or-unix/
 # https://stackoverflow.com/questions/323957/how-do-i-edit-etc-sudoers-from-a-script
 echo "\n\n\n Installing - Sudo Lecture Message \n"
@@ -433,20 +465,26 @@ sudo cp /opt/Linux-System-Setup/OSCP_VM_Setup/sudo_lecture.txt /etc/sudo_lecture
 echo "\n\n\n Adding Sudo Lecture Message \n"
 echo "" | sudo EDITOR='tee -a' visudo # Adds a Newline to the File
 echo "# Adding Lecture Message" | sudo EDITOR='tee -a' visudo
-echo "#---------------------------------------" | sudo EDITOR='tee -a' visudo
+echo "#~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-" | sudo EDITOR='tee -a' visudo
 echo "Defaults	lecture=always" | sudo EDITOR='tee -a' visudo
 echo "Defaults	lecture_file=/etc/sudo_lecture.txt" | sudo EDITOR='tee -a' visudo
 echo "" | sudo EDITOR='tee -a' visudo # Adds a Newline to the File
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
 
+# Final Update Check
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 echo "\n\n\n Updating - RUnning FInal UPDATE CHECK! \n"
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get autoremove -y
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
 
 # Reboot Prompt
-# ---------------------------------------
-echo "\n\n\n Finished - REBOOT Time !\n"
-echo "\n\n\n Finished - REBOOT Time !\n"
-echo "\n\n\n Finished - REBOOT Time !\n"
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
+echo "\n\n\n FINISHED - REBOOTING IN 60 Seconds !\n"
+echo "\n\n\n FINISHED - REBOOTING IN 60 Seconds !\n"
+echo "\n\n\n FINISHED - REBOOTING IN 60 Seconds !\n"
+sleep 60
+reboot
