@@ -34,8 +34,8 @@ sudo apt-get install -y --reinstall virtualbox-guest-x11
 echo "\n\n\n Cloning - PimyMyKali \n"
 sudo git clone https://github.com/Dewalt-arch/pimpmykali /opt/sys_tool_install/pimpmykali/
 sudo chmod +x /opt/sys_tool_install/pimpmykali/pimpmykali.sh
-cd /opt/pimpmykali/
-#sudo ./pimpmykali.sh
+cd /opt/sys_tool_install/pimpmykali/
+sudo ./pimpmykali.sh --all
 
 # Install Chrome
 echo "\n\n\n Installing - Chrome \n"
