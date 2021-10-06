@@ -1,3 +1,13 @@
+# oooo    oooo           oooo   o8o        .oooooo..o               .                          
+# `888   .8P'            `888   `"'       d8P'    `Y8             .o8                          
+#  888  d8'     .oooo.    888  oooo       Y88bo.       .ooooo.  .o888oo oooo  oooo  oo.ooooo.  
+#  88888[      `P  )88b   888  `888        `"Y8888o.  d88' `88b   888   `888  `888   888' `88b 
+#  888`88b.     .oP"888   888   888            `"Y88b 888ooo888   888    888   888   888   888 
+#  888  `88b.  d8(  888   888   888       oo     .d8P 888    .o   888 .  888   888   888   888 
+# o888o  o888o `Y888""8o o888o o888o      8""88888P'  `Y8bod8P'   "888"  `V88V"V8P'  888bod8P' 
+#                                                                                    888       
+#                                                                                   o888o      
+
 # Note
 # ---------------------------------------
 # Make sure file has needed perms
@@ -60,7 +70,7 @@ echo "\n\n\n Installing - python3-pip \n"
 sudo apt-get -y --purge autoremove python3-pip
 sudo apt-get install -y python3-pip 
 
-# Install Basic Tools
+# Install Building Tools
 echo "\n\n\n Installing - build-essential \n"
 sudo apt-get install -y build-essential 
 
@@ -99,9 +109,9 @@ sudo apt-get install -y code
 echo "\n\n\n Installing - ansible \n"
 sudo apt-get install -y ansible
 
-# System Tool Install
+# Basic/Other Tools Install
 # ---------------------------------------
-echo "\n\n\n Installing - System Tools \n"
+echo "\n\n\n Installing - Basic/Other Tools \n"
 sudo apt-get install -y gedit
 sudo apt-get install -y tree
 sudo apt-get install -y htop
@@ -112,9 +122,9 @@ sudo apt-get install -y ssh
 sudo apt-get install -y rdesktop
 sudo apt-get install -y freerdp-x11
 
-# Hacking Tool Install
+# Hacking Tools & Dependencies Install
 # ---------------------------------------
-echo "\n\n\n Installing - Hacking Tools \n"
+echo "\n\n\n Installing - Hacking Tools & Dependencies \n"
 sudo apt-get install -y gobuster
 sudo apt-get install -y sslscan
 sudo apt-get install -y nikto
@@ -243,6 +253,15 @@ sudo git clone https://github.com/cameronww7/Terminal-Customization /opt/Termina
 # Windows - https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md
 # Linux - https://www.hackingarticles.in/linux-privilege-escalation-automated-script/
 
+
+# ooooooooo.             o8o                   oooooooooooo                    
+# `888   `Y88.           `"'                   `888'     `8                    
+#  888   .d88' oooo d8b oooo  oooo    ooo       888          .oooo.o  .ooooo.  
+#  888ooo88P'  `888""8P `888   `88.  .8'        888oooo8    d88(  "8 d88' `"Y8 
+#  888          888      888    `88..8'         888    "    `"Y88b.  888       
+#  888          888      888     `888'          888       o o.  )88b 888   .o8 
+# o888o        d888b    o888o     `8'          o888ooooood8 8""888P' `Y8bod8P' 
+
 echo "\n\n\n Installing - Priv Esc File Structure \n"
 sudo mkdir /opt/__PRIV_ESC
 
@@ -262,6 +281,14 @@ sudo git clone https://github.com/carlospolop/privilege-escalation-awesome-scrip
 echo "\n\n\n Installing - AlessandroZ/BeRoot \n"
 sudo git clone https://github.com/AlessandroZ/BeRoot.git /opt/__PRIV_ESC/BeRoot-AlessandroZ
 
+
+# ooooo         o8o                                      
+# `888'         `"'                                      
+#  888         oooo  ooo. .oo.   oooo  oooo  oooo    ooo 
+#  888         `888  `888P"Y88b  `888  `888   `88b..8P'  
+#  888          888   888   888   888   888     Y888'    
+#  888       o  888   888   888   888   888   .o8"'88b   
+# o888ooooood8 o888o o888o o888o  `V88V"V8P' o88'   888o 
 
 echo "\n\n\n Installing - Linux Priv Esc Scripts \n"
 
@@ -286,6 +313,14 @@ sudo git clone https://github.com/diego-treitos/linux-smart-enumeration.git /opt
 echo "\n\n\n Installing - ohpe/juicy-potato \n"
 sudo git clone https://github.com/ohpe/juicy-potato.git /opt/__PRIV_ESC/_LINUX/juicy-potato-ohpe
 
+
+# oooooo   oooooo     oooo  o8o                    .o8                                      
+#  `888.    `888.     .8'   `"'                   "888                                      
+#   `888.   .8888.   .8'   oooo  ooo. .oo.    .oooo888   .ooooo.  oooo oooo    ooo  .oooo.o 
+#    `888  .8'`888. .8'    `888  `888P"Y88b  d88' `888  d88' `88b  `88. `88.  .8'  d88(  "8 
+#     `888.8'  `888.8'      888   888   888  888   888  888   888   `88..]88..8'   `"Y88b.  
+#      `888'    `888'       888   888   888  888   888  888   888    `888'`888'    o.  )88b 
+#       `8'      `8'       o888o o888o o888o `Y8bod88P" `Y8bod8P'     `8'  `8'     8""888P' 
 
 echo "\n\n\n Installing - Windows Priv Esc Scripts \n"
 
@@ -342,6 +377,14 @@ sudo git clone https://github.com/GhostPack/Seatbelt /opt/__PRIV_ESC/_WINDOWS/_E
 echo "\n\n\n Installing - windows-411Hall/JAWS \n"
 sudo git clone https://github.com/411Hall/JAWS /opt/__PRIV_ESC/_WINDOWS/_POWERSHELL/JAWS-411Hall
 
+
+#   .oooooo.       .   oooo                           
+#  d8P'  `Y8b    .o8   `888                           
+# 888      888 .o888oo  888 .oo.    .ooooo.  oooo d8b 
+# 888      888   888    888P"Y88b  d88' `88b `888""8P 
+# 888      888   888    888   888  888ooo888  888     
+# `88b    d88'   888 .  888   888  888    .o  888     
+#  `Y8bood8P'    "888" o888o o888o `Y8bod8P' d888b    
 
 echo "\n\n\n Installing - Other Useful Scripts \n"
 sudo mkdir /opt/_Payload_Scripts
