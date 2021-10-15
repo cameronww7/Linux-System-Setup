@@ -429,7 +429,7 @@ sudo ln -s /opt/gimmeSH/gimmeSH.sh /usr/_Tools/local/bin/
 
 # Install Impacket - https://github.com/SecureAuthCorp/impacket
 echo "\n\n\n Installing - impacket \n"
-sudo git clone https://github.com/SecureAuthCorp/impacket.git /opt/impacket/
+sudo git clone https://github.com/SecureAuthCorp/impacket.git /opt/_Tools/impacket/
 cd /opt/impacket/
 sudo pip install /opt/impacket/.
 
@@ -479,6 +479,10 @@ sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get autoremove -y
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
+
+sudo cd /opt/
+sudo rm -rf google
+sudo rm -rf requets
 
 
 # Reboot Prompt
