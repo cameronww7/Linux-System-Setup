@@ -317,8 +317,8 @@ sudo git clone https://github.com/redcode-labs/Bashark /opt/__PRIV_ESC/_LINUX/Ba
 echo "\n\n\n Installing - linux-exploit-suggester \n"
 sudo git clone https://github.com/mzet-/linux-exploit-suggester.git /opt/__PRIV_ESC/_LINUX/2_linux-exploit-suggester-mzet-
 
-echo "\n\n\n Installing - linuxprivchecker \n"
-sudo git clone https://github.com/sleventyeleven/linuxprivchecker.git /opt/__PRIV_ESC/_LINUX/linuxprivchecker-sleventyeleven
+echo "\n\n\n Installing - linuxprivchecker-Py \n"
+sudo git clone https://github.com/sleventyeleven/linuxprivchecker.git /opt/__PRIV_ESC/_LINUX/linuxprivchecker-Py-sleventyeleven
 
 echo "\n\n\n Installing - linux-smart-enumeration \n"
 sudo git clone https://github.com/diego-treitos/linux-smart-enumeration.git /opt/__PRIV_ESC/_LINUX/linux-smart-enumeration-diego-treitos
