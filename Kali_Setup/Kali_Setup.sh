@@ -288,9 +288,6 @@ sudo mkdir /opt/__PRIV_ESC/_LINUX
 
 echo "\n\n\n Installing - Win/Lin Priv Esc Scripts \n"
 
-echo "\n\n\n Installing - privilege-escalation-awesome-scripts-suite \n"
-sudo git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git /opt/__PRIV_ESC/_privilege-escalation-awesome-scripts-suite-carlospolop
-
 echo "\n\n\n Installing - AlessandroZ/BeRoot \n"
 sudo git clone https://github.com/AlessandroZ/BeRoot.git /opt/__PRIV_ESC/BeRoot-AlessandroZ
 
@@ -304,6 +301,9 @@ sudo git clone https://github.com/AlessandroZ/BeRoot.git /opt/__PRIV_ESC/BeRoot-
 # o888ooooood8 o888o o888o o888o  `V88V"V8P' o88'   888o 
 
 echo "\n\n\n Installing - Linux Priv Esc Scripts \n"
+
+echo "\n\n\n Installing - carlospolop/linPEAS \n"
+sudo git clone https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS  /opt/__PRIV_ESC/_LINUX/0-Start_linPEAS-carlospolop
 
 echo "\n\n\n Installing - LinEnum \n"
 sudo git clone https://github.com/rebootuser/LinEnum.git /opt/__PRIV_ESC/_LINUX/LinEnum-rebootuser
@@ -338,7 +338,7 @@ sudo git clone https://github.com/ohpe/juicy-potato.git /opt/__PRIV_ESC/_LINUX/j
 echo "\n\n\n Installing - Windows Priv Esc Scripts \n"
 
 echo "\n\n\n Installing - carlospolop/winPEAS \n"
-sudo git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS  /opt/__PRIV_ESC/_WINDOWS/_OTHER/_EXECUTABLE/Windows-Exploit-Suggester-AonCyberLabs
+sudo git clone https://github.com/carlospolop/PEASS-ng/tree/master/winPEAS  /opt/__PRIV_ESC/_WINDOWS/0-Start_winPEAS-carlospolop
 
 echo "\n\n\n Installing - AonCyberLabs/Windows-Exploit-Suggester-AonCyberLabs \n"
 sudo git clone https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git /opt/__PRIV_ESC/_WINDOWS/_OTHER/Windows-Exploit-Suggester-AonCyberLabs
