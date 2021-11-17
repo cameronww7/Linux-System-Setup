@@ -306,7 +306,7 @@ echo "\n\n\n Installing - carlospolop/linPEAS \n"
 sudo git clone https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS  /opt/__PRIV_ESC/_LINUX/0-Start_linPEAS-carlospolop
 
 echo "\n\n\n Installing - LinEnum \n"
-sudo git clone https://github.com/rebootuser/LinEnum.git /opt/__PRIV_ESC/_LINUX/LinEnum-rebootuser
+sudo git clone https://github.com/rebootuser/LinEnum.git /opt/__PRIV_ESC/_LINUX/1_LinEnum-rebootuser
 
 echo "\n\n\n Installing - Citadel \n"
 sudo git clone https://github.com/redcode-labs/Citadel.git /opt/__PRIV_ESC/_LINUX/Citadel-redcode-labs
@@ -315,7 +315,7 @@ echo "\n\n\n Installing - Bashark \n"
 sudo git clone https://github.com/redcode-labs/Bashark /opt/__PRIV_ESC/_LINUX/Bashark-redcode-labs
 
 echo "\n\n\n Installing - linux-exploit-suggester \n"
-sudo git clone https://github.com/mzet-/linux-exploit-suggester.git /opt/__PRIV_ESC/_LINUX/linux-exploit-suggester-mzet-
+sudo git clone https://github.com/mzet-/linux-exploit-suggester.git /opt/__PRIV_ESC/_LINUX/2_linux-exploit-suggester-mzet-
 
 echo "\n\n\n Installing - linuxprivchecker \n"
 sudo git clone https://github.com/sleventyeleven/linuxprivchecker.git /opt/__PRIV_ESC/_LINUX/linuxprivchecker-sleventyeleven
@@ -352,7 +352,7 @@ echo "\n\n\n Installing - pentestmonkey/windows-privesc-check-pentestmonkey \n"
 sudo git clone https://github.com/pentestmonkey/windows-privesc-check.git /opt/__PRIV_ESC/_WINDOWS/_OTHER/windows-privesc-check-pentestmonkey
 
 echo "\n\n\n Installing - absolomb/WindowsEnu-absolomb \n"
-sudo git clone https://github.com/absolomb/WindowsEnum.git /opt/__PRIV_ESC/_WINDOWS/_OTHER/WindowsEnum-absolomb
+sudo git clone https://github.com/absolomb/WindowsEnum.git /opt/__PRIV_ESC/_WINDOWS/2_WindowsEnum-absolomb
 
 echo "\n\n\n Installing - M4ximuss/Powerless-M4ximuss \n"
 sudo git clone https://github.com/M4ximuss/Powerless.git /opt/__PRIV_ESC/_WINDOWS/_OTHER/Powerless-M4ximuss
@@ -370,7 +370,7 @@ echo "\n\n\n Installing - WindowsExploits-abatchy17 \n"
 sudo git clone https://github.com/abatchy17/WindowsExploits.git /opt/__PRIV_ESC/_WINDOWS/_OTHER/WindowsExploits-abatchy17
 
 echo "\n\n\n Installing - Windows-Exploit-Suggester-2-7Ragnarok7 \n"
-sudo git clone https://github.com/7Ragnarok7/Windows-Exploit-Suggester-2.git /opt/__PRIV_ESC/_WINDOWS/_OTHER/Windows-Exploit-Suggester-2-7Ragnarok7
+sudo git clone https://github.com/7Ragnarok7/Windows-Exploit-Suggester-2.git /opt/__PRIV_ESC/_WINDOWS/1_Windows-Exploit-Suggester-2-7Ragnarok7
 
 echo "\n\n\n Installing - PowerSploi-PowerShellMafia \n"
 sudo git clone https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc /opt/__PRIV_ESC/_WINDOWS/_POWERSHELL/PowerSploit-PowerShellMafia
