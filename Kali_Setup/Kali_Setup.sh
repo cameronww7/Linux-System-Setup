@@ -99,6 +99,9 @@ sudo apt-get install -y libpcap-dev
 
 echo "\n\n\n Installing - gcc-mingw-w64 \n"
 sudo apt-get install -y gcc-mingw-w64
+
+echo "\n\n\n Installing - default-jdk \n"
+sudo apt-get install -y default-jdk
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
 
