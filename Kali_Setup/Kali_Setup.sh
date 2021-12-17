@@ -228,14 +228,15 @@ sudo pip3 install -U psutil
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 # Insatll AutoRecon - https://github.com/Tib3rius/AutoRecon#installation
 echo "\n\n\n Installing - Beta AutoRecon \n"
-git clone --branch beta https://github.com/Tib3rius/AutoRecon /opt/_Tools/Autorecon
-cd /opt/_Tools/Autorecon
-sudo git pull
-sudo checkout beta
-sudo python3 -m pip install -r requirements.txt
+# git clone --branch beta https://github.com/Tib3rius/AutoRecon /opt/_Tools/Autorecon
+# cd /opt/_Tools/Autorecon
+# sudo git pull
+# sudo checkout beta
+# sudo python3 -m pip install -r requirements.txt
 # Creates a Symbolic Link to the file so you can call it from anywhere
 #sudo ln -s /opt/Autorecon/autorecon.py /usr/local/bin/ #didnt work
-sudo cp -r /opt/_Tools/Autorecon ~/Hacking/Autorecon
+# sudo cp -r /opt/_Tools/Autorecon ~/Hacking/Autorecon
+sudo python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git
 
 # install nmapAutomator - https://github.com/21y4d/nmapAutomator
 echo "\n\n\n Installing - nmapAutomator \n"
