@@ -223,6 +223,9 @@ sudo apt-get install gcc python3-dev
 sudo pip3 install -U psutil
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
+git clone https://github.com/gchq/CyberChef/releases /opt/CyberChef/
+sudo unzip -d /opt/CyberChef/v*
+
 
 # Installing - Enumeration Tools
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
