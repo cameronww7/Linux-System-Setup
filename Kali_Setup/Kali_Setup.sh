@@ -229,7 +229,7 @@ echo "\n\n\n Installing - CyberChef \n"
 sudo mkdir /opt/CyberChef
 sudo wget -P /opt/CyberChef/ https://github.com/gchq/CyberChef/releases/download/v9.32.3/CyberChef_v9.32.3.zip
 cd /opt/CyberChef
-sudo unzip -d /opt/CyberChef/CyberChef_v9.32.3.zip
+sudo unzip -d CyberChef_v9.32.3.zip /opt/CyberChef/CyberChef_v9.32.3.zip
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
 # Installing - Enumeration Tools
