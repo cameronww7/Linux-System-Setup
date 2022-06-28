@@ -3,7 +3,7 @@
 1. Clone Linux-System-Setup Repo
    1. `sudo git clone https://github.com/cameronww7/Linux-System-Setup.git /opt/Linux-System-Setup/`
 
-2. CD to `cd /opt/Linux-System-Setup/Kali-Setup/`
+2. CD to `cd /opt/Linux-System-Setup/Kali_Setup/`
 
 3. chmod Kali_Setup.sh
    1. `sudo chmod +x Kali_Setup.sh`
