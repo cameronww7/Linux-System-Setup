@@ -445,8 +445,8 @@ go get -u github.com/tomnomnom/assetfinder
 # Setup my File Strucutres 
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 sudo mkdir ~/Hacking
-sudo chmod -R 755 ~/Hacking  
-sudo chmod -R 755 /opt 
+sudo chmod -R 777 ~/Hacking  
+sudo chmod -R 777 /opt 
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
 
