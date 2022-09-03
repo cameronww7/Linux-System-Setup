@@ -307,7 +307,8 @@ sudo git clone https://github.com/AlessandroZ/BeRoot.git /opt/__PRIV_ESC/BeRoot-
 echo "\n\n\n Installing - Linux Priv Esc Scripts \n"
 
 echo "\n\n\n Installing - carlospolop/linPEAS \n"
-sudo git clone https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS  /opt/__PRIV_ESC/_LINUX/0-Start_linPEAS-carlospolop
+sudo mkdir /opt/__PRIV_ESC/_LINUX/0-Start_linPEAS-carlospolop
+sudo wget https://github.com/carlospolop/PEASS-ng/releases/download/20220901/linpeas.sh  /opt/__PRIV_ESC/_LINUX/0-Start_linPEAS-carlospolop/
 
 echo "\n\n\n Installing - LinEnum \n"
 sudo git clone https://github.com/rebootuser/LinEnum.git /opt/__PRIV_ESC/_LINUX/1_LinEnum-rebootuser
@@ -341,8 +342,9 @@ sudo git clone https://github.com/ohpe/juicy-potato.git /opt/__PRIV_ESC/_LINUX/j
 
 echo "\n\n\n Installing - Windows Priv Esc Scripts \n"
 
-echo "\n\n\n Installing - carlospolop/winPEAS \n"
-sudo git clone https://github.com/carlospolop/PEASS-ng/tree/master/winPEAS  /opt/__PRIV_ESC/_WINDOWS/0-Start_winPEAS-carlospolop
+###### Broken Need to FIX
+#echo "\n\n\n Installing - carlospolop/winPEAS \n"
+#sudo git clone https://github.com/carlospolop/PEASS-ng/tree/master/winPEAS  /opt/__PRIV_ESC/_WINDOWS/0-Start_winPEAS-carlospolop
 
 echo "\n\n\n Installing - AonCyberLabs/Windows-Exploit-Suggester-AonCyberLabs \n"
 sudo git clone https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git /opt/__PRIV_ESC/_WINDOWS/_OTHER/Windows-Exploit-Suggester-AonCyberLabs
