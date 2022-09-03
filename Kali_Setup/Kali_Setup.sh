@@ -342,9 +342,11 @@ sudo git clone https://github.com/ohpe/juicy-potato.git /opt/__PRIV_ESC/_LINUX/j
 
 echo "\n\n\n Installing - Windows Priv Esc Scripts \n"
 
-###### Broken Need to FIX
-#echo "\n\n\n Installing - carlospolop/winPEAS \n"
-#sudo git clone https://github.com/carlospolop/PEASS-ng/tree/master/winPEAS  /opt/__PRIV_ESC/_WINDOWS/0-Start_winPEAS-carlospolop
+echo "\n\n\n Installing - carlospolop/winPEAS \n"
+sudo mkdir /opt/__PRIV_ESC/_WINDOWS/0-Start_winPEAS-carlospolop
+sudo wget https://github.com/carlospolop/PEASS-ng/releases/download/20220901/winPEAS.bat     /opt/__PRIV_ESC/_WINDOWS/0-Start_winPEAS-carlospolop/
+sudo wget https://github.com/carlospolop/PEASS-ng/releases/download/20220901/winPEASx64.exe  /opt/__PRIV_ESC/_WINDOWS/0-Start_winPEAS-carlospolop/
+sudo wget https://github.com/carlospolop/PEASS-ng/releases/download/20220901/winPEASx86.exe  /opt/__PRIV_ESC/_WINDOWS/0-Start_winPEAS-carlospolop/
 
 echo "\n\n\n Installing - AonCyberLabs/Windows-Exploit-Suggester-AonCyberLabs \n"
 sudo git clone https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git /opt/__PRIV_ESC/_WINDOWS/_OTHER/Windows-Exploit-Suggester-AonCyberLabs
