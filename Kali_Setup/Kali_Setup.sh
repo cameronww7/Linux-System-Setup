@@ -462,6 +462,13 @@ go get -u github.com/tomnomnom/assetfinder
 sort -u /usr/share/seclists/Discovery/Web-Content/{big.txt,common.txt,directory-list-2.3*,raft-large-directories.txt,raft-large-files.txt,raft-medium-directories.txt,raft-medium-files.txt,raft-small-directories.txt,RobotsDisallowed-Top1000.txt} > mega-dirbuster.txt
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
+# Unpack & Fixing Rockyou not being UTF8 (SO ANNOYING)
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
+sudo tar -xzvf /usr/share/seclists/Passwords/Leaked-Databases/rockyou.txt.tar.gz
+
+sudo iconv -f ISO-8859-1 -t UTF-8//TRANSLIT /usr/share/seclists/Passwords/Leaked-Databases/rockyou.txt -o /usr/share/seclists/Passwords/Leaked-Databases/rockyou-UTF8.txt
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
+
 
 # Setup my File Strucutres 
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
