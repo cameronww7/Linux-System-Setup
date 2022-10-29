@@ -216,6 +216,7 @@ sudo pip install badchars
 
 echo "\n\n\n Installing - requests \n"
 sudo pip install requests
+sudo pip3 install requests
 
 echo "\n\n\n Installing - dnspython \n"
 sudo pip install dnspython
