@@ -459,7 +459,7 @@ go get -u github.com/tomnomnom/assetfinder
 
 # Build Out Mega Dir Busting File 
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
-sort -u /usr/share/seclists/Discovery/Web-Content/{big.txt,common.txt,directory-list-2.3*,raft-large-directories.txt,raft-large-files.txt,raft-medium-directories.txt,raft-medium-files.txt,raft-small-directories.txt,RobotsDisallowed-Top1000.txt} > mega-dirbuster.txt
+sudo sort -u /usr/share/seclists/Discovery/Web-Content/{big.txt,common.txt,directory-list-2.3*,raft-large-directories.txt,raft-large-files.txt,raft-medium-directories.txt,raft-medium-files.txt,raft-small-directories.txt,RobotsDisallowed-Top1000.txt} > mega-dirbuster.txt
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
 # Unpack & Fixing Rockyou not being UTF8 (SO ANNOYING)
