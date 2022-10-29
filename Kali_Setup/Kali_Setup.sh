@@ -79,10 +79,16 @@ echo "\n\n\n Installing - python3 & python \n"
 sudo apt-get install -y python3 
 sudo apt-get install -y python
 
+
+sudo apt-get install -y python3-pip python3-dev git libssl-dev libffi-dev build-essential
+
 # Install Pip
 echo "\n\n\n Installing - python3-pip \n"
 sudo apt-get -y --purge autoremove python3-pip
-sudo apt-get install -y python3-pip 
+sudo apt-get install -y python3-pip python3-dev git libssl-dev libffi-dev build-essential
+
+# Make sure its upgraded
+python3 -m pip install --upgrade pip
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
 
@@ -221,6 +227,11 @@ sudo pip install argparse
 echo "\n\n\n Installing - psutil \n"
 sudo apt-get install gcc python3-dev
 sudo pip3 install -U psutil
+
+# Install Pwn Tools
+echo "\n\n\n Installing - argparse \n"
+sudo python3 -m pip install --upgrade pwntools
+python3 -m pip install --upgrade pwntools
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
 # Install CyberChef 
@@ -449,6 +460,7 @@ go get -u github.com/tomnomnom/assetfinder
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 sort -u /usr/share/seclists/Discovery/Web-Content/{big.txt,common.txt,directory-list-2.3*,raft-large-directories.txt,raft-large-files.txt,raft-medium-directories.txt,raft-medium-files.txt,raft-small-directories.txt,RobotsDisallowed-Top1000.txt} > mega-dirbuster.txt
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
+
 
 # Setup my File Strucutres 
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
