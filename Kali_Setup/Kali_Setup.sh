@@ -152,6 +152,7 @@ sudo apt-get install -y freerdp-x11
 sudo apt-get install -y ansible
 sudo apt-get install -y autojump
 sudo apt-get install -y acpi
+sudo apt-get install -y terminator
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
 
