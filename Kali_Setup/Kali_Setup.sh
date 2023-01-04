@@ -64,34 +64,6 @@ sudo apt-get -y install libreoffice
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
 
-# Install Dev Tools
-# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
-# Install Git - Should already be installed
-echo "\n\n\n Installing - Git \n"
-sudo apt-get install -y git 
-
-# Install Perl
-echo "\n\n\n Installing - perl \n"
-sudo apt-get install -y perl  
-
-# Install Python
-echo "\n\n\n Installing - python3 & python \n"
-sudo apt-get install -y python3 
-sudo apt-get install -y python
-
-
-sudo apt-get install -y python3-pip python3-dev git libssl-dev libffi-dev build-essential
-
-# Install Pip
-echo "\n\n\n Installing - python3-pip \n"
-sudo apt-get -y --purge autoremove python3-pip
-sudo apt-get install -y python3-pip python3-dev git libssl-dev libffi-dev build-essential
-
-# Make sure its upgraded
-python3 -m pip install --upgrade pip
-# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
-
-
 # Install Building Tools
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 echo "\n\n\n Installing - build-essential \n"
@@ -103,6 +75,12 @@ sudo apt-get install -y manpages-dev
 echo "\n\n\n Installing - libpcap-dev \n"
 sudo apt-get install -y libpcap-dev
 
+echo "\n\n\n Installing - libffi-dev \n"
+sudo apt-get install -y libffi-dev
+
+echo "\n\n\n Installing - libssl-dev  \n"
+sudo apt-get install -y libssl-dev 
+
 echo "\n\n\n Installing - gcc-mingw-w64 \n"
 sudo apt-get install -y gcc-mingw-w64
 
@@ -110,6 +88,26 @@ echo "\n\n\n Installing - default-jdk \n"
 sudo apt-get install -y default-jdk
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
+
+# Install Dev Tools
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
+# Install Git - Should already be installed
+echo "\n\n\n Installing - Git \n"
+sudo apt-get install -y git 
+
+# Install Perl
+echo "\n\n\n Installing - perl \n"
+sudo apt-get install -y perl  
+
+# Install Python
+echo "\n\n\n Installing - python3 \n"
+sudo apt-get install -y python3 
+
+# Install Pip
+echo "\n\n\n Installing - python3-pip \n"
+sudo apt-get install -y python3-pip
+sudo apt-get install -y python3-dev
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
 
 # Tnstall Fonts
@@ -253,6 +251,9 @@ sudo pip3 install -U psutil
 echo "\n\n\n Installing - argparse \n"
 sudo python3 -m pip install --upgrade pwntools
 python3 -m pip install --upgrade pwntools
+
+# Install Impacket
+sudo pip install impacket
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
 # Install CyberChef 
@@ -455,12 +456,6 @@ cd /opt/
 sudo git clone https://github.com/A3h1nt/gimmeSH /opt/_Tools/gimmeSH/
 # Creates a Symbolic Link to the file so you can call it from anywhere
 sudo ln -s /opt/gimmeSH/gimmeSH.sh /usr/_Tools/local/bin/
-
-# Install Impacket - https://github.com/SecureAuthCorp/impacket
-echo "\n\n\n Installing - impacket \n"
-sudo git clone https://github.com/SecureAuthCorp/impacket.git /opt/_Tools/impacket/
-cd /opt/impacket/
-sudo pip install /opt/impacket/.
 
 echo "\n\n\n Installing - tomnomnom/assetfinder \n"
 go get -u github.com/tomnomnom/assetfinder
