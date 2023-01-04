@@ -492,8 +492,8 @@ sudo iconv -f ISO-8859-1 -t UTF-8//TRANSLIT /usr/share/seclists/Passwords/Leaked
 
 # Setup my File Strucutres 
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
-sudo mkdir ~/Hacking
-sudo chmod -R 777 ~/Hacking  
+sudo mkdir ~/HACKING
+sudo chmod -R 777 ~/HACKING  
 sudo chmod -R 777 /opt 
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
