@@ -144,12 +144,13 @@ sudo apt-get install -y gedit
 sudo apt-get install -y tree
 sudo apt-get install -y htop
 sudo apt-get install -y gedit
-sudo apt-get install -y glances
+sudo apt-get install -y glances # htop but better
 sudo apt-get install -y most
 sudo apt-get install -y ssh
 sudo apt-get install -y rdesktop
 sudo apt-get install -y freerdp-x11
 sudo apt-get install -y ansible
+sudo apt-get install -y autojump
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
 
