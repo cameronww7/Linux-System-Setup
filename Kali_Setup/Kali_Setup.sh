@@ -111,6 +111,23 @@ sudo apt-get install -y default-jdk
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
 
+
+# Tnstall Fonts
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
+echo "\n\n\n Installing - fonts-powerline \n"
+sudo apt-get install -y fonts-powerline
+
+echo "\n\n\n Installing - fonts-hack \n"
+sudo apt-get install -y fonts-hack
+
+echo "\n\n\n Installing - fonts-font-awesome \n"
+sudo apt-get install -y fonts-font-awesome
+
+echo "\n\n\n Installing - fonts-powerlinesymbols \n"
+sudo apt-get install -y fonts-powerlinesymbols
+# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
+
+
 # Installing - Developer/Code Editors
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 # Install Go - https://golang.org/doc/install
