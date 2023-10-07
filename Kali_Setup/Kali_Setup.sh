@@ -26,13 +26,6 @@ sudo apt-get-cache search kali-
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
 
-# Install VB Guest additions
-# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
-echo "\n\n\n Installing VirtualBox-Guest Additions"
-sudo apt-get install -y --reinstall virtualbox-guest-x11
-# ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
-
-
 # Installing PipMyKali - https://github.com/Dewalt-arch/pimpmykali
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 echo "\n\n\n Installing - PimyMyKali \n"
