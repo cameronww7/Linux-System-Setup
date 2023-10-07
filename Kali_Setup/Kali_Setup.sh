@@ -86,10 +86,6 @@ sudo apt-get install -y default-jdk
 echo "\n\n\n Installing - Git \n"
 sudo apt-get install -y git 
 
-# Install Perl
-echo "\n\n\n Installing - perl \n"
-sudo apt-get install -y perl  
-
 # Install Python
 echo "\n\n\n Installing - python3 \n"
 sudo apt-get install -y python3 
@@ -119,20 +115,6 @@ sudo apt-get install -y fonts-powerlinesymbols
 
 # Installing - Developer/Code Editors
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
-# Install Go - https://golang.org/doc/install
-echo "\n\n\n Installing - Go \n"
-sudo wget -P /opt/sys_tool_install/ https://golang.org/dl/go1.16.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf /opt/sys_tool_install/go1.16.linux-amd64.tar.gz
-sudo export GOPATH=$HOME/go
-sudo export PATH=$PATH:/usr/local/go/bin
-
-# Install Atom
-echo "\n\n\n Installing - Atom \n"
-sudo apt-get install -y  software-properties-common apt-transport-https wget
-sudo apt-get install wget gpg
-sudo wget -P /opt/sys_tool_install/ https://atom.io/download/deb
-sudo apt-get install -y /opt/sys_tool_install/atom-amd64.deb
-
 # Install VSCode
 echo "\n\n\n Installing - VSCode \n"
 sudo apt-get install -y software-properties-common apt-transport-https wget
