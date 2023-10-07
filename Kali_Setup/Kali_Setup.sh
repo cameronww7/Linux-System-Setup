@@ -38,14 +38,12 @@ sudo ./pimpmykali.sh --all
 
 # Install Internet Browsers
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
-# Install Chrome
-echo "\n\n\n Installing - Chrome \n"
-sudo wget -P /opt/sys_tool_install/ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb 
-sudo apt-get install -y /opt/sys_tool_install/google-chrome-stable_current_amd64.deb 
-
-# Install Chromium - Doesnt seem to work...
-#echo "\n\n\n Installing - chromium-browser \n"
-#sudo apt-get install -y chromium-browser 
+# Install Brave
+sudo apt install curl
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+sudo apt update
+sudo apt install brave-browser
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~--~-~-~-~-~--~-~-~-~-~--~-~-~-~-~-
 
 
