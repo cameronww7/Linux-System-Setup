@@ -178,6 +178,7 @@ sudo apt-get install -y redis-tools
 sudo apt-get install -y snmpwalk
 sudo apt-get install -y svwar
 sudo apt-get install -y wkhtmltopdf
+sudo apt-get install -y crunch
 
 # Install python-xlrd
 # Windows-Exploit-Suggester dependencies
