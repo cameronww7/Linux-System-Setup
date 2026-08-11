@@ -23,7 +23,9 @@ For a Fedora machine running GNOME. It mirrors `Gnome_Setup/` app for app, just 
 
 ## What you get
 
-This mirrors [`Gnome_Setup`](../Gnome_Setup/README.md#what-you-get) almost exactly, just through dnf instead of apt. The dev tools, quality-of-life tools, Terminal-Customization clone, and sudo message are the same idea, only the package names change: the `Development Tools` group instead of `build-essential`, `man-pages` instead of `manpages-dev`, `libpcap-devel` instead of `libpcap-dev`. Brave installs from Brave's own official dnf repo instead of an apt one, but same browser, same deal.
+This mirrors [`Gnome_Setup`](../Gnome_Setup/README.md#what-you-get) almost exactly, just through dnf instead of apt. The dev tools, Terminal-Customization clone, `~/Dev` folder, and sudo message are the same idea, only the package names change: the `Development Tools` group instead of `build-essential`, `man-pages` instead of `manpages-dev`, `libpcap-devel` instead of `libpcap-dev`. Brave installs from Brave's own official dnf repo instead of an apt one, but same browser, same deal.
+
+Quality-of-life tools are the same list too (gedit, tree, htop, glances, most, LibreOffice, terminator), with one difference worth calling out: Ghostty installs natively from dnf here, since Fedora carries it in its official repos, unlike Gnome_Setup where it has to fall back to Flatpak.
 
 Where things actually diverge is the daily-driver apps, since not everything has an official Fedora repo:
 

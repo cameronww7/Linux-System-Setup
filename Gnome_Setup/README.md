@@ -39,9 +39,11 @@ For a Debian or Ubuntu-family machine running GNOME. Installs dev tools, Brave, 
 - **Signal**, for private messaging.
 - **Claude Code**, for AI-assisted coding right from the terminal.
 
-**Quality-of-life tools.** gedit for quick edits, tree and htop and glances for a better look at your files and system load, most as a friendlier pager than less, and LibreOffice for anything that needs a full office suite.
+**Quality-of-life tools.** gedit for quick edits, tree and htop and glances for a better look at your files and system load, most as a friendlier pager than less, LibreOffice for anything that needs a full office suite, and two terminal emulators, terminator from apt and Ghostty from Flatpak (Ghostty doesn't publish an apt package, so it comes from Flathub instead).
 
 **Terminal-Customization.** Cloned to `/opt/Terminal-Customization` so it's ready to go, but nothing from it gets configured or run automatically. See the root README for how that's wired up.
+
+**A `~/Dev` folder**, a plain, empty folder in your home directory for your own projects. It's separate from `/opt`, which is where this script clones its own tools, `~/Dev` is yours to fill with whatever you're working on.
 
 **Sudo pwfeedback and a lecture message.** Because typing your password should at least show asterisks.
 

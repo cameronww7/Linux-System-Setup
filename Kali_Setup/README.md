@@ -23,8 +23,6 @@ For a Kali Linux pentest box. This one is focused entirely on tooling: recon and
 
 ## What you get
 
-**PimpMyKali.** Runs Kali's own general system tuning and tool setup script from [Dewalt-arch/pimpmykali](https://github.com/Dewalt-arch/pimpmykali).
-
 **Brave.** Installed from Brave's own signed apt repo, so it stays current whenever you run `apt upgrade`.
 
 **LibreOffice**, for writing up reports without switching to another machine.
@@ -35,7 +33,7 @@ For a Kali Linux pentest box. This one is focused entirely on tooling: recon and
 
 **Editors.** VS Code and gedit.
 
-**System and quality-of-life tools.** tree, htop, glances, and most for a better look at what's running, plus ssh, rdesktop, freerdp-x11, ansible, autojump, acpi, and terminator for the remote-access and terminal conveniences a pentest box tends to need.
+**System and quality-of-life tools.** tree, htop, glances, and most for a better look at what's running, plus ssh, rdesktop, freerdp-x11, ansible, autojump, and acpi for the remote-access conveniences a pentest box tends to need. Two terminal emulators come along too, terminator from apt and Ghostty from Flatpak, since Ghostty doesn't publish an apt package.
 
 **Recon and enumeration tools.** gobuster, sslscan, nikto, joomscan, wpscan, smbmap, enum4linux, dnsrecon, odat, ffuf, nbtscan, nmap, onesixtyone, oscanner, smbclient, snmp, sipvicious, tnscmd10g, whatweb, smtp-user-enum, nishang, finalrecon, feroxbuster, redis-tools, wkhtmltopdf, crunch, nmapAutomator, naabu, and AutoRecon, basically everything you'd reach for during the recon phase of an engagement.
 
@@ -47,7 +45,7 @@ For a Kali Linux pentest box. This one is focused entirely on tooling: recon and
 
 **Payload and recon scripts**, cloned under `/opt/_Payload_Scripts/`: PayloadsAllTheThings, msfpc, shellerator, sumrecon, pwncat, gimmeSH, assetfinder, and SecLists. SecLists also feeds the generated `mega-dirbuster.txt` wordlist and the UTF-8-converted `rockyou-UTF8.txt`, so you get clean versions of both without touching them by hand.
 
-**A `~/HACKING` working directory**, created and ready to use as scratch space for whatever you're working on.
+**A `~/HACKING` working directory**, created and ready to use as scratch space for whatever engagement you're working on, plus a separate `~/Dev` folder for your own scripts and projects that aren't tied to a specific engagement.
 
 **Sudo pwfeedback and a lecture message**, since you'll be typing your password after nearly every other command on a box like this.
 

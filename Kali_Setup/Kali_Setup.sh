@@ -1,30 +1,96 @@
 #!/usr/bin/env bash
-# Kali_Setup.sh - provisions a Kali Linux pentest box: recon/enum tools,
-# priv-esc script tree, payload scripts. Does NOT install desktop
-# productivity apps - see Gnome_Setup/Fedora_Setup for that.
+# Kali_Setup.sh - provisions a fresh Kali Linux box for pentest work: recon
+# and enumeration tools, a privilege-escalation script tree for both Linux
+# and Windows targets, and payload/recon scripts. Does NOT install desktop
+# productivity apps like Discord or Slack, that's what Gnome_Setup.sh and
+# Fedora_Setup.sh are for, this script is purely about the tooling.
+#
+# Why a script instead of a manual checklist: setting up a pentest box by
+# hand means remembering dozens of tools, their install methods, and the
+# handful of manual fixes each one needs (wordlist encoding, build paths
+# that aren't the repo root, etc). Miss one and you find out mid-engagement.
+# This script is that checklist, automated and safe to re-run, so "set up a
+# new Kali box" is one command and a cup of coffee instead of a half-day of
+# chasing down tools one at a time.
+#
+# A few design decisions worth understanding before you edit this file:
+#   - Idempotent: every install/config/clone step below checks "is this
+#     already done?" before doing anything. That means you can re-run this
+#     script any time, after a failure partway through, to pick up a new
+#     tool someone added later, to catch a machine up that's fallen behind,
+#     and it will only do the work that's still actually needed instead of
+#     erroring out on things that already exist or duplicating clones.
+#   - Self-locating: SCRIPT_DIR/REPO_ROOT below figure out where this repo
+#     actually lives on disk at runtime (see the comment above them), so
+#     cloning this repo to a different path, or running the script from a
+#     different working directory, never breaks the `source lib/common.sh`
+#     line further down.
+#   - Shared helpers live in lib/common.sh, not in this file. Logging,
+#     git clone/update, the shared /opt setup, sudo config, the reboot
+#     prompt, all of that is defined once there and sourced here. This
+#     script also defines its own apt/pip helpers just below, specific to
+#     Kali's much longer tool list, that Gnome_Setup.sh and Fedora_Setup.sh
+#     don't need.
+#   - Shell/terminal customization (oh-my-zsh, zsh plugins, powerlevel10k,
+#     .zshrc) is fully delegated to the Terminal-Customization repo cloned
+#     further down, this script does not touch zsh, your shell config, or
+#     any dotfiles at all. That's a deliberate separation: tooling and
+#     shell config change on different schedules and shouldn't be coupled.
 #
 # Usage: ./Kali_Setup.sh
-# Run as a normal user (not with sudo) - individual privileged steps sudo
-# internally. Safe to re-run: every step checks whether it's already done
-# before installing/adding/cloning anything again. Shell/terminal
-# customization (oh-my-zsh, zsh plugins, powerlevel10k, .zshrc) is fully
-# delegated to the Terminal-Customization repo cloned below - this script
-# does not touch zsh at all.
+# Run as your normal user, NOT with sudo, see the EUID check just below for
+# why that matters. Individual steps call sudo internally, only for the
+# specific commands that actually need root, package installs, writing
+# under /etc, and so on.
 
 set -euo pipefail
+# -e: stop immediately on any command that fails, instead of plowing ahead
+#     with a half-finished tool install. Especially important here, this
+#     script chains a lot of clone-then-build steps where a failure partway
+#     through (a bad naabu build, say) shouldn't be masked by later steps
+#     appearing to "succeed".
+# -u: treat referencing an unset variable as an error, catches typos in
+#     variable names (there are a lot of them in this file, PEASS_LATEST,
+#     SECLISTS_DIR, and friends) before they cause a confusing failure
+#     somewhere downstream instead of right where the typo is.
+# -o pipefail: a pipeline (a | b) fails if ANY stage fails, not just the
+#     last one, so a failure early in a pipe can't get silently swallowed.
 
 if [[ $EUID -eq 0 ]]; then
+    # Running this whole script as root would mean every "user-scoped" step
+    # below (pip installs without sudo not shown here since they do use
+    # sudo, git clones under /opt and $HOME, the ~/HACKING and ~/Dev
+    # folders, go installs) ends up owned by root instead of you, which is
+    # exactly the kind of mess that's annoying to untangle later. Individual
+    # commands below call sudo themselves for the specific things that
+    # actually need root, so there's no reason to run the whole script
+    # elevated.
     echo "[x] Run this script as your normal user, not with sudo. It sudos internally as needed." >&2
     exit 1
 fi
 
+# Resolve this script's real directory and the repo root above it, using
+# BASH_SOURCE (not $0, which can be wrong when a script is sourced) so this
+# works no matter where the repo is cloned to or what directory you run it
+# from.
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 # shellcheck source=../lib/common.sh
 source "$REPO_ROOT/lib/common.sh"
 
 # --- apt-specific idempotency helpers (mirrors Gnome_Setup.sh) ------------
+# These, plus pip_install_if_missing just below, are how every install in
+# this script stays idempotent. Read through them once, everything past
+# this point is just these five functions called over and over with
+# different arguments.
 
+# Installs whichever of the given packages aren't already installed,
+# skipping the ones dpkg already knows about. $@ = package names.
+# Batches everything into a single apt-get install call instead of one call
+# per package: apt resolves shared dependencies once instead of repeatedly,
+# and you get one transaction instead of a dozen. With the size of the
+# pentest tool list below, this matters more here than anywhere else in
+# this repo.
 apt_install_if_missing() {
     local missing=()
     for pkg in "$@"; do
@@ -38,6 +104,12 @@ apt_install_if_missing() {
     fi
 }
 
+# Downloads an already-binary (not ascii-armored) gpg key straight to a
+# keyring file. $1 = key URL, $2 = destination keyring path.
+# Not apt-key: apt-key is deprecated and trusted every key it held for
+# every repo on the system, one bad key could vouch for packages from any
+# repo. Each vendor's key living in its own file, referenced by that one
+# repo's signed-by= line, means a key only ever vouches for its own repo.
 apt_add_keyring_bin() {
     local key_url="$1" keyring="$2"
     if [[ ! -f "$keyring" ]]; then
@@ -46,6 +118,10 @@ apt_add_keyring_bin() {
     fi
 }
 
+# Same idea as apt_add_keyring_bin, but for vendors that publish their key
+# ascii-armored instead of already binary, `gpg --dearmor` converts it
+# before it's written to the keyring file. $1 = key URL, $2 = destination
+# keyring path.
 apt_add_keyring_asc() {
     local key_url="$1" keyring="$2"
     if [[ ! -f "$keyring" ]]; then
@@ -54,6 +130,10 @@ apt_add_keyring_asc() {
     fi
 }
 
+# Writes a one-line apt source file if it doesn't already contain the given
+# deb line, then refreshes apt so the new repo is usable right away.
+# $1 = sources.list.d file, $2 = deb line (normally including a
+# signed-by=<keyring path> pointing at whatever apt_add_keyring_* wrote).
 apt_add_source_list() {
     local list_file="$1" deb_line="$2"
     if [[ ! -f "$list_file" ]] || ! grep -qF "$deb_line" "$list_file"; then
@@ -63,7 +143,12 @@ apt_add_source_list() {
     fi
 }
 
-# $1 = package name to check, $2 = install spec (pypi name, or git+URL / package name if different)
+# Installs a pip package if it isn't already present. Checking via `pip
+# show` rather than trying to import the module means this works even for
+# packages whose importable name differs from their pypi name, and doesn't
+# require guessing what the module is called. $1 = package name to check,
+# $2 = install spec (pypi name, or git+URL / package name if different, see
+# autorecon and pwncat below for examples where the two aren't the same).
 pip_install_if_missing() {
     local pkg="$1" install_spec="${2:-$1}"
     if python3 -m pip show "$pkg" &>/dev/null; then
@@ -77,19 +162,24 @@ pip_install_if_missing() {
 # ---------------------------------------------------------------------------
 # 1. System update
 # ---------------------------------------------------------------------------
+# Always do this first. Updating and upgrading before installing anything
+# new means every step below is working against current package metadata
+# instead of fighting a stale cache. full-upgrade (not a plain upgrade) is
+# used deliberately here, Kali's rolling-release model occasionally needs
+# to remove or replace packages to resolve a dependency change, which a
+# plain `apt upgrade` refuses to do and would just leave half-upgraded.
 log_info "System update"
 sudo apt-get update
 sudo apt-get full-upgrade -y
 sudo apt-get autoremove -y
 
 # ---------------------------------------------------------------------------
-# 2. PimpMyKali - https://github.com/Dewalt-arch/pimpmykali
+# 2. Shared /opt setup
 # ---------------------------------------------------------------------------
-log_info "PimpMyKali"
+# Sets /opt group-writable so the unprivileged mkdir -p/git clone calls in
+# later sections (CyberChef, priv-esc tree, payload scripts) don't need sudo.
+log_info "Preparing /opt for tool clones"
 ensure_opt_dir
-git_clone_or_update "https://github.com/Dewalt-arch/pimpmykali" /opt/sys_tool_install/pimpmykali
-chmod +x /opt/sys_tool_install/pimpmykali/pimpmykali.sh
-(cd /opt/sys_tool_install/pimpmykali && sudo ./pimpmykali.sh --all)
 
 # ---------------------------------------------------------------------------
 # 3. Browsers
@@ -109,18 +199,34 @@ apt_install_if_missing libreoffice
 # ---------------------------------------------------------------------------
 # 5. Build/dev toolchain
 # ---------------------------------------------------------------------------
+# Not just "nice to have", several tools later in this script are built
+# from source rather than installed as packages (naabu and assetfinder need
+# Go, PimpMyKali-era tooling needed a JDK for some Java-based tools), and
+# libffi-dev/libssl-dev are common build requirements for Python packages
+# with native extensions (pwntools and impacket below both lean on them).
+# gcc-mingw-w64 specifically is for cross-compiling Windows payloads/binaries
+# from this Linux box, a very pentest-specific need the other two setup
+# scripts don't have any reason to carry.
 log_info "Build/dev toolchain"
 apt_install_if_missing build-essential manpages-dev libpcap-dev libffi-dev libssl-dev gcc-mingw-w64 default-jdk golang-go
 
 # ---------------------------------------------------------------------------
 # 6. Python3 + pip3
 # ---------------------------------------------------------------------------
+# A huge amount of the pentest tooling in this script (Python pip tools
+# section, AutoRecon, pwncat, and more) is Python-based, so this needs to
+# be solid early. python3-dev specifically (headers, not just the
+# interpreter) is what lets pip build native-extension packages like
+# pwntools from source instead of failing partway through.
 log_info "Python3 + pip3"
 apt_install_if_missing git python3 python3-pip python3-dev curl
 
 # ---------------------------------------------------------------------------
 # 7. Fonts
 # ---------------------------------------------------------------------------
+# Purely cosmetic, but worth having before Terminal-Customization sets up a
+# themed prompt later: powerline-style prompts and icon fonts render as
+# broken boxes without glyph fonts like these already present on the system.
 log_info "Fonts"
 apt_install_if_missing fonts-powerline fonts-hack fonts-font-awesome fonts-powerlinesymbols
 
@@ -136,15 +242,25 @@ apt_install_if_missing code
 # ---------------------------------------------------------------------------
 # 9. Basic/system tools
 # ---------------------------------------------------------------------------
+# Not pentest-specific, just the everyday utilities a box like this needs:
+# better process/disk visibility than the bare coreutils give you, a
+# friendlier pager, remote-access clients (ssh, rdesktop, freerdp-x11) for
+# jumping onto other boxes mid-engagement, ansible/autojump/acpi for
+# general convenience, and two terminal emulators.
 log_info "Basic/system tools"
 apt_install_if_missing gedit tree htop glances most ssh rdesktop freerdp-x11 ansible autojump acpi terminator
+
+log_info "Ghostty (no apt package, using Flatpak)"
+flatpak_install_if_missing com.mitchellh.ghostty
 
 # ---------------------------------------------------------------------------
 # 10. Pentest tool apt packages
 # ---------------------------------------------------------------------------
 # Note: seclists is intentionally NOT installed here via apt - the
-# danielmiessler/SecLists git clone in section 15 is kept current and is the
-# single source of truth for wordlists (avoids the old apt+git duplicate).
+# danielmiessler/SecLists git clone in the Payload/recon scripts section
+# below is kept current and is the single source of truth for wordlists
+# (avoids the old apt+git duplicate). Described by name, not section number,
+# so a future renumbering can't quietly make this comment wrong again.
 # snmpwalk/svwar dropped - not real standalone package names (they ship
 # inside the snmp/sipvicious packages already listed below). khtmltopdf
 # dropped as a non-existent duplicate of wkhtmltopdf.
@@ -182,6 +298,9 @@ pip_install_if_missing impacket
 # 13. CyberChef
 # ---------------------------------------------------------------------------
 log_info "CyberChef"
+# CyberChef ships as a static, offline-capable single-page app, not a
+# package or a git repo, so a version-pinned release zip is the intended
+# way to install it, downloaded once and unzipped in place.
 CYBERCHEF_DIR="/opt/CyberChef"
 CYBERCHEF_VERSION="v9.32.3"
 mkdir -p "$CYBERCHEF_DIR"
@@ -195,6 +314,11 @@ fi
 # ---------------------------------------------------------------------------
 # 14. Enumeration tools
 # ---------------------------------------------------------------------------
+# Where the "Pentest tool apt packages" section above installed individual
+# scanning tools, these three are automation wrappers around them, they
+# chain nmap and friends together into a full recon workflow instead of
+# you running each tool by hand. Installed via pip/git clone instead of
+# apt because none of them ship an apt package.
 log_info "AutoRecon - https://github.com/Tib3rius/AutoRecon"
 pip_install_if_missing autorecon "git+https://github.com/Tib3rius/AutoRecon.git"
 
@@ -205,6 +329,9 @@ sudo ln -sf /opt/_Tools/nmapAutomator/nmapAutomator.sh /usr/local/bin/nmapAutoma
 
 log_info "naabu - https://github.com/projectdiscovery/naabu"
 git_clone_or_update "https://github.com/projectdiscovery/naabu.git" /opt/_Tools/naabu
+# naabu's main package lives under v2/cmd/naabu in its repo, not the repo
+# root, so `go install .../naabu@latest` won't find it. Building manually
+# from that subpath and copying the binary out is the reliable path here.
 (
     cd /opt/_Tools/naabu/v2/cmd/naabu
     go build
@@ -222,6 +349,10 @@ clone_terminal_customization
 # 16. Priv-esc tool tree
 # ---------------------------------------------------------------------------
 log_info "Priv-esc file structure"
+# Folders are created up front, split by OS and then by script type
+# (executable/PowerShell/other), so every git_clone_or_update call below has
+# a predictable, already-existing home to land in instead of dumping
+# everything in one flat directory.
 mkdir -p /opt/__PRIV_ESC/_WINDOWS/_EXECUTABLE
 mkdir -p /opt/__PRIV_ESC/_WINDOWS/_POWERSHELL
 mkdir -p /opt/__PRIV_ESC/_WINDOWS/_OTHER
@@ -253,6 +384,9 @@ mkdir -p "$WINPEAS_DIR"
 
 git_clone_or_update "https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git" /opt/__PRIV_ESC/_WINDOWS/_OTHER/Windows-Exploit-Suggester-AonCyberLabs
 WES_NOTES="/opt/__PRIV_ESC/_WINDOWS/_OTHER/howToUpdateWindowsExploiter.txt"
+# Windows-Exploit-Suggester needs its database updated before it's useful
+# and takes a systeminfo dump as input, neither is obvious from the tool
+# itself, so the two commands you actually need get written down here.
 if [[ ! -f "$WES_NOTES" ]]; then
     cat > "$WES_NOTES" <<-'EOF'
 	./windows-exploit-suggester.py --update
@@ -306,6 +440,9 @@ go install github.com/tomnomnom/assetfinder@latest
 # ---------------------------------------------------------------------------
 MEGA_DIRBUSTER="/opt/_Payload_Scripts/mega-dirbuster.txt"
 if [[ ! -f "$MEGA_DIRBUSTER" ]]; then
+    # Merges the highest-value SecLists web-content wordlists into one
+    # sorted, deduplicated file, so dir-busting tools only need one -w
+    # target instead of picking a single list and hoping it's the right one.
     log_info "Building mega-dirbuster.txt"
     sort -u "$SECLISTS_DIR"/Discovery/Web-Content/{big.txt,common.txt,directory-list-2.3*,raft-large-directories.txt,raft-large-files.txt,raft-medium-directories.txt,raft-medium-files.txt,raft-small-directories.txt,RobotsDisallowed-Top1000.txt} \
         > "$MEGA_DIRBUSTER"
@@ -320,6 +457,9 @@ if [[ ! -f "$ROCKYOU_DIR/rockyou.txt" ]]; then
     tar -xzvf "$ROCKYOU_DIR/rockyou.txt.tar.gz" -C "$ROCKYOU_DIR"
 fi
 if [[ ! -f "$ROCKYOU_DIR/rockyou-UTF8.txt" ]]; then
+    # rockyou.txt ships Latin-1 (ISO-8859-1) encoded, which breaks tools
+    # that assume UTF-8 input. Keeping a converted copy alongside the
+    # original avoids surprising failures without touching the source file.
     log_info "Converting rockyou.txt to UTF-8"
     iconv -f ISO-8859-1 -t UTF-8//TRANSLIT "$ROCKYOU_DIR/rockyou.txt" -o "$ROCKYOU_DIR/rockyou-UTF8.txt"
 fi
@@ -327,22 +467,48 @@ fi
 # ---------------------------------------------------------------------------
 # 20. ~/HACKING working directory
 # ---------------------------------------------------------------------------
+# Scratch space for whatever engagement you're currently working on, loot,
+# scan output, notes, anything. 2775 (group-writable, setgid) matches the
+# same reasoning as /opt in ensure_opt_dir: usable without needing sudo for
+# every file, without being world-writable either.
 install -d -m 2775 "$HOME/HACKING"
 
 # ---------------------------------------------------------------------------
-# 21. Sudo lecture / pwfeedback
+# 21. ~/Dev folder
 # ---------------------------------------------------------------------------
+# A blank slate for your own scripts and projects that aren't tied to a
+# specific engagement, deliberately separate from both ~/HACKING (scratch
+# space for engagement work) and /opt (reserved for the tool installs this
+# script itself manages), so nothing you create here is ever at risk of
+# being touched by a future re-run.
+log_info "Dev folder"
+mkdir -p "$HOME/Dev"
+
+# ---------------------------------------------------------------------------
+# 22. Sudo lecture / pwfeedback
+# ---------------------------------------------------------------------------
+# See add_sudo_lecture_config in lib/common.sh for what this actually
+# configures and why it's done as a sudoers.d drop-in. Worth having on a
+# box like this in particular, you'll be typing your password after nearly
+# every other command.
 add_sudo_lecture_config "$REPO_ROOT"
 
 # ---------------------------------------------------------------------------
-# 22. Final update pass
+# 23. Final update pass
 # ---------------------------------------------------------------------------
+# Runs again at the end, not just at the start, because several steps above
+# added new apt repos (Brave, VS Code). Those repos' own packages wouldn't
+# be picked up by the update at the top of this script, catching it now
+# means the very first `apt upgrade` you run by hand after this finishes
+# isn't a surprisingly large one.
 log_info "Final update pass"
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get autoremove -y
 
 # ---------------------------------------------------------------------------
-# 23. Reboot prompt
+# 24. Reboot prompt
 # ---------------------------------------------------------------------------
+# See confirm_reboot_prompt in lib/common.sh for why a reboot is actually
+# worth offering here rather than just ending the script.
 confirm_reboot_prompt

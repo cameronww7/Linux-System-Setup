@@ -22,8 +22,9 @@ GNOME and Fedora install the same set of apps through their own package manager,
 - **One script per machine.** No clicking through app stores or copy-pasting install commands from memory.
 - **Safe to re-run.** Every step checks whether it's already done before doing anything, so running the script again just catches you up instead of reinstalling everything from scratch.
 - **Self-locating.** Clone this repo anywhere you want, the scripts figure out their own path at runtime.
-- **Native installs where they exist.** Real apt/dnf repos for Brave, VS Code, Slack, ProtonVPN, and friends. Flatpak only steps in on Fedora, for the handful of apps that don't publish an rpm.
+- **Native installs where they exist.** Real apt/dnf repos for Brave, VS Code, Slack, ProtonVPN, and friends. Flatpak only steps in for the handful of apps that don't publish a package for your distro, like Ghostty on the apt-based targets.
 - **The daily-driver app set.** Discord, Slack, Zoom, VS Code, ProtonVPN, Spotify, GitHub Desktop, Brave, Signal, and Claude Code, on both desktop targets.
+- **A `~/Dev` folder on every target.** A personal workspace for your own projects, kept separate from `/opt`, where every script clones its own tool installs. Kali also keeps its existing `~/HACKING` folder for engagement work, unrelated to `~/Dev`.
 
 ## How the pieces fit together
 
@@ -38,7 +39,7 @@ GNOME and Fedora install the same set of apps through their own package manager,
       apt, daily apps    dnf, daily apps    apt, pentest tools
 ```
 
-All three scripts are built on the same helpers in `lib/common.sh`: idempotent installs, git clone-or-pull, the sudo lecture setup. What each one actually installs is completely different, but the underlying behavior is consistent across all three.
+All three scripts are built on the same helpers in [`lib/common.sh`](lib/README.md): idempotent installs, git clone-or-pull, the sudo lecture setup. What each one actually installs is completely different, but the underlying behavior is consistent across all three. See [`lib/README.md`](lib/README.md) for what's actually in there.
 
 ## Getting started
 
