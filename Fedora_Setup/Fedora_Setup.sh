@@ -92,13 +92,17 @@ dnf_install_if_missing() {
 # related packages dnf tracks as a single unit, like Development Tools
 # below), which don't show up in a plain `rpm -q` check the way individual
 # packages do. $1 = group name, exactly as dnf lists it.
+# Uses the space-separated "group install" subcommand form rather than the
+# older concatenated "groupinstall", since dnf5 (the default on modern
+# Fedora, where plain `dnf` IS dnf5) dropped the concatenated form entirely.
+# "group install" works on both dnf5 and legacy dnf4.
 dnf_group_install_if_missing() {
     local group="$1"
     if dnf group list --installed 2>/dev/null | grep -qF "$group"; then
         log_info "Group already installed, skipping: $group"
     else
         log_info "Installing group: $group"
-        sudo dnf groupinstall -y "$group"
+        sudo dnf group install -y "$group"
     fi
 }
 
