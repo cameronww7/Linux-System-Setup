@@ -250,8 +250,16 @@ apt_install_if_missing code
 log_info "Basic/system tools"
 apt_install_if_missing gedit tree htop glances most ssh rdesktop freerdp-x11 ansible autojump acpi terminator
 
-log_info "Ghostty (no apt package, using Flatpak)"
-flatpak_install_if_missing com.mitchellh.ghostty ghostty
+# Ghostty doesn't publish a .deb or an apt repo, and despite reserving a
+# Flathub app id (com.mitchellh.ghostty), it was never actually published
+# there either, confirmed directly: that app id 404s on Flathub and its
+# search returns nothing. Every remaining Linux option ghostty.org itself
+# lists is a third-party "Community Binary" it explicitly warns carries
+# tampering risk, "not official packages... implicitly accept the risk of a
+# third party", except Snap: ghostty.org states the Snap build itself runs
+# through Ghostty's own CI, not a stranger's. That's the one used here.
+log_info "Ghostty (no apt package, no real Flatpak, using Snap)"
+snap_install_if_missing ghostty ghostty
 
 # ---------------------------------------------------------------------------
 # 10. Pentest tool apt packages

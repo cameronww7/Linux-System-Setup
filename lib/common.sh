@@ -175,6 +175,69 @@ flatpak_install_if_missing() {
     fi
 }
 
+# Installs snapd if it's not present, then makes sure classic-confinement
+# snaps (the confinement level any real GUI/terminal app needs, --classic
+# below) actually work. Two things dnf-based systems don't get for free the
+# way apt-based ones do, confirmed by testing both directly:
+#   - Fedora doesn't wire up the /snap -> /var/lib/snapd/snap symlink
+#     automatically the way Ubuntu does. snapd installs and runs fine
+#     without it, but every classic snap fails to resolve its own libraries
+#     without that symlink in place.
+#   - A freshly installed snapd needs a moment to finish its first-boot
+#     "seeding" before it'll accept any install. Skip the wait and
+#     `snap install` fails outright with "too early for operation, device
+#     not yet seeded", `snap wait system seed.loaded` blocks until it's
+#     safe to proceed, and returns immediately if seeding already finished.
+ensure_snapd() {
+    command_exists snap || {
+        log_info "Installing snapd"
+        if command_exists dnf; then
+            sudo dnf install -y snapd
+        else
+            sudo apt-get install -y snapd
+        fi
+        sudo systemctl enable --now snapd.socket
+    }
+    if command_exists dnf && [[ ! -e /snap ]]; then
+        log_info "Linking /snap -> /var/lib/snapd/snap (Fedora needs this for classic snaps, Ubuntu/Debian already have it)"
+        sudo ln -s /var/lib/snapd/snap /snap
+    fi
+    sudo snap wait system seed.loaded
+}
+
+# Fallback install path for apps that don't have a real apt/dnf package OR a
+# working Flatpak, used specifically where even Flatpak isn't an option
+# (Ghostty as of writing: it has no Flathub listing at all despite reserving
+# an app id for one, see the comment above each call site for the full
+# story). $1 = snap package name. $2 (optional) = the binary name that
+# app's official installer normally puts on $PATH, same idea as
+# flatpak_install_if_missing's $2, checked first so a copy installed some
+# other way isn't duplicated. Note the "already installed" check below
+# queries snapd directly (`snap list`) rather than using $2/command_exists
+# for that half of the job: a snap's own binary is only added to $PATH via
+# a profile.d script that a currently-running shell won't have re-sourced,
+# so command_exists would wrongly report "not installed" immediately after
+# a real, successful install within the same script run.
+snap_install_if_missing() {
+    local snap_name="$1" bin_name="${2:-}"
+    if [[ -n "$bin_name" ]] && command_exists "$bin_name"; then
+        log_info "$bin_name already installed outside snap, skipping $snap_name"
+        return
+    fi
+    ensure_snapd
+    if snap list "$snap_name" &>/dev/null; then
+        log_info "$snap_name already installed (snap), skipping"
+    else
+        # --classic: unconfined/full-system-access. Required for
+        # $snap_name here (snapd refuses a plain confined install for
+        # packages that declare classic confinement), and it's the correct
+        # choice anyway, a terminal emulator has to spawn arbitrary shells
+        # and processes, so sandboxing it wouldn't accomplish much.
+        log_info "Installing $snap_name via snap"
+        sudo snap install --classic "$snap_name"
+    fi
+}
+
 # Offers to reboot once everything else is done. Genuinely worth asking for,
 # not just a nicety: kernel/systemd updates from the "update" steps in each
 # script don't take effect until reboot, new group memberships (docker,

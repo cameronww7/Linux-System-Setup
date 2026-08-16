@@ -38,7 +38,7 @@ For a Debian or Ubuntu-family machine running GNOME. Installs dev tools, Brave, 
 - **Signal**, for private messaging.
 - **Claude Code**, for AI-assisted coding right from the terminal.
 
-**Quality-of-life tools.** gedit for quick edits, tree and htop and glances for a better look at your files and system load, most as a friendlier pager than less, LibreOffice for anything that needs a full office suite, and two terminal emulators, terminator from apt and Ghostty from Flatpak (Ghostty doesn't publish an apt package, so it comes from Flathub instead).
+**Quality-of-life tools.** gedit for quick edits, tree and htop and glances for a better look at your files and system load, most as a friendlier pager than less, LibreOffice for anything that needs a full office suite, and two terminal emulators, terminator from apt and Ghostty from Snap. Ghostty doesn't publish an apt package, and despite reserving a Flathub app id, was never actually published there either, so Snap is the fallback here, it's the one Linux install option Ghostty's own project says is actually built by their own CI rather than a third party.
 
 **Terminal-Customization.** Cloned to `/opt/Terminal-Customization` so it's ready to go, but nothing from it gets configured or run automatically. See the root README for how that's wired up.
 
@@ -53,5 +53,8 @@ For a Debian or Ubuntu-family machine running GNOME. Installs dev tools, Brave, 
 
 > **Note**
 > ProtonVPN installs from a version-pinned `.deb`, because ProtonVPN doesn't offer a stable "latest" URL for it. If that install step starts failing, grab a current version from [their Linux download page](https://protonvpn.com/support/linux-vpn-tool/) and update the script.
+
+> **Note**
+> Ghostty being installed via Snap means this script installs `snapd` too, the only place in this script that touches Snap at all. That's new infrastructure beyond the usual apt/Flatpak, added specifically because it's the only Linux install option for Ghostty that Ghostty's own project describes as built by their own CI rather than a third party, every other option (a community apt script, an AppImage) carries an explicit tampering-risk warning from Ghostty's own docs.
 
 Atom, the VirtualBox guest additions, and a hardcoded Go 1.16 install used to be part of this script. They're gone now: Atom is discontinued, VirtualBox wasn't actually in use, and Go is better installed straight from apt if you ever need it.

@@ -149,7 +149,12 @@ apt_install_deb_url_if_missing() {
     fi
     tmp_deb="$(mktemp --suffix=.deb)"
     log_info "Downloading $pkg from $url"
-    curl -fsSLo "$tmp_deb" "$url"
+    # No -s here on purpose, unlike the small keyring downloads elsewhere in
+    # this file: Discord and Zoom's .deb files are large enough (tens to
+    # ~100+ MB) that a silent download can sit there for a while with
+    # nothing on screen. --progress-bar keeps a live download indicator
+    # visible instead.
+    curl -f --progress-bar -Lo "$tmp_deb" "$url"
     sudo apt-get install -y "$tmp_deb"
     rm -f "$tmp_deb"
 }
@@ -268,10 +273,16 @@ fi
 log_info "Quality-of-life tools"
 apt_install_if_missing gedit tree htop glances most libreoffice terminator
 
-# Ghostty doesn't publish a .deb or an apt repo, Flatpak/Flathub is the only
-# reliably up-to-date install path for it on apt-based distros.
-log_info "Ghostty (no apt package, using Flatpak)"
-flatpak_install_if_missing com.mitchellh.ghostty ghostty
+# Ghostty doesn't publish a .deb or an apt repo, and despite reserving a
+# Flathub app id (com.mitchellh.ghostty), it was never actually published
+# there either, confirmed directly: that app id 404s on Flathub and its
+# search returns nothing. Every remaining Linux option ghostty.org itself
+# lists is a third-party "Community Binary" it explicitly warns carries
+# tampering risk, "not official packages... implicitly accept the risk of a
+# third party", except Snap: ghostty.org states the Snap build itself runs
+# through Ghostty's own CI, not a stranger's. That's the one used here.
+log_info "Ghostty (no apt package, no real Flatpak, using Snap)"
+snap_install_if_missing ghostty ghostty
 
 # ---------------------------------------------------------------------------
 # 6. Terminal customization
