@@ -202,7 +202,7 @@ apt_install_if_missing brave-browser
 # package that adds a repo, rather than being the app itself). Follow which
 # helper each block below actually calls to see which category it falls
 # into.
-log_info "Discord"
+log_info "Discord (official .deb, no vendor checksum or signature published anywhere for it, TLS transport is the ceiling of verification available here, confirmed directly, not assumed)"
 apt_install_deb_url_if_missing discord "https://discord.com/api/download?platform=linux&format=deb"
 
 log_info "Slack"
@@ -211,7 +211,7 @@ apt_add_source_list /etc/apt/sources.list.d/slack.list \
     "deb [signed-by=/usr/share/keyrings/slack-archive-keyring.gpg] https://packagecloud.io/slacktechnologies/slack/debian/ jessie main"
 apt_install_if_missing slack-desktop
 
-log_info "Zoom"
+log_info "Zoom (official .deb, same TLS-only trust ceiling as Discord above, checked Zoom's own download page directly for a published hash, the only 'sha256' string on it is bundled crypto-js library code, not a checksum of the installer)"
 apt_install_deb_url_if_missing zoom "https://zoom.us/client/latest/zoom_amd64.deb"
 
 log_info "Visual Studio Code"
@@ -225,19 +225,33 @@ log_info "ProtonVPN"
 # downloaded .deb only bootstraps ProtonVPN's own apt repo, it isn't the app
 # itself, so "already done" has to mean "the repo file exists" instead of
 # "the dpkg package is installed". The actual app installs on the next line.
+PROTONVPN_KEYRING="/usr/share/keyrings/protonvpn-stable-archive-keyring.gpg"
 if [[ ! -f /etc/apt/sources.list.d/protonvpn-stable.list ]]; then
     proton_deb="$(mktemp --suffix=.deb)"
-    curl -fsSLo "$proton_deb" "https://repo.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3_all.deb"
+    curl -fsSLo "$proton_deb" "https://repo.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.8_all.deb"
     sudo apt-get install -y "$proton_deb"
     sudo apt-get update
     rm -f "$proton_deb"
+
+    # The bootstrap package silently drops its own keyring via its postinst
+    # script rather than this script importing a key it chose itself, so
+    # verify what actually landed matches ProtonVPN's own published key
+    # instead of trusting that postinst blindly. Fetched fresh here, not
+    # hardcoded, so this keeps working automatically if ProtonVPN ever
+    # rotates the key.
+    expected_fpr="$(curl -fsSL https://repo.protonvpn.com/debian/public_key.asc | gpg --with-colons --with-fingerprint --show-keys 2>/dev/null | awk -F: '/^fpr:/ {print $10; exit}')"
+    actual_fpr="$(gpg --with-colons --with-fingerprint --show-keys "$PROTONVPN_KEYRING" 2>/dev/null | awk -F: '/^fpr:/ {print $10; exit}')"
+    if [[ -z "$expected_fpr" || "$expected_fpr" != "$actual_fpr" ]]; then
+        log_error "ProtonVPN keyring ($PROTONVPN_KEYRING) does not match ProtonVPN's published key, aborting rather than trusting an unverified repo"
+        exit 1
+    fi
 fi
 apt_install_if_missing proton-vpn-gnome-desktop
 
 log_info "Spotify"
 apt_add_keyring_asc "https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg" /usr/share/keyrings/spotify.gpg
 apt_add_source_list /etc/apt/sources.list.d/spotify.list \
-    "deb [signed-by=/usr/share/keyrings/spotify.gpg] http://repository.spotify.com stable non-free"
+    "deb [signed-by=/usr/share/keyrings/spotify.gpg] https://repository.spotify.com stable non-free"
 apt_install_if_missing spotify-client
 
 log_info "Signal"
@@ -256,10 +270,28 @@ apt_install_if_missing nodejs npm
 # behavior consistent with every other step in this script, and the log
 # message tells you the update command since there's no apt upgrade path
 # that would catch this one.
+#
+# Deliberately not run under sudo: a plain `sudo npm install -g` would run
+# any postinstall/lifecycle script in this package, or anything in its
+# dependency tree, as root, more privilege than an npm install actually
+# needs. Pointing npm's global prefix at a directory this user owns means
+# `npm install -g` never needs root, for this package or any future one.
+# The PATH addition goes through an /etc/profile.d drop-in, the same
+# mechanism ensure_snapd already uses for snap binaries, rather than editing
+# ~/.bashrc/~/.zshrc directly, since shell customization is
+# Terminal-Customization's job, not this script's.
+NPM_GLOBAL_DIR="$HOME/.npm-global"
+mkdir -p "$NPM_GLOBAL_DIR"
+npm config set prefix "$NPM_GLOBAL_DIR"
+if [[ ! -f /etc/profile.d/npm-global-path.sh ]]; then
+    log_info "Adding npm global bin to PATH (system-wide, /etc/profile.d)"
+    echo 'export PATH="$HOME/.npm-global/bin:$PATH"' | sudo tee /etc/profile.d/npm-global-path.sh >/dev/null
+fi
+export PATH="$NPM_GLOBAL_DIR/bin:$PATH"
 if ! command_exists claude; then
-    sudo npm install -g @anthropic-ai/claude-code
+    npm install -g @anthropic-ai/claude-code
 else
-    log_info "Claude Code already installed (run 'sudo npm update -g @anthropic-ai/claude-code' to update)"
+    log_info "Claude Code already installed (run 'npm update -g @anthropic-ai/claude-code' to update)"
 fi
 
 # ---------------------------------------------------------------------------

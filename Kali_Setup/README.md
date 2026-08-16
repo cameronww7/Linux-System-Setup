@@ -52,7 +52,10 @@ For a Kali Linux pentest box. This one is focused entirely on tooling: recon and
 ## Good to know
 
 > **Note**
-> linPEAS and winPEAS always download from GitHub's `/releases/latest/` redirect instead of a version tag pinned in the script, so they stay current on every run without needing an edit.
+> linPEAS and winPEAS pin a specific PEASS-ng release tag and verify each download's sha256 before using it, rather than pulling from GitHub's `/releases/latest/` redirect. PEASS-ng doesn't publish its own checksums for these files (checked directly, no `.sha256`/`SHASUMS` asset exists in its releases), so the hashes checked against are ones this repo computed itself at pin time, not a vendor-published guarantee, they still catch a corrupted download or an unexpected change to the pinned release. Bumping to a newer release means updating both the tag and the four hashes together.
+
+> **Note**
+> Every other tool in the priv-esc tree and payload/recon scripts sections (25+ git clones) intentionally floats on each upstream repo's default branch, unpinned, and re-pulls on every re-run. That's a deliberate choice, not an oversight: these are living pentest tools that need new CVEs, modules, and fixes to stay useful for real engagements, and pinning 25+ single-maintainer repos to fixed commits would mean this script's freshness turns into manual upkeep forever. The tradeoff: a compromised upstream commit on any of them would get pulled in silently on the next run, same as it would with a manual `git pull` on any of these tools outside this script.
 
 > **Note**
 > SecLists is installed once through `git clone` and kept current on re-runs. There used to be a second, duplicate copy installed through apt too, that's gone now.

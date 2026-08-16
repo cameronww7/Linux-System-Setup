@@ -50,7 +50,7 @@ set -euo pipefail
 #     through (a bad naabu build, say) shouldn't be masked by later steps
 #     appearing to "succeed".
 # -u: treat referencing an unset variable as an error, catches typos in
-#     variable names (there are a lot of them in this file, PEASS_LATEST,
+#     variable names (there are a lot of them in this file, PEASS_RELEASE,
 #     SECLISTS_DIR, and friends) before they cause a confusing failure
 #     somewhere downstream instead of right where the typo is.
 # -o pipefail: a pipeline (a | b) fails if ANY stage fails, not just the
@@ -156,6 +156,24 @@ pip_install_if_missing() {
     else
         log_info "Installing (pip): $pkg"
         sudo python3 -m pip install "$install_spec"
+    fi
+}
+
+# Fails loudly if a downloaded file's sha256 doesn't match what's expected.
+# $1 = file path, $2 = expected sha256. Used for the linPEAS/winPEAS
+# binaries below, which PEASS-ng doesn't publish a vendor checksum for at
+# all (checked its GitHub releases directly, no .sha256/SHASUMS asset
+# exists), so these are hashes this repo computed and commits to itself at
+# pin time, not vendor-attested ones. Still worth having: it catches a
+# corrupted download or a byte-for-byte change in the pinned release
+# (accidental or otherwise) instead of silently running whatever came back.
+verify_sha256_or_die() {
+    local file="$1" expected="$2" actual
+    actual="$(sha256sum "$file" | awk '{print $1}')"
+    if [[ "$actual" != "$expected" ]]; then
+        log_error "$file: sha256 mismatch (expected $expected, got $actual), aborting rather than using an unverified file"
+        rm -f "$file"
+        exit 1
     fi
 }
 
@@ -370,10 +388,20 @@ log_info "Win/Lin priv-esc scripts"
 git_clone_or_update "https://github.com/AlessandroZ/BeRoot.git" /opt/__PRIV_ESC/BeRoot-AlessandroZ
 
 log_info "Linux priv-esc scripts"
-PEASS_LATEST="https://github.com/carlospolop/PEASS-ng/releases/latest/download"
+# Pinned to a specific PEASS-ng release tag, same pattern as CyberChef
+# above, instead of /releases/latest/download, which would silently pull in
+# whatever's newest on every re-run with nothing to review first. PEASS-ng
+# doesn't publish a checksum file in its releases (checked directly, no
+# .sha256/SHASUMS asset exists), so verify_sha256_or_die above checks
+# against hashes this repo computed itself at pin time, not a vendor one.
+PEASS_TAG="20260814-55a4f278"
+PEASS_RELEASE="https://github.com/carlospolop/PEASS-ng/releases/download/${PEASS_TAG}"
 LINPEAS_DIR="/opt/__PRIV_ESC/_LINUX/0-Start_linPEAS-carlospolop"
 mkdir -p "$LINPEAS_DIR"
-[[ -f "$LINPEAS_DIR/linpeas.sh" ]] || wget -P "$LINPEAS_DIR" "$PEASS_LATEST/linpeas.sh"
+if [[ ! -f "$LINPEAS_DIR/linpeas.sh" ]]; then
+    wget -P "$LINPEAS_DIR" "$PEASS_RELEASE/linpeas.sh"
+    verify_sha256_or_die "$LINPEAS_DIR/linpeas.sh" "06f94651d916b4f0faca4433517e01af50f8ae97f18c9e65e3148b5032445f57"
+fi
 
 git_clone_or_update "https://github.com/rebootuser/LinEnum.git" /opt/__PRIV_ESC/_LINUX/1_LinEnum-rebootuser
 git_clone_or_update "https://github.com/redcode-labs/Citadel.git" /opt/__PRIV_ESC/_LINUX/Citadel-redcode-labs
@@ -386,9 +414,18 @@ git_clone_or_update "https://github.com/ohpe/juicy-potato.git" /opt/__PRIV_ESC/_
 log_info "Windows priv-esc scripts"
 WINPEAS_DIR="/opt/__PRIV_ESC/_WINDOWS/0-Start_winPEAS-carlospolop"
 mkdir -p "$WINPEAS_DIR"
-[[ -f "$WINPEAS_DIR/winPEAS.bat" ]]    || wget -P "$WINPEAS_DIR" "$PEASS_LATEST/winPEAS.bat"
-[[ -f "$WINPEAS_DIR/winPEASx64.exe" ]] || wget -P "$WINPEAS_DIR" "$PEASS_LATEST/winPEASx64.exe"
-[[ -f "$WINPEAS_DIR/winPEASx86.exe" ]] || wget -P "$WINPEAS_DIR" "$PEASS_LATEST/winPEASx86.exe"
+if [[ ! -f "$WINPEAS_DIR/winPEAS.bat" ]]; then
+    wget -P "$WINPEAS_DIR" "$PEASS_RELEASE/winPEAS.bat"
+    verify_sha256_or_die "$WINPEAS_DIR/winPEAS.bat" "11e4ea92ce2465f3d30c5a56fd4aeba2aecaf4d1c2670ac42bd61c4db2becf87"
+fi
+if [[ ! -f "$WINPEAS_DIR/winPEASx64.exe" ]]; then
+    wget -P "$WINPEAS_DIR" "$PEASS_RELEASE/winPEASx64.exe"
+    verify_sha256_or_die "$WINPEAS_DIR/winPEASx64.exe" "5077beb3ac63049ff67c436b26f781a2bd08c7d7b182308ac868bef135b76840"
+fi
+if [[ ! -f "$WINPEAS_DIR/winPEASx86.exe" ]]; then
+    wget -P "$WINPEAS_DIR" "$PEASS_RELEASE/winPEASx86.exe"
+    verify_sha256_or_die "$WINPEAS_DIR/winPEASx86.exe" "ba1d155fe2eb8243b45e9c1f5c13c482697f196e3a012e81dbe021f780f49dc1"
+fi
 
 git_clone_or_update "https://github.com/AonCyberLabs/Windows-Exploit-Suggester.git" /opt/__PRIV_ESC/_WINDOWS/_OTHER/Windows-Exploit-Suggester-AonCyberLabs
 WES_NOTES="/opt/__PRIV_ESC/_WINDOWS/_OTHER/howToUpdateWindowsExploiter.txt"
