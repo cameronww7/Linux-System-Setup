@@ -14,12 +14,16 @@ For a Kali Linux pentest box. This one is focused entirely on tooling: recon and
    ```sh
    cd Kali_Setup
    ```
-2. Run the script as your normal user, not with `sudo`. It elevates internally only for the commands that need it.
+2. Make it executable.
+   ```sh
+   chmod +x Kali_Setup.sh
+   ```
+3. Run the script as your normal user, not with `sudo`. It elevates internally only for the commands that need it.
    ```sh
    ./Kali_Setup.sh
    ```
-3. Let it run. It's safe to stop and re-run at any point: existing git clones get pulled instead of re-cloned, existing packages get skipped, and nothing gets duplicated.
-4. Reboot when it asks.
+4. Let it run. It's safe to stop and re-run at any point: existing git clones get pulled instead of re-cloned, existing packages get skipped, and nothing gets duplicated.
+5. Reboot when it asks.
 
 ## What you get
 

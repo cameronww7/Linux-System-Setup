@@ -14,12 +14,16 @@ For a Fedora machine running GNOME. It mirrors `Gnome_Setup/` app for app, just 
    ```sh
    cd Fedora_Setup
    ```
-2. Run the script as your normal user, not with `sudo`. It elevates internally only for the commands that need it.
+2. Make it executable.
+   ```sh
+   chmod +x Fedora_Setup.sh
+   ```
+3. Run the script as your normal user, not with `sudo`. It elevates internally only for the commands that need it.
    ```sh
    ./Fedora_Setup.sh
    ```
-3. Let it run. It's safe to stop and re-run at any point, every step checks whether it's already done first.
-4. Reboot when it asks.
+4. Let it run. It's safe to stop and re-run at any point, every step checks whether it's already done first.
+5. Reboot when it asks.
 
 ## What you get
 

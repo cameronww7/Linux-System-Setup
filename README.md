@@ -47,6 +47,7 @@ All three scripts are built on the same helpers in [`lib/common.sh`](lib/README.
 ```bash
 git clone https://github.com/cameronww7/Linux-System-Setup.git
 cd Linux-System-Setup/<Gnome_Setup|Fedora_Setup|Kali_Setup>/
+chmod +x <Gnome_Setup|Fedora_Setup|Kali_Setup>.sh
 ./<Gnome_Setup|Fedora_Setup|Kali_Setup>.sh   # don't run this with sudo, it calls sudo itself when it needs to
 ```
 
