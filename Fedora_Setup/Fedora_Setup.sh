@@ -91,7 +91,12 @@ dnf_install_if_missing() {
 # Same idea as dnf_install_if_missing but for dnf "groups" (bundles of
 # related packages dnf tracks as a single unit, like Development Tools
 # below), which don't show up in a plain `rpm -q` check the way individual
-# packages do. $1 = group name, exactly as dnf lists it.
+# packages do. $1 = group ID, the short kebab-case identifier (e.g.
+# "development-tools"), NOT the display name ("Development Tools") shown by
+# `dnf group list`. Confirmed by testing directly: dnf5's `group install`
+# subcommand only resolves by ID, unlike dnf4's `groupinstall`, which
+# matched on the display name. Passing the display name fails outright with
+# "No match for argument", it doesn't fall back to a fuzzy/name match.
 # Uses the space-separated "group install" subcommand form rather than the
 # older concatenated "groupinstall", since dnf5 (the default on modern
 # Fedora, where plain `dnf` IS dnf5) dropped the concatenated form entirely.
@@ -164,7 +169,7 @@ sudo dnf autoremove -y
 # capture).
 log_info "Base dev tools"
 dnf_install_if_missing curl git perl python3 python3-pip man-pages libpcap-devel
-dnf_group_install_if_missing "Development Tools"
+dnf_group_install_if_missing "development-tools"
 
 # ---------------------------------------------------------------------------
 # 3. Browsers
