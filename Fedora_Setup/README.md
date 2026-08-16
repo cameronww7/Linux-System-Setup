@@ -76,3 +76,6 @@ None of the four request the broad `--filesystem=host` grant, real sandboxing is
 
 > **Note**
 > Ghostty installs from a Fedora COPR (`scottames/ghostty`), not Snap, unlike `Gnome_Setup` and `Kali_Setup`. This script doesn't touch Snap at all, Snap isn't officially supported on Fedora, and a vetted COPR outranks it in the install-priority order this script follows (official repo > vendor repo > signed direct rpm > Flatpak > COPR > Snap, never a raw unsigned binary).
+
+> **Note**
+> Ghostty's theme gets set to GitHub Dark, one of the themes it already ships bundled (confirmed via `ghostty +list-themes`), no separate download involved. Only set the first time, `configure_ghostty_theme` in `lib/common.sh` checks for an existing `theme =` line in `~/.config/ghostty/config` first and leaves it alone if you've since picked something else by hand.

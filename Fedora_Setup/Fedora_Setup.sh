@@ -375,6 +375,7 @@ dnf_install_if_missing gedit tree htop glances most libreoffice terminator
 log_info "Ghostty (no real dnf/RPM-Fusion package, no real Flatpak, using Fedora COPR: lower-trust than official repos)"
 dnf_copr_enable_if_missing scottames/ghostty
 dnf_install_if_missing ghostty
+configure_ghostty_theme
 
 # ---------------------------------------------------------------------------
 # 6. Terminal customization

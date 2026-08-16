@@ -38,7 +38,7 @@ For a Debian or Ubuntu-family machine running GNOME. Installs dev tools, Brave, 
 - **Signal**, for private messaging.
 - **Claude Code**, for AI-assisted coding right from the terminal.
 
-**Quality-of-life tools.** gedit for quick edits, tree and htop and glances for a better look at your files and system load, most as a friendlier pager than less, LibreOffice for anything that needs a full office suite, and two terminal emulators, terminator from apt and Ghostty from Snap. Ghostty doesn't publish an apt package, and despite reserving a Flathub app id, was never actually published there either, so Snap is the fallback here, it's the one Linux install option Ghostty's own project says is actually built by their own CI rather than a third party.
+**Quality-of-life tools.** gedit for quick edits, tree and htop and glances for a better look at your files and system load, most as a friendlier pager than less, LibreOffice for anything that needs a full office suite, and two terminal emulators, terminator from apt and Ghostty from Snap. Ghostty doesn't publish an apt package, and despite reserving a Flathub app id, was never actually published there either, so Snap is the fallback here, it's the one Linux install option Ghostty's own project says is actually built by their own CI rather than a third party. Ghostty's theme gets set to GitHub Dark, one of the themes it already ships bundled, no separate download involved.
 
 **Terminal-Customization.** Cloned to `/opt/Terminal-Customization` so it's ready to go, but nothing from it gets configured or run automatically. See the root README for how that's wired up.
 
@@ -62,5 +62,8 @@ For a Debian or Ubuntu-family machine running GNOME. Installs dev tools, Brave, 
 
 > **Note**
 > Ghostty being installed via Snap means this script installs `snapd` too, the only place in this script that touches Snap at all. That's new infrastructure beyond the usual apt/Flatpak, added specifically because it's the only Linux install option for Ghostty that Ghostty's own project describes as built by their own CI rather than a third party, every other option (a community apt script, an AppImage) carries an explicit tampering-risk warning from Ghostty's own docs.
+
+> **Note**
+> Ghostty's theme only gets set the first time, `configure_ghostty_theme` in `lib/common.sh` checks for an existing `theme =` line in `~/.config/ghostty/config` first and leaves it alone if you've since picked something else by hand.
 
 Atom, the VirtualBox guest additions, and a hardcoded Go 1.16 install used to be part of this script. They're gone now: Atom is discontinued, VirtualBox wasn't actually in use, and Go is better installed straight from apt if you ever need it.

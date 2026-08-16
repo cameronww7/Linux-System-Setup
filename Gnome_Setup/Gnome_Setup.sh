@@ -315,6 +315,7 @@ apt_install_if_missing gedit tree htop glances most libreoffice terminator
 # through Ghostty's own CI, not a stranger's. That's the one used here.
 log_info "Ghostty (no apt package, no real Flatpak, using Snap)"
 snap_install_if_missing ghostty ghostty
+configure_ghostty_theme
 
 # ---------------------------------------------------------------------------
 # 6. Terminal customization

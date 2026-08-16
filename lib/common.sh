@@ -238,6 +238,25 @@ snap_install_if_missing() {
     fi
 }
 
+# Sets Ghostty's color theme to GitHub Dark. Ghostty ships this bundled as
+# one of its own built-in themes (confirmed via `ghostty +list-themes`, it's
+# listed under Ghostty's own "resources", not something fetched from a
+# third party), so this is a one-line config write, no external theme file
+# to download, host, or verify. Only writes the line if the config doesn't
+# already set a theme, so it never clobbers a theme picked by hand after the
+# fact, this only sets the initial default, it isn't meant to keep
+# overriding your choice on every re-run.
+configure_ghostty_theme() {
+    local config_dir="$HOME/.config/ghostty" config_file="$HOME/.config/ghostty/config"
+    mkdir -p "$config_dir"
+    if [[ -f "$config_file" ]] && grep -q '^theme[[:space:]]*=' "$config_file"; then
+        log_info "Ghostty theme already set, leaving it alone"
+        return
+    fi
+    log_info "Setting Ghostty theme: GitHub Dark"
+    printf 'theme = GitHub Dark\n' >>"$config_file"
+}
+
 # Offers to reboot once everything else is done. Genuinely worth asking for,
 # not just a nicety: kernel/systemd updates from the "update" steps in each
 # script don't take effect until reboot, new group memberships (docker,
