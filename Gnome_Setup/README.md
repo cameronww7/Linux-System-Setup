@@ -35,7 +35,6 @@ For a Debian or Ubuntu-family machine running GNOME. Installs dev tools, Brave, 
 - **Visual Studio Code**, my everyday code editor, installed from Microsoft's official apt repo.
 - **ProtonVPN**, for a VPN connection you can trust.
 - **Spotify**, for music.
-- **GitHub Desktop**, a GUI for git when the terminal isn't what you want.
 - **Signal**, for private messaging.
 - **Claude Code**, for AI-assisted coding right from the terminal.
 
@@ -50,7 +49,7 @@ For a Debian or Ubuntu-family machine running GNOME. Installs dev tools, Brave, 
 ## Good to know
 
 > **Note**
-> GitHub Desktop comes from the community-maintained [`shiftkey/desktop`](https://github.com/shiftkey/desktop) apt repo, since GitHub doesn't publish an official Linux build themselves.
+> GitHub Desktop used to be installed here from the community-maintained [`shiftkey/desktop`](https://github.com/shiftkey/desktop) apt repo, since GitHub itself doesn't publish an official Linux build. That's gone now, the fork hasn't been updated in over a year and isn't worth carrying as a dependency, use `git` from the terminal instead (or install [GitHub's official `gh` CLI](https://cli.github.com/) separately, if you want one).
 
 > **Note**
 > ProtonVPN installs from a version-pinned `.deb`, because ProtonVPN doesn't offer a stable "latest" URL for it. If that install step starts failing, grab a current version from [their Linux download page](https://protonvpn.com/support/linux-vpn-tool/) and update the script.

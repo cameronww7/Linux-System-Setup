@@ -143,7 +143,16 @@ dnf_write_repo_if_absent() {
     log_info "Adding dnf repo file: $repo_file"
     sudo rpm --import "$gpgkey_url"
     echo "$content" | sudo tee "$repo_file" >/dev/null
-    sudo dnf makecache
+    # -y matters here specifically, not just for consistency with every
+    # other dnf call in this script: dnf5 does its own separate key-trust
+    # check for repo_gpgcheck (verifying repomd.xml itself, on top of the
+    # rpm --import above, which only covers individual package signatures),
+    # and re-fetches/imports the key from the repo's own gpgkey= URL to do
+    # it. Without -y, dnf5 prints "Signing key not found" and waits on a
+    # y/N import prompt that never gets an answer in a non-interactive run,
+    # confirmed by reproducing it directly: the exact same repo config
+    # succeeds immediately once -y is present.
+    sudo dnf makecache -y
 }
 
 # ---------------------------------------------------------------------------
@@ -231,25 +240,6 @@ dnf_install_if_missing proton-vpn-gnome-desktop
 
 log_info "Spotify (no official Fedora repo, using Flatpak)"
 flatpak_install_if_missing com.spotify.Client spotify
-
-log_info "GitHub Desktop (community shiftkey/desktop repo, not GitHub-official)"
-# Uses the @mwt mirror feed, not the project's original rpm.packages.shiftkey.dev
-# feed: that domain's Azure CDN cert currently presents for *.azureedge.net
-# instead of rpm.packages.shiftkey.dev, which curl (correctly) refuses to
-# trust, confirmed by hand against the live domain. The @mwt feed is the
-# shiftkey/desktop project's own documented alternative and its cert checks
-# out cleanly. If this feed ever breaks too, check
-# https://github.com/shiftkey/desktop for whichever feed is currently good.
-dnf_write_repo_if_absent /etc/yum.repos.d/mwt-packages.repo \
-"[mwt-packages]
-name=GitHub Desktop
-baseurl=https://mirror.mwt.me/shiftkey-desktop/rpm
-enabled=1
-gpgcheck=1
-gpgkey=https://mirror.mwt.me/shiftkey-desktop/gpgkey
-repo_gpgcheck=1" \
-"https://mirror.mwt.me/shiftkey-desktop/gpgkey"
-dnf_install_if_missing github-desktop
 
 log_info "Signal (no official rpm, using Flatpak - Signal-cooperative on Flathub)"
 flatpak_install_if_missing org.signal.Signal signal-desktop

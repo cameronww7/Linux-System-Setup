@@ -191,13 +191,12 @@ apt_install_if_missing brave-browser
 # The apps installed on every machine of mine, day one. Notice the install
 # method isn't identical line to line, that's not inconsistency, it's each
 # app using whichever method its own vendor actually supports well: a real
-# signed apt repo where one exists (Slack, VS Code, Spotify, Signal, and
-# GitHub Desktop via a community-maintained repo since GitHub itself
-# doesn't publish one), a bare .deb with no repo behind it at all when
-# that's all the vendor ships (Discord, Zoom), and ProtonVPN's own special
-# case just below (a bootstrap package that adds a repo, rather than being
-# the app itself). Follow which helper each block below actually calls to
-# see which category it falls into.
+# signed apt repo where one exists (Slack, VS Code, Spotify, Signal), a bare
+# .deb with no repo behind it at all when that's all the vendor ships
+# (Discord, Zoom), and ProtonVPN's own special case just below (a bootstrap
+# package that adds a repo, rather than being the app itself). Follow which
+# helper each block below actually calls to see which category it falls
+# into.
 log_info "Discord"
 apt_install_deb_url_if_missing discord "https://discord.com/api/download?platform=linux&format=deb"
 
@@ -235,19 +234,6 @@ apt_add_keyring_asc "https://download.spotify.com/debian/pubkey_5E3C45D7B312C643
 apt_add_source_list /etc/apt/sources.list.d/spotify.list \
     "deb [signed-by=/usr/share/keyrings/spotify.gpg] http://repository.spotify.com stable non-free"
 apt_install_if_missing spotify-client
-
-log_info "GitHub Desktop (community shiftkey/desktop repo, not GitHub-official)"
-# Uses the @mwt mirror feed, not the project's original apt.packages.shiftkey.dev
-# feed: that domain's Azure CDN cert currently presents for *.azureedge.net
-# instead of apt.packages.shiftkey.dev, which curl (correctly) refuses to
-# trust, confirmed by hand against the live domain. The @mwt feed is the
-# shiftkey/desktop project's own documented alternative and its cert checks
-# out cleanly. If this feed ever breaks too, check
-# https://github.com/shiftkey/desktop for whichever feed is currently good.
-apt_add_keyring_asc "https://mirror.mwt.me/shiftkey-desktop/gpgkey" /usr/share/keyrings/mwt-desktop.gpg
-apt_add_source_list /etc/apt/sources.list.d/mwt-packages.list \
-    "deb [signed-by=/usr/share/keyrings/mwt-desktop.gpg arch=amd64] https://mirror.mwt.me/shiftkey-desktop/deb/ any main"
-apt_install_if_missing github-desktop
 
 log_info "Signal"
 apt_add_keyring_asc "https://updates.signal.org/desktop/apt/keys.asc" /usr/share/keyrings/signal-desktop-keyring.gpg

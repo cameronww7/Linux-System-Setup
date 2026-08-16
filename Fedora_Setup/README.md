@@ -35,7 +35,6 @@ Where things actually diverge is the daily-driver apps, since not everything has
 - **Visual Studio Code**, my everyday code editor, installed from Microsoft's official dnf repo.
 - **ProtonVPN**, for a VPN connection you can trust, installed from ProtonVPN's own dnf repo.
 - **Spotify**, for music, also via Flatpak.
-- **GitHub Desktop**, a GUI for git when the terminal isn't what you want.
 - **Signal**, for private messaging, also via Flatpak.
 - **Claude Code**, for AI-assisted coding right from the terminal.
 
@@ -48,12 +47,12 @@ A few of these apps don't have an official Fedora or rpm repo, so they're instal
 - **Spotify** has no official Fedora repo.
 - **Signal** has no official rpm, but the Flathub package is maintained with Signal's cooperation, so it's a solid substitute.
 
-Everything else (Brave, VS Code, Zoom, ProtonVPN, GitHub Desktop) installs natively from a dnf repo or a direct `.rpm`.
+Everything else (Brave, VS Code, Zoom, ProtonVPN) installs natively from a dnf repo or a direct `.rpm`.
 
 ## Good to know
 
 > **Note**
-> GitHub Desktop comes from the community-maintained [`shiftkey/desktop`](https://github.com/shiftkey/desktop) rpm repo, since GitHub doesn't publish an official Linux build themselves.
+> GitHub Desktop used to be installed here from the community-maintained [`shiftkey/desktop`](https://github.com/shiftkey/desktop) rpm repo, since GitHub itself doesn't publish an official Linux build. That's gone now, the fork hasn't been updated in over a year and isn't worth carrying as a dependency, use `git` from the terminal instead (or install [GitHub's official `gh` CLI](https://cli.github.com/) separately, if you want one).
 
 > **Note**
 > ProtonVPN installs from a version-pinned `.rpm` matched to your Fedora release using `rpm -E %fedora`. If that install step starts failing, grab a current version from [their Linux download page](https://protonvpn.com/support/linux-vpn-tool/) and update the script.
