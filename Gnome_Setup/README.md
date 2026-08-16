@@ -42,6 +42,8 @@ For a Debian or Ubuntu-family machine running GNOME. Installs dev tools, Brave, 
 
 **Terminal-Customization.** Cloned to `/opt/Terminal-Customization` so it's ready to go, but nothing from it gets configured or run automatically. See the root README for how that's wired up.
 
+**Favorites pinned to the GNOME dash.** Brave, Ghostty, Discord, Slack, Spotify, ProtonVPN, Signal, and VS Code get pinned automatically, merged into whatever's already pinned there rather than replacing the list, so it never removes an app you've pinned yourself. Each `.desktop` ID is checked against the real installed package rather than guessed, apt, Flatpak, and Snap don't agree on how to name the same app's `.desktop` file (Ghostty's Snap build registers as `ghostty_ghostty.desktop`, not `ghostty.desktop`, for example). Only does anything if you're actually running this in a GNOME session, skips quietly otherwise.
+
 **A `~/Dev` folder**, a plain, empty folder in your home directory for your own projects. It's separate from `/opt`, which is where this script clones its own tools, `~/Dev` is yours to fill with whatever you're working on.
 
 **Sudo pwfeedback and a lecture message.** Because typing your password should at least show asterisks.
@@ -62,6 +64,9 @@ For a Debian or Ubuntu-family machine running GNOME. Installs dev tools, Brave, 
 
 > **Note**
 > Ghostty being installed via Snap means this script installs `snapd` too, the only place in this script that touches Snap at all. That's new infrastructure beyond the usual apt/Flatpak, added specifically because it's the only Linux install option for Ghostty that Ghostty's own project describes as built by their own CI rather than a third party, every other option (a community apt script, an AppImage) carries an explicit tampering-risk warning from Ghostty's own docs.
+
+> **Note**
+> Favorites pinning (`pin_gnome_favorites` in `lib/common.sh`) only does anything if `gsettings` can actually reach a GNOME Shell session, it warns and skips rather than failing the script if you're running this over SSH or from a bare TTY before your first graphical login. Run the script again from an actual desktop session afterward if that happens and you still want the pins.
 
 > **Note**
 > Ghostty's theme only gets set the first time, `configure_ghostty_theme` in `lib/common.sh` checks for an existing `theme =` line in `~/.config/ghostty/config` first and leaves it alone if you've since picked something else by hand.

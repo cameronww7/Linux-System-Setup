@@ -24,6 +24,7 @@ GNOME and Fedora install the same set of apps through their own package manager,
 - **Self-locating.** Clone this repo anywhere you want, the scripts figure out their own path at runtime.
 - **Native installs where they exist.** Real apt/dnf repos for Brave, VS Code, Slack, ProtonVPN, and friends. Flatpak steps in for the handful of apps that don't publish a package for your distro. Ghostty needs one step further than that on every target, since it doesn't have a real Flatpak option either, a Fedora COPR on `Fedora_Setup` (dnf still beats Snap in priority, even a lower-trust community repo), Snap on `Gnome_Setup`/`Kali_Setup` (no COPR-equivalent trust tier available there).
 - **The daily-driver app set.** Discord, Slack, Zoom, VS Code, ProtonVPN, Spotify, Brave, Signal, and Claude Code, on both desktop targets.
+- **Key apps pinned to the GNOME dash.** Brave, Ghostty, Discord, Slack, Spotify, ProtonVPN, Signal, and VS Code, merged into whatever's already pinned rather than replacing the list. `Gnome_Setup` and `Fedora_Setup` only, `Kali_Setup` doesn't install most of these apps or default to GNOME.
 - **A `~/Dev` folder on every target.** A personal workspace for your own projects, kept separate from `/opt`, where every script clones its own tool installs. Kali also keeps its existing `~/HACKING` folder for engagement work, unrelated to `~/Dev`.
 
 ## How the pieces fit together

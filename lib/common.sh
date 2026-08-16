@@ -238,6 +238,58 @@ snap_install_if_missing() {
     fi
 }
 
+# Pins the given .desktop file IDs to the GNOME Shell dash/favorites,
+# alongside whatever's already pinned, instead of replacing the list
+# wholesale, so a re-run never duplicates an entry and never removes an app
+# you've pinned yourself (Files, a terminal, whatever). $@ = one or more
+# .desktop file IDs, e.g. "brave-browser.desktop". The actual ID an app
+# ships under isn't a fixed convention across install methods, apt/dnf
+# packages, Flatpak, and Snap each name theirs differently for the same
+# app, so every call site below was checked against the real installed
+# package instead of guessed (downloaded and inspected each .deb/.rpm
+# directly, or, for Flatpak/Snap, confirmed the platform's own naming
+# convention against a real install).
+#
+# Needs a running GNOME session to do anything, gsettings writes through
+# the session's dconf, which needs a session bus. A provisioning run over
+# SSH or from a bare TTY before first graphical login won't have one, this
+# warns and skips rather than failing the whole script over it, pinning
+# favorites is a nice-to-have, not worth aborting a provisioning run for.
+pin_gnome_favorites() {
+    if ! command_exists gsettings; then
+        log_warn "gsettings not found, skipping favorites pinning (no GNOME session?)"
+        return
+    fi
+    if ! gsettings writable org.gnome.shell favorite-apps &>/dev/null; then
+        log_warn "No GNOME Shell session detected, skipping favorites pinning"
+        return
+    fi
+    log_info "Pinning to GNOME Shell favorites: $*"
+    # Read-modify-write through python3 (already a dependency by this point
+    # in every script that calls this) rather than parsing gsettings' array
+    # syntax in bash, ast.literal_eval handles the quoting/escaping
+    # correctly instead of a fragile sed/awk pass over it.
+    python3 - "$@" <<'PYEOF'
+import ast
+import subprocess
+import sys
+
+wanted = sys.argv[1:]
+current_raw = subprocess.run(
+    ["gsettings", "get", "org.gnome.shell", "favorite-apps"],
+    capture_output=True, text=True, check=True,
+).stdout.strip()
+current = ast.literal_eval(current_raw)
+
+for app in wanted:
+    if app not in current:
+        current.append(app)
+
+new_raw = "[" + ", ".join(f"'{a}'" for a in current) + "]"
+subprocess.run(["gsettings", "set", "org.gnome.shell", "favorite-apps", new_raw], check=True)
+PYEOF
+}
+
 # Sets Ghostty's color theme to GitHub Dark. Ghostty ships this bundled as
 # one of its own built-in themes (confirmed via `ghostty +list-themes`, it's
 # listed under Ghostty's own "resources", not something fetched from a

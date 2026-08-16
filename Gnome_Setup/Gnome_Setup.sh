@@ -318,7 +318,31 @@ snap_install_if_missing ghostty ghostty
 configure_ghostty_theme
 
 # ---------------------------------------------------------------------------
-# 6. Terminal customization
+# 6. Pin favorites
+# ---------------------------------------------------------------------------
+# Pins the key daily-driver apps to the GNOME Shell dash, alongside
+# whatever's already pinned there, rather than replacing the list outright.
+# Each .desktop ID below was checked against the actual installed package,
+# not guessed, apt/dnf packages, Flatpak, and Snap each name their .desktop
+# file differently for the same app: Discord's official .deb registers
+# discord.desktop, Slack's apt package registers slack.desktop, ProtonVPN's
+# meta-package pulls in proton-vpn-gtk-app which registers
+# proton.vpn.app.gtk.desktop, and Ghostty via Snap registers
+# ghostty_ghostty.desktop, snapd's own naming convention
+# (<snap-name>_<app-name>.desktop), not a plain ghostty.desktop.
+log_info "Pinning key apps to GNOME favorites"
+pin_gnome_favorites \
+    brave-browser.desktop \
+    ghostty_ghostty.desktop \
+    discord.desktop \
+    slack.desktop \
+    spotify.desktop \
+    proton.vpn.app.gtk.desktop \
+    signal-desktop.desktop \
+    code.desktop
+
+# ---------------------------------------------------------------------------
+# 7. Terminal customization
 # ---------------------------------------------------------------------------
 # Only clones the repo here, deliberately doesn't run or configure anything
 # from it. Shell prompt/plugin setup is a matter of personal taste that
@@ -330,7 +354,7 @@ log_info "Terminal customization"
 clone_terminal_customization
 
 # ---------------------------------------------------------------------------
-# 7. ~/Dev folder
+# 8. ~/Dev folder
 # ---------------------------------------------------------------------------
 # A blank slate for your own projects. Deliberately separate from /opt
 # (reserved for the tool installs this script itself manages), so nothing
@@ -339,14 +363,14 @@ log_info "Dev folder"
 mkdir -p "$HOME/Dev"
 
 # ---------------------------------------------------------------------------
-# 8. Sudo lecture / pwfeedback
+# 9. Sudo lecture / pwfeedback
 # ---------------------------------------------------------------------------
 # See add_sudo_lecture_config in lib/common.sh for what this actually
 # configures and why it's done as a sudoers.d drop-in.
 add_sudo_lecture_config "$REPO_ROOT"
 
 # ---------------------------------------------------------------------------
-# 9. Final update pass
+# 10. Final update pass
 # ---------------------------------------------------------------------------
 # Runs again at the end, not just at the start, because several steps above
 # added new apt repos. Those repos' own packages (and anything else that
@@ -359,7 +383,7 @@ sudo apt-get upgrade -y
 sudo apt-get autoremove -y
 
 # ---------------------------------------------------------------------------
-# 10. Reboot prompt
+# 11. Reboot prompt
 # ---------------------------------------------------------------------------
 # See confirm_reboot_prompt in lib/common.sh for why a reboot is actually
 # worth offering here rather than just ending the script.
