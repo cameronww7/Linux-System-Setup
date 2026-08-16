@@ -251,7 +251,7 @@ log_info "Basic/system tools"
 apt_install_if_missing gedit tree htop glances most ssh rdesktop freerdp-x11 ansible autojump acpi terminator
 
 log_info "Ghostty (no apt package, using Flatpak)"
-flatpak_install_if_missing com.mitchellh.ghostty
+flatpak_install_if_missing com.mitchellh.ghostty ghostty
 
 # ---------------------------------------------------------------------------
 # 10. Pentest tool apt packages

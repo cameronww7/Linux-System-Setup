@@ -197,10 +197,10 @@ dnf_install_if_missing brave-browser
 # Signal). Each Flatpak call below has a log_info line saying exactly why
 # it's not going through dnf instead.
 log_info "Discord (no official rpm, using Flatpak)"
-flatpak_install_if_missing com.discordapp.Discord
+flatpak_install_if_missing com.discordapp.Discord discord
 
 log_info "Slack (no stable versioned rpm URL from Slack, using Flatpak)"
-flatpak_install_if_missing com.slack.Slack
+flatpak_install_if_missing com.slack.Slack slack
 
 log_info "Zoom"
 dnf_install_rpm_url_if_missing zoom "https://zoom.us/client/latest/zoom_x86_64.rpm"
@@ -230,22 +230,29 @@ sudo dnf check-update --refresh &>/dev/null || true
 dnf_install_if_missing proton-vpn-gnome-desktop
 
 log_info "Spotify (no official Fedora repo, using Flatpak)"
-flatpak_install_if_missing com.spotify.Client
+flatpak_install_if_missing com.spotify.Client spotify
 
 log_info "GitHub Desktop (community shiftkey/desktop repo, not GitHub-official)"
-dnf_write_repo_if_absent /etc/yum.repos.d/shiftkey-packages.repo \
-"[shiftkey-packages]
+# Uses the @mwt mirror feed, not the project's original rpm.packages.shiftkey.dev
+# feed: that domain's Azure CDN cert currently presents for *.azureedge.net
+# instead of rpm.packages.shiftkey.dev, which curl (correctly) refuses to
+# trust, confirmed by hand against the live domain. The @mwt feed is the
+# shiftkey/desktop project's own documented alternative and its cert checks
+# out cleanly. If this feed ever breaks too, check
+# https://github.com/shiftkey/desktop for whichever feed is currently good.
+dnf_write_repo_if_absent /etc/yum.repos.d/mwt-packages.repo \
+"[mwt-packages]
 name=GitHub Desktop
-baseurl=https://rpm.packages.shiftkey.dev/rpm/
+baseurl=https://mirror.mwt.me/shiftkey-desktop/rpm
 enabled=1
 gpgcheck=1
-gpgkey=https://rpm.packages.shiftkey.dev/gpg.key
+gpgkey=https://mirror.mwt.me/shiftkey-desktop/gpgkey
 repo_gpgcheck=1" \
-"https://rpm.packages.shiftkey.dev/gpg.key"
+"https://mirror.mwt.me/shiftkey-desktop/gpgkey"
 dnf_install_if_missing github-desktop
 
 log_info "Signal (no official rpm, using Flatpak - Signal-cooperative on Flathub)"
-flatpak_install_if_missing org.signal.Signal
+flatpak_install_if_missing org.signal.Signal signal-desktop
 
 log_info "Claude Code"
 dnf_install_if_missing nodejs npm

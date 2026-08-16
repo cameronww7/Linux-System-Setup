@@ -153,9 +153,19 @@ ensure_flatpak_flathub() {
 # Fallback install path for apps that don't publish a native apt/dnf package
 # for the distro this is running on (checked case by case in each caller,
 # search each script for "Flatpak" to see exactly which apps and why).
-# $1 = flatpak app id
+# $1 = flatpak app id. $2 (optional) = the binary name that app's official
+# installer normally puts on $PATH (e.g. "discord", "slack"). When given,
+# checked via command_exists first so a copy installed some other way (the
+# vendor's own .deb/.rpm, a manual download, a snap) is recognized instead
+# of Flatpak installing a second, separate copy alongside it. A flatpak
+# install exports its own launcher through flatpak, not onto $PATH, so this
+# check and the flatpak-list check below don't overlap or double-count.
 flatpak_install_if_missing() {
-    local app_id="$1"
+    local app_id="$1" bin_name="${2:-}"
+    if [[ -n "$bin_name" ]] && command_exists "$bin_name"; then
+        log_info "$bin_name already installed outside flatpak, skipping $app_id"
+        return
+    fi
     ensure_flatpak_flathub
     if flatpak list --app 2>/dev/null | grep -q "$app_id"; then
         log_info "$app_id already installed (flatpak), skipping"

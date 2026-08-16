@@ -237,9 +237,16 @@ apt_add_source_list /etc/apt/sources.list.d/spotify.list \
 apt_install_if_missing spotify-client
 
 log_info "GitHub Desktop (community shiftkey/desktop repo, not GitHub-official)"
-apt_add_keyring_asc "https://apt.packages.shiftkey.dev/gpg.key" /usr/share/keyrings/shiftkey-packages.gpg
-apt_add_source_list /etc/apt/sources.list.d/shiftkey-packages.list \
-    "deb [signed-by=/usr/share/keyrings/shiftkey-packages.gpg arch=amd64] https://apt.packages.shiftkey.dev/ubuntu/ any main"
+# Uses the @mwt mirror feed, not the project's original apt.packages.shiftkey.dev
+# feed: that domain's Azure CDN cert currently presents for *.azureedge.net
+# instead of apt.packages.shiftkey.dev, which curl (correctly) refuses to
+# trust, confirmed by hand against the live domain. The @mwt feed is the
+# shiftkey/desktop project's own documented alternative and its cert checks
+# out cleanly. If this feed ever breaks too, check
+# https://github.com/shiftkey/desktop for whichever feed is currently good.
+apt_add_keyring_asc "https://mirror.mwt.me/shiftkey-desktop/gpgkey" /usr/share/keyrings/mwt-desktop.gpg
+apt_add_source_list /etc/apt/sources.list.d/mwt-packages.list \
+    "deb [signed-by=/usr/share/keyrings/mwt-desktop.gpg arch=amd64] https://mirror.mwt.me/shiftkey-desktop/deb/ any main"
 apt_install_if_missing github-desktop
 
 log_info "Signal"
@@ -278,7 +285,7 @@ apt_install_if_missing gedit tree htop glances most libreoffice terminator
 # Ghostty doesn't publish a .deb or an apt repo, Flatpak/Flathub is the only
 # reliably up-to-date install path for it on apt-based distros.
 log_info "Ghostty (no apt package, using Flatpak)"
-flatpak_install_if_missing com.mitchellh.ghostty
+flatpak_install_if_missing com.mitchellh.ghostty ghostty
 
 # ---------------------------------------------------------------------------
 # 6. Terminal customization
