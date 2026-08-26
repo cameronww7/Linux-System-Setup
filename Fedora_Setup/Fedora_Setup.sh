@@ -122,20 +122,20 @@ dnf_group_install() {
 }
 
 # For apps distributed as a standalone rpm URL rather than through a repo
-# (Zoom below, and the ProtonVPN bootstrap package). Just hands the URL
-# straight to dnf rather than downloading it manually first, dnf can
-# install directly from a URL and will resolve and pull in any dependencies
-# that rpm needs on its own. $1 = package name to check, $2 = rpm URL, $3
+# (the ProtonVPN bootstrap package below). Just hands the URL straight to
+# dnf rather than downloading it manually first, dnf can install directly
+# from a URL and will resolve and pull in any dependencies that rpm needs
+# on its own. $1 = package name to check, $2 = rpm URL, $3
 # (optional) = the vendor's public GPG key URL.
 #
-# $3 matters more than it looks: both Zoom's and ProtonVPN's rpms actually
-# are signed, confirmed directly with `rpm -K` against the real downloaded
-# files, but without $3 the signing key was never imported, so dnf/rpm had
-# no way to check that signature and silently installed both unverified
-# every run. Importing the real key first (confirmed against Zoom's and
-# ProtonVPN's own published key URLs, fingerprints match what the
-# downloaded rpms are actually signed with) turns this into a real
-# verified install instead of a blind-trust one, `rpm -K` flips from
+# $3 matters more than it looks: ProtonVPN's rpm actually is signed,
+# confirmed directly with `rpm -K` against the real downloaded file, but
+# without $3 the signing key was never imported, so dnf/rpm had no way to
+# check that signature and silently installed it unverified every run.
+# Importing the real key first (confirmed against ProtonVPN's own
+# published key URL, fingerprint matches what the downloaded rpm is
+# actually signed with) turns this into a real verified install instead
+# of a blind-trust one, `rpm -K` flips from
 # "SIGNATURES NOT OK" to "digests signatures OK" once the key's imported.
 dnf_install_rpm_url_if_missing() {
     local pkg="$1" url="$2" gpgkey_url="${3:-}"
@@ -254,10 +254,10 @@ dnf_install_if_missing brave-browser
 #     the vendor's own signed infrastructure, still meaningfully different
 #     from, and more trustworthy than, an individual's unreviewed COPR.
 #   - A signed rpm from a direct URL when that's all the vendor ships
-#     (Zoom, and ProtonVPN's bootstrap package), the signing key is
-#     imported and verified first, see dnf_install_rpm_url_if_missing's
-#     $3 above, confirmed directly with `rpm -K` that both are genuinely
-#     signed and that these are the vendors' real keys.
+#     (ProtonVPN's bootstrap package), the signing key is imported and
+#     verified first, see dnf_install_rpm_url_if_missing's $3 above,
+#     confirmed directly with `rpm -K` that it's genuinely signed and
+#     that this is the vendor's real key.
 #   - Flatpak/Flathub for apps with no native Fedora package at all
 #     (Discord, Slack, Spotify, Signal). Checked each one's actual
 #     manifest via Flathub's API (not assumed): none request the broad
@@ -275,10 +275,6 @@ flatpak_install_if_missing com.discordapp.Discord discord
 
 log_info "Slack (no stable versioned rpm URL from Slack, using Flatpak, requests --device=all)"
 flatpak_install_if_missing com.slack.Slack slack
-
-log_info "Zoom"
-dnf_install_rpm_url_if_missing zoom "https://zoom.us/client/latest/zoom_x86_64.rpm" \
-    "https://zoom.us/linux/download/pubkey"
 
 log_info "Visual Studio Code"
 dnf_write_repo_if_absent /etc/yum.repos.d/vscode.repo \
@@ -384,9 +380,8 @@ configure_ghostty_theme
 # whatever's already pinned there, rather than replacing the list outright.
 # Each .desktop ID below was checked against the actual installed package,
 # not guessed, dnf and Flatpak name their .desktop file differently for the
-# same app: Zoom's signed rpm registers Zoom.desktop (not zoom.desktop),
-# ProtonVPN's meta-package pulls in proton-vpn-gtk-app which registers
-# proton.vpn.app.gtk.desktop, and Ghostty's COPR build registers
+# same app: ProtonVPN's meta-package pulls in proton-vpn-gtk-app which
+# registers proton.vpn.app.gtk.desktop, and Ghostty's COPR build registers
 # com.mitchellh.ghostty.desktop, the reserved app id it never actually
 # published to Flathub, still baked into the package it does ship.
 log_info "Pinning key apps to GNOME favorites"

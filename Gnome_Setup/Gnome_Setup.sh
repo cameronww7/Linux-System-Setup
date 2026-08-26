@@ -135,7 +135,7 @@ apt_add_source_list() {
 }
 
 # For apps that only ship a bare .deb file with no apt repo behind it at
-# all (Discord and Zoom below). Downloads to a temp file and installs with
+# all (Discord below). Downloads to a temp file and installs with
 # apt-get, not dpkg -i, on purpose: apt-get install on a local .deb path
 # still resolves and installs any missing dependencies automatically, while
 # `dpkg -i` alone would leave the package half-broken and require a
@@ -150,7 +150,7 @@ apt_install_deb_url_if_missing() {
     tmp_deb="$(mktemp --suffix=.deb)"
     log_info "Downloading $pkg from $url"
     # No -s here on purpose, unlike the small keyring downloads elsewhere in
-    # this file: Discord and Zoom's .deb files are large enough (tens to
+    # this file: Discord's .deb file is large enough (tens to
     # ~100+ MB) that a silent download can sit there for a while with
     # nothing on screen. --progress-bar keeps a live download indicator
     # visible instead.
@@ -198,7 +198,7 @@ apt_install_if_missing brave-browser
 # app using whichever method its own vendor actually supports well: a real
 # signed apt repo where one exists (Slack, VS Code, Spotify, Signal), a bare
 # .deb with no repo behind it at all when that's all the vendor ships
-# (Discord, Zoom), and ProtonVPN's own special case just below (a bootstrap
+# (Discord), and ProtonVPN's own special case just below (a bootstrap
 # package that adds a repo, rather than being the app itself). Follow which
 # helper each block below actually calls to see which category it falls
 # into.
@@ -210,9 +210,6 @@ apt_add_keyring_asc "https://packagecloud.io/slacktechnologies/slack/gpgkey" /us
 apt_add_source_list /etc/apt/sources.list.d/slack.list \
     "deb [signed-by=/usr/share/keyrings/slack-archive-keyring.gpg] https://packagecloud.io/slacktechnologies/slack/debian/ jessie main"
 apt_install_if_missing slack-desktop
-
-log_info "Zoom (official .deb, same TLS-only trust ceiling as Discord above, checked Zoom's own download page directly for a published hash, the only 'sha256' string on it is bundled crypto-js library code, not a checksum of the installer)"
-apt_install_deb_url_if_missing zoom "https://zoom.us/client/latest/zoom_amd64.deb"
 
 log_info "Visual Studio Code"
 apt_add_keyring_asc "https://packages.microsoft.com/keys/microsoft.asc" /usr/share/keyrings/packages.microsoft.gpg

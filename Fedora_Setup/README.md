@@ -31,7 +31,6 @@ Where things actually diverge is the daily-driver apps, since not everything has
 
 - **Discord**, for gaming and community voice or text chat. Installed via Flatpak, see below for why.
 - **Slack**, for work chat, also via Flatpak.
-- **Zoom**, for video calls, installed from a direct rpm.
 - **Visual Studio Code**, my everyday code editor, installed from Microsoft's official dnf repo.
 - **ProtonVPN**, for a VPN connection you can trust, installed from ProtonVPN's own dnf repo.
 - **Spotify**, for music, also via Flatpak.
@@ -52,9 +51,8 @@ This script follows a priority order for every app it installs: an official Fedo
 - **Visual Studio Code**, from Microsoft's own dnf repo.
 - **ProtonVPN**, from ProtonVPN's own dnf repo, bootstrapped by a signed release rpm.
 
-**A signed rpm from a direct URL**, for vendors that don't run a repo at all, but do sign what they ship. The vendor's real public key is imported and verified first in both cases, confirmed directly with `rpm -K` that the downloaded files are genuinely signed and that these are the actual vendor keys, not just installed blind:
+**A signed rpm from a direct URL**, for vendors that don't run a repo at all, but do sign what they ship. The vendor's real public key is imported and verified first, confirmed directly with `rpm -K` that the downloaded file is genuinely signed and that this is the actual vendor key, not just installed blind:
 
-- **Zoom**, key from `zoom.us/linux/download/pubkey`.
 - **ProtonVPN's bootstrap package** (the release rpm that adds ProtonVPN's own repo above), key from ProtonVPN's own per-Fedora-release key URL.
 
 **Flatpak (Flathub)**, for apps with no native Fedora package at all. Checked each one's actual permission manifest via Flathub's API rather than assuming a Flatpak is automatically sandboxed:
@@ -68,7 +66,7 @@ None of the four request the broad `--filesystem=host` grant, real sandboxing is
 
 **A Fedora COPR**, the last resort, used only for **Ghostty**: it has no rpm, no RPM Fusion package, and no Flathub listing either (it reserves a Flathub app id but was never actually published there). `scottames/ghostty` was checked directly before using it: it builds on Fedora's own COPR infrastructure (not the maintainer's personal machine) from a public spec, and is signed with a COPR-issued per-project key. Still lower-trust than everything above, Fedora explicitly disclaims any quality or security review over COPR contents, but it's a real, auditable build pipeline, not an opaque binary, and it's a native dnf package once enabled, unlike the alternative (Snap, confinement `classic`, meaning no sandboxing attempted at all, and not officially supported on Fedora to begin with).
 
-**Pinning to the GNOME dash** needs the exact `.desktop` file ID each package actually registers under, and that ID isn't predictable from the app name alone, dnf and Flatpak name the same app differently depending on how it's packaged. Every ID `pin_gnome_favorites` uses was checked against the real installed package rather than guessed: Zoom's signed rpm registers as `Zoom.desktop` (capital Z), not `zoom.desktop`; ProtonVPN's `proton-vpn-gnome-desktop` package is an empty meta-package, the actual `.desktop` file (`proton.vpn.app.gtk.desktop`) belongs to the `proton-vpn-gtk-app` package it depends on; and Ghostty's COPR build still ships under the reserved-but-never-Flathub-published app id, `com.mitchellh.ghostty.desktop`.
+**Pinning to the GNOME dash** needs the exact `.desktop` file ID each package actually registers under, and that ID isn't predictable from the app name alone, dnf and Flatpak name the same app differently depending on how it's packaged. Every ID `pin_gnome_favorites` uses was checked against the real installed package rather than guessed: ProtonVPN's `proton-vpn-gnome-desktop` package is an empty meta-package, the actual `.desktop` file (`proton.vpn.app.gtk.desktop`) belongs to the `proton-vpn-gtk-app` package it depends on; and Ghostty's COPR build still ships under the reserved-but-never-Flathub-published app id, `com.mitchellh.ghostty.desktop`.
 
 ## Good to know
 

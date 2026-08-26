@@ -31,7 +31,6 @@ For a Debian or Ubuntu-family machine running GNOME. Installs dev tools, Brave, 
 
 - **Discord**, for gaming and community voice or text chat.
 - **Slack**, for work chat.
-- **Zoom**, for video calls.
 - **Visual Studio Code**, my everyday code editor, installed from Microsoft's official apt repo.
 - **ProtonVPN**, for a VPN connection you can trust.
 - **Spotify**, for music.
@@ -57,7 +56,7 @@ For a Debian or Ubuntu-family machine running GNOME. Installs dev tools, Brave, 
 > ProtonVPN installs from a version-pinned `.deb`, because ProtonVPN doesn't offer a stable "latest" URL for it. If that install step starts failing, grab a current version from [their Linux download page](https://protonvpn.com/support/linux-vpn-tool/) and update the script. That bootstrap `.deb` drops its own apt keyring silently, so the script fetches ProtonVPN's published key fresh at runtime and checks its fingerprint against what actually landed on disk before trusting the repo it configured, instead of assuming an opaque postinst script did the right thing.
 
 > **Note**
-> Discord and Zoom install from the vendor's own official `.deb`, the install path each vendor actually recommends. Neither publishes a checksum or signature for that file anywhere, checked directly, so trust for these two specifically tops out at HTTPS transport security, there's no further verification step available on either vendor's side. Flatpak builds of both exist and were checked (Flathub-signed, and Zoom's specifically checksum-pins the binary it fetches), but the official `.deb` is the preferred install here.
+> Discord installs from the vendor's own official `.deb`, the install path the vendor actually recommends. It doesn't publish a checksum or signature for that file anywhere, checked directly, so trust here tops out at HTTPS transport security, there's no further verification step available on Discord's side. A Flatpak build exists and was checked (Flathub-signed), but the official `.deb` is the preferred install here.
 
 > **Note**
 > Claude Code installs via a user-owned npm prefix (`~/.npm-global`), not `sudo npm install -g`. A sudo'd npm install runs that package's (and its dependencies') postinstall scripts as root, more privilege than an npm install needs. The PATH addition lives in an `/etc/profile.d` drop-in rather than your shell rc file, consistent with this repo's shell customization staying out of Terminal-Customization's territory.
